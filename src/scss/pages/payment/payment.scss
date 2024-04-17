@@ -27,17 +27,18 @@
     }
 
     &-ways {
-        margin: 0 0 12px;
+        margin: 0 0 12px !important;
         font-size: 16px;
         font-weight: 400;
         line-height: 18px;
+        border: none !important;
 
         @include media(md) {
-            margin: 8px 0 29px;
+            margin: 8px 0 29px !important;
         }
 
         @include media(xxl) {
-            margin: 15px 0 53px;
+            margin: 15px 0 53px !important;
         }
 
         &__item {
@@ -51,6 +52,11 @@
             justify-content: space-between;
             align-items: center;
 
+            a, a:hover, a:focus {
+                color: #333;
+                border: none !important;
+            }
+
             &::before {
                 padding-left: 30px;
             }
@@ -61,17 +67,17 @@
         }
 
         .cash::before {
-            content: url(../img/svg/cash.svg);
+            content: url($imgPath + "/svg/cash.svg");
             
         }
         .non-cash {
             background: #D8E2FE;
             &::before {
-                content: url(../img/svg/non-cash.svg);
+                content: url($imgPath + "/svg/non-cash.svg");
             }
         }
         .qr::before {
-            content: url(../img/svg/qr.svg);
+            content: url($imgPath + "/svg/qr.svg");
         }
         
     }

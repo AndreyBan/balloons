@@ -544,28 +544,32 @@
     <div class="payment">
         <div class="container">
             <h1 class="payment__title">Способы оплаты</h1>
-                <div class="payment-ways row nav nav-tabs">
-                    <div class="col-xl-3 col-lg-4 col-md-6 pt-4">
-                        <div class="payment-ways__item cash nav-item">
-                            <a class="nav-link" href="#">Наличными</a>
-                        </div>
+                <ul class="payment-ways row nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item col-xl-3 col-lg-4 col-md-6 pt-4" role="presentation">
+                        <button class="active payment-ways__item cash" id="cash-tab" data-bs-toggle="tab" data-bs-target="#idCash" type="button" role="tab" aria-controls="cash" aria-selected="true">Наличными</button>
+                      </li>
+                      <li class="nav-item col-xl-3 col-lg-4 col-md-6 pt-4" role="presentation">
+                        <button class="payment-ways__item non-cash" id="noncash-tab" data-bs-toggle="tab" data-bs-target="#idNoncash" type="button" role="tab" aria-controls="non-cash" aria-selected="false">Безналичными</button>
+                      </li>
+                      <li class="nav-item col-xl-3 col-lg-4 col-md-6 pt-4" role="presentation">
+                        <button class="payment-ways__item qr" id="qr-tab" data-bs-toggle="tab" data-bs-target="#idQr" type="button" role="tab" aria-controls="qr" aria-selected="false">QR-кодом</button>
+                      </li>
+                </ul>
+
+                <div class="payment__info tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="idCash" role="tabpanel" aria-labelledby="cash-tab">
+                        Если Вы планируете забирать заказ самостоятельно, то оплатить выставленный счет можно наличными или картой непосредственно в магазине на <strong>ул. Бекетова, 3а, к. 9 </strong>либо на <strong>ул. Чкалова, 39 2 этаж</strong>. В этом случае при заказе обязательно нужно указать в каком магазине Вам удобнее это сделать.
+                        Если Вы хотите, чтобы Ваш заказ был доставлен курьером, то возможна оплата наличными курьеру. Оплата также может быть произведена по безналичному расчету, посредством перечисления денежных средств на наш расчетный счет либо с использованием банковской карты. К оплате принимаются карты <strong>МИР, VISA, MasterCard</strong>.
                     </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 pt-4">
-                        <div class="payment-ways__item non-cash nav-item">
-                            <a class="nav-link" href="#">Безналичными</a>
-                        </div>
+                    <div class="tab-pane fade" id="idNoncash" role="tabpanel" aria-labelledby="noncash-tab">
+                        Если Вы планируете забирать заказ самостоятельно, то оплатить выставленный счет можно наличными или картой непосредственно в магазине на <strong>ул. Бекетова, 3а, к. 9 </strong>либо на <strong>ул. Чкалова, 39 2 этаж</strong>. В этом случае при заказе обязательно нужно указать в каком магазине Вам удобнее это сделать.
+                        Если Вы хотите, чтобы Ваш заказ был доставлен курьером, то возможна оплата наличными курьеру. Оплата также может быть произведена по безналичному расчету, посредством перечисления денежных средств на наш расчетный счет либо с использованием банковской карты. К оплате принимаются карты <strong>МИР, VISA, MasterCard</strong>.
                     </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 pt-4">
-                        <div class="payment-ways__item qr nav-item">
-                            <a class="nav-link" href="#">QR-кодом</a>
-                        </div>
+                    <div class="tab-pane fade" id="idQr" role="tabpanel" aria-labelledby="qr-tab">
+                        Если Вы планируете забирать заказ самостоятельно, то оплатить выставленный счет можно наличными или картой непосредственно в магазине на <strong>ул. Бекетова, 3а, к. 9 </strong>либо на <strong>ул. Чкалова, 39 2 этаж</strong>. В этом случае при заказе обязательно нужно указать в каком магазине Вам удобнее это сделать.
+                        Если Вы хотите, чтобы Ваш заказ был доставлен курьером, то возможна оплата наличными курьеру. Оплата также может быть произведена по безналичному расчету, посредством перечисления денежных средств на наш расчетный счет либо с использованием банковской карты. К оплате принимаются карты <strong>МИР, VISA, MasterCard</strong>.
                     </div>
                 </div>
-
-            <div class="payment__info">
-                Если Вы планируете забирать заказ самостоятельно, то оплатить выставленный счет можно наличными или картой непосредственно в магазине на <strong>ул. Бекетова, 3а, к. 9 </strong>либо на <strong>ул. Чкалова, 39 2 этаж</strong>. В этом случае при заказе обязательно нужно указать в каком магазине Вам удобнее это сделать.
-                Если Вы хотите, чтобы Ваш заказ был доставлен курьером, то возможна оплата наличными курьеру. Оплата также может быть произведена по безналичному расчету, посредством перечисления денежных средств на наш расчетный счет либо с использованием банковской карты. К оплате принимаются карты <strong>МИР, VISA, MasterCard</strong>.
-            </div>
         </div>
  </div>
 <!-- Content end -->

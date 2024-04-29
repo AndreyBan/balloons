@@ -1,5 +1,19 @@
 @use "../../variables" as *;
 
+button.f-button {
+    background: transparent !important;
+}
+.fancybox__footer {
+    background: transparent !important;
+}
+.f-button.is-next, .f-button.is-prev {
+    display: none;
+    
+    @include media(md) {
+        display: block;
+    }
+}
+
 .news {
     margin: 26px 0 56px;
 
@@ -10,9 +24,13 @@
     }
 
     &-info {
-        margin: 16px 0 42px;
+        margin: 16px 0 27px;
         font-size: 14px;
         font-weight: 400;
+        
+        @include media(md) {
+            margin: 16px 0 12px;
+        }
 
         &__item {
             display: flex;

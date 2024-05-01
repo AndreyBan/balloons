@@ -52,7 +52,7 @@
             justify-content: space-between;
             align-items: center;
             width: 100%;
-            outline: none !important;
+            outline: none;
             color: #333;
 
             &::before {
@@ -60,24 +60,22 @@
             }
         }
 
-        .cash, .qr {
+        [aria-selected="true"] {
+            border: none !important;
+            background: #D8E2FE;
+            transition: 0.3s;
+
+        }
+        [aria-selected="false"] {
             border: 2px solid #678AEF !important;
             background: #fff;
         }
 
-        .non-cash {
-            border: none !important;
-        }
-
         .cash::before {
             content: url($imgPath + "/svg/cash.svg");
-            
         }
-        .non-cash {
-            background: #D8E2FE !important;
-            &::before {
-                content: url($imgPath + "/svg/non-cash.svg");
-            }
+        .non-cash::before {
+            content: url($imgPath + "/svg/non-cash.svg");
         }
         .qr::before {
             content: url($imgPath + "/svg/qr.svg");

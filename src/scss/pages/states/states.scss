@@ -13,6 +13,16 @@
         margin: 10px 0 35px;
     }
 
+    &-info {
+        margin: 16px 0 27px;
+        font-size: 14px;
+        font-weight: 400;
+        
+        @include media(md) {
+            margin: 16px 0 12px;
+        }
+    }
+
     &__title {
         font-size: 18px;
         font-weight: 700;
@@ -85,13 +95,5 @@
 
     @include media(md) {
         width: auto;   
-    }
-}
-
-.pagination {
-    display: none;
-
-    @include media(md) {
-        display: flex;    
     }
 }

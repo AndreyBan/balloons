@@ -25,6 +25,7 @@ export default {
                 main: './src/js/main.js',
                 registration: './src/js/registration.js',
                 validate: './src/js/validate.js',
+                gallery: './src/js/gallery.js',
                 'detail/detail': './src/js/detail/detail.js',
                 'catalog/tooltip': './src/js/catalog/tooltip.js',
                 'catalog/dropdown-sort': './src/js/catalog/dropdown-sort.js',

@@ -3,6 +3,9 @@
 * in PhpStorm
 * 04.03.2024
 **/
+
+@use "../variables" as *;
+
 .tooltip {
   --bs-tooltip-color: #333;
   --bs-tooltip-bg: #FFF;
@@ -14,24 +17,30 @@
   border: 1px solid #D8E2FE;
   border-radius: 30px;
 }
-.tooltip.catalog-tooltip .tooltip-arrow {
+.tooltip.catalog-tooltip .tooltip-arrow, .tooltip.price-tooltip .tooltip-arrow {
   width: 16px;
   height: 19px;
   &:before {
     border: 8px solid transparent;
     border-left: 12px solid #D8E2FE;
     right: 1px;
-    top: 8px;
     transform: rotate(30deg);
   }
   &:after {
     content: '';
     position: absolute;
     right: -1px;
-    top: 7px;
     border: 8px solid transparent;
     border-left: 12px solid #FFF;
     transform: rotate(30deg);
+  }
+}
+.tooltip.catalog-tooltip .tooltip-arrow {
+  &:before {
+    top: 8px;
+  }
+  &:after {
+    top: 7px;
   }
 }
 //.tooltip.catalog-tooltip .tooltip-arrow:after {
@@ -46,3 +55,58 @@
 //  border-bottom: $sizeTriangle solid $colorTriangle;
 //  border-left: $sizeTriangle solid $colorTriangle;
 //}
+
+.tooltip.price-tooltip {
+  --bs-tooltip-max-width: 304px;
+  --bs-tooltip-opacity: 1;
+  --bs-tooltip-padding-x: 11px;
+  --bs-tooltip-padding-y: 11px;
+
+  @include media(md) {
+    --bs-tooltip-padding-x: 12px;
+    --bs-tooltip-padding-y: 9px;
+    --bs-tooltip-max-width: 510px;
+  }
+  @include media(xl) {
+    --bs-tooltip-max-width: 725px;
+    --bs-tooltip-padding-x: 16px;
+    --bs-tooltip-padding-y: 15px;
+  }
+
+  .tooltip-arrow {
+    &::before, &::after {
+      transform: rotate(90deg);
+      right: 130px;
+      left: unset;
+
+      @include media(md) {
+        transform: rotate(30deg);
+        left: auto;
+        right: auto;
+      }
+      @media screen and (min-width: 353px) and (max-width: 767px) {
+          left: 130px;
+          right: unset;
+       }
+    }
+    &::before {
+      top: 20px;
+
+      @include media(md) {
+        top: 1px;
+      }
+    }
+    &::after {
+      top: 19px;
+
+      @include media(md) {
+        top: 0;
+      }
+    }
+}
+
+  .tooltip-inner {
+      text-align: left;
+  }
+}
+

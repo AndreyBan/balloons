@@ -1,0 +1,503 @@
+@use "../../variables" as *;
+
+.basket {
+    margin: 26px auto 32px;
+
+    @include media(md) {
+        margin: 40px auto 48px;
+    }
+
+    @include media(xl) {
+        margin: 27px auto 57px;
+    }
+
+    &__title {
+        font-weight: 700;
+        color: #333333;
+        display: inline;
+        font-size: 18px;
+        line-height: 20px;
+
+        @include media(md) {
+            font-size: 24px;
+            line-height: 30px;
+        }
+    
+        @include media(xl) {
+            font-size: 26px;
+        }
+
+    }
+    &__clean {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 18px;
+        color: #74747474;
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        float: right;
+        cursor: pointer;
+
+        &::before {
+            content: url($imgPath + "/svg/close-grey.svg");
+        }
+    }
+    &__warning {
+        margin: 16px auto;
+        border: 1px solid #333333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 30px;
+        padding: 12px 24px;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 18px;
+
+        @include media(md) {
+            margin: 20px auto 32px;
+            padding: 14px 86px;
+        }
+    
+        @include media(xl) {
+            margin: 32px auto;
+            padding: 17px 0px;
+        }
+
+        &--more {
+            font-weight: 400;
+        }
+
+        &::before {
+            content: url($imgPath + "/svg/warning.svg");
+            padding-right: 7px;
+        }
+
+        &-text {
+            margin: 0;
+        }
+    }
+    &-table {
+        p {
+            margin: 0;
+        }
+        &__title {
+            display: inline-block;
+
+            &:not(.basket-table__title--numb, .basket-table__title--img, .basket-table__title--name) {
+                
+                @include media(md) {
+                    padding-left: 0;
+                }
+                @include media(xl) {
+                    padding-left: 25px;
+                }
+            }
+
+            &--article {
+                display: none;
+
+                @include media(xl) {
+                    display: inline-block;
+                }
+            }
+
+            &--numb {
+                width: 6%;
+
+                @include media(xl) {
+                    width: 8%;
+                }
+            }
+            &--amount {
+                width: 124px;
+                
+                @include media(md) {
+                    text-align: left;
+                }
+                @include media(xl) {
+                    text-align: center;
+                    width: 188px;
+                }
+            }
+            &--img {
+                width: 70px;
+
+                @include media(md) {
+                    width: 62px;
+                }
+                @include media(xl) {
+                    width: 82px;
+                }
+            }
+            &--article {
+                width: 10%;
+            }
+            &--name {
+                width: 17%;
+
+                @include media(xl) {
+                    width: 23%;
+                }
+            }
+            &--price {
+                width: 13%;
+
+                @include media(xl) {
+                    width: 19%;
+                }
+            }
+            &--sum {
+                width: 10%;
+
+                @include media(xl) {
+                    width: 15%;
+                }
+            }
+        }
+        &__head {
+            background-color: #D8E2FE;
+            display: none;
+
+            @include media(md) {
+                display: flex;
+                justify-content: space-between;
+                padding: 12px 47px 16px 10px;
+            }
+        
+            @include media(xl) {
+                padding: 12px 29px 16px;
+            }
+        }
+        &-item {
+            display: flex;
+            align-items: flex-start;
+            border-bottom: 1px solid #D8E2FE;
+            border-top: 1px solid #D8E2FE;
+            position: relative;
+            padding: 12px 0 16px;
+
+            @include media(md) {
+                padding: 12px 47px 12px 10px;
+                border-top: none;
+                align-items: center;
+                justify-content: space-between;
+            }
+            @include media(xl) {
+                padding: 0 0 0 29px;
+            }
+
+            .basket-desktop-text {
+                display: none;
+
+                @include media(md) {
+                    display: contents;
+                }
+            }
+
+            .basket-mobile-text {
+                margin-left: 8px;
+                display: flex;
+                flex-direction: column;
+
+                @include media(md) {
+                    display: none;
+                }
+
+                .basket-table-item__price {
+                    margin: 12px 0 16px;
+                }
+                .basket-table-item__country {
+                    margin-top: 12px;
+                }
+            }
+            
+            .basket-mobile-prices {
+                // width: 100%;
+                display: flex;
+                align-items: center;
+                gap: 24px;
+
+                @include media(md) {
+                    display: none;
+                }
+            }
+
+
+            div {
+                &:not(.basket-table-item__numb, .basket-table-item__img, .basket-table-item__name) {
+
+                    @include media(md) {
+                        padding-left: 0;
+                    }
+                    @include media(xl) {
+                        padding-left: 25px;
+                    }
+                }
+            }
+
+            &__numb {
+                width: 6%;
+                display: none;
+
+                @include media(md) {
+                    display: inline-block;
+                }
+
+                @include media(xl) {
+                    width: 8%;
+                }
+            }
+            &__img {
+                width: 25%;
+
+                @include media(md) {
+                    width: 62px;
+                }
+                @include media(xl) {
+                    width: 82px;
+                }
+
+                img {
+                    width: 100%;
+                    object-fit: cover;
+                }
+            }
+            &__article {
+                width: 10%;
+                display: none;
+
+                @include media(xl) {
+                    display: inline-block;
+                }
+            }
+            &__name {
+                width: 23%;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                width: 17%;
+
+                @include media(xl) {
+                    gap: 8px;
+                    width: 23%;
+                }
+
+                &--article {
+                    @include media(xl) {
+                        display: none;
+                    }
+                }
+            }
+            &__country {
+                color: #747474;
+            }
+            &__price {
+                width: 100%;
+
+                @include media(md) {
+                    width: 13%;
+                }
+
+                @include media(xl) {
+                    width: 19%;
+                }
+
+                &--old {
+                    text-decoration: line-through;
+                }
+                &--percent {
+                    font-weight: 700;
+                    background: #7A98F1;
+                    border-radius: 30px;
+                    padding: 8px 5px;
+                    color: #ffffff;
+                    display: inline-block;
+                    margin: 0 8px;
+                    width: 52px;
+
+                    @include media (md) {
+                        display: block;
+                        margin: 7px 0;
+                    } 
+                    @include media (xl) {
+                        display: inline-block;
+                        margin: 0 8px;
+                    } 
+                }
+                &--mis {
+                    display: none;
+                }
+            }
+            &__amount {
+                width: 124px;
+                
+                @include media(xl) {
+                    width: 188px;
+                }
+            }
+            &__sum {
+                font-weight: 500;
+
+                @include media(md) {
+                    width: 10%;
+                }
+
+                @include media(xl) {
+                    width: 15%;
+                }
+            }
+            &__delete {
+                width: 10px;
+                height: 10px;
+                cursor: pointer;
+                right: 0;
+                position: absolute;
+
+                @include media(xl) {
+                    right: 17px;
+                }
+            }
+            &.missing {
+                div {
+                    opacity: 60%;
+                }
+                .basket-table-item__price {
+                    &--old, &--percent, &--now {
+                        display: none;
+                    }
+                    &--mis {
+                        display: block;
+                    }
+                }
+                .basket-table-count, .basket-table-item__sum {
+                    opacity: 0;
+                    pointer-events: none;
+                }
+                .basket-mobile-text .basket-table-item__price--missing {
+                    margin-top: 6px;
+                }
+                .basket-table-item__price, .basket-mobile-prices {
+                    display: none;
+
+                    @include media(md) {
+                        display: flex;
+                    } 
+                }
+            }
+        }
+        &-count {
+            width: 124px;
+
+            @include media(xl) {
+                width: 188px;
+            } 
+
+            div {
+                background: #F0F0F0;
+                padding: 16px 15px !important;
+                border-radius: 30px;
+                display: flex;
+
+                @include media(xl) {
+                    padding: 16px 25px;
+                } 
+            }
+
+            &__btn {
+                border: none;
+            }
+            &__amount {
+                background: #F0F0F0;
+                border: none;
+                text-align: center;
+                outline: none;
+                width: 100%;
+
+                &::-webkit-outer-spin-button,
+                &::-webkit-inner-spin-button {
+                    -webkit-appearance: none;
+                }
+            }
+        }
+    }
+
+    &-result {
+        margin-top: 27px;
+        position: relative;
+
+        @include media(xl) {
+            margin-top: 31px;
+        }
+
+        &__title {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 24px;
+            margin-bottom: 24px;
+        }
+        &__goods, p {
+            display: inline-block;
+        }
+        &-price__head, &-sum__head, &__title {
+            width: 70%;
+
+            @include media(md) {
+                width: 28%;
+            }
+            
+            @include media(xl) {
+                width: 17%;
+            }
+        }
+        &-price {
+            &__head {
+                color: #5D5D5D;
+                margin-bottom: 16px;
+            }
+            img {
+                margin-left: 8px;
+                cursor: pointer;
+            }
+        }
+        &-sum {
+            font-size: 20px;
+            font-weight: 500;
+
+            &__head {
+                line-height: 24px;
+                margin-bottom: 0;
+            }
+            &__numb {
+                line-height: 18px;
+                font-size: 16px;
+
+                @include media(md) {
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+    &__registr {
+        text-align: center;
+        margin-top: 11px;
+
+        @include media(md) {
+            text-align: left;
+        }
+
+        &-btn {
+            position: static;
+            max-width: 304px;
+            width: 100%;
+    
+            @include media(md) {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                width: auto;
+            }
+        }
+    }
+}

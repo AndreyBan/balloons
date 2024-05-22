@@ -13,7 +13,7 @@
             tooltipOptions.offset = [-100, -152]
          }
          const tooltip = new bootstrap.Tooltip(iconTooltip, tooltipOptions)
-        
+
          iconTooltip.addEventListener('mouseenter', () => tooltip.show())
          iconTooltip.addEventListener('mouseleave', () => tooltip.hide())
     })

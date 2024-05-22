@@ -5,9 +5,7 @@
  **/
 (() => {
     window.addEventListener('load', () => document.body.classList.add('loaded'))
-    document.addEventListener('DOMContentLoaded', () => {
-        initScripts()
-    })
+    document.addEventListener('DOMContentLoaded', initScripts)
 
     /**
      * Инициализация всех скриптов

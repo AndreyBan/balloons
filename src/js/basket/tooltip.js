@@ -9,14 +9,13 @@
             offset: [-40, 0]
         }
 
-        if(window.innerWidth < 768) {
+        if(window.matchMedia('max-width: 767px').matches) {
             tooltipOptions.offset = [-100, -152]
          }
-
-            iconTooltip.addEventListener('click', () => {
-                const tooltip = new bootstrap.Tooltip(iconTooltip, tooltipOptions)
-                tooltip.show()
-            })
+         const tooltip = new bootstrap.Tooltip(iconTooltip, tooltipOptions)
+        
+         iconTooltip.addEventListener('mouseenter', () => tooltip.show())
+         iconTooltip.addEventListener('mouseleave', () => tooltip.hide())
     })
 })()
 

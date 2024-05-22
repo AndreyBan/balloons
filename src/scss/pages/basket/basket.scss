@@ -407,6 +407,7 @@
 
             &__btn {
                 border: none;
+                background: #F0F0F0;
             }
             &__amount {
                 background: #F0F0F0;
@@ -414,6 +415,7 @@
                 text-align: center;
                 outline: none;
                 width: 100%;
+                -moz-appearance: textfield;
 
                 &::-webkit-outer-spin-button,
                 &::-webkit-inner-spin-button {

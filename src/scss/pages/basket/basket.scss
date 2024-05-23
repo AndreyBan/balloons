@@ -23,6 +23,7 @@
             line-height: 30px;
         }
 
+
         @include media(xl) {
             font-size: 26px;
         }
@@ -204,32 +205,33 @@
             //    }
             //}
 
-            //.basket-mobile-text {
-            //    margin-left: 8px;
-            //    display: flex;
-            //    flex-direction: column;
-            //
-            //    @include media(md) {
-            //        display: none;
-            //    }
-            //
-            //    .basket-table-item__price {
-            //        margin: 12px 0 16px;
-            //    }
-            //    .basket-table-item__country {
-            //        margin-top: 12px;
-            //    }
-            //}
+            .basket-mobile-text {
+                margin-left: 8px;
+                display: flex;
+                flex-direction: column;
 
-            //.basket-mobile-prices {
-            //    display: flex;
-            //    align-items: center;
-            //    gap: 24px;
-            //
-            //    @include media(md) {
-            //        display: none;
-            //    }
-            //}
+                @include media(md) {
+                    display: none;
+                }
+
+                .basket-table-item__price {
+                    margin: 12px 0 16px;
+                }
+                .basket-table-item__country {
+                    margin-top: 12px;
+                }
+            }
+            
+            .basket-mobile-prices {
+                // width: 100%;
+                display: flex;
+                align-items: center;
+                gap: 24px;
+
+                @include media(md) {
+                    display: none;
+                }
+            }
 
 
             div {
@@ -400,16 +402,13 @@
                 .basket-table-item__price--missing {
                     margin-top: 6px;
                 }
-                //.basket-mobile-text .basket-table-item__price--missing {
-                //    margin-top: 6px;
-                //}
-                //.basket-table-item__price, .basket-mobile-prices {
-                //    display: none;
-                //
-                //    @include media(md) {
-                //        display: flex;
-                //    }
-                //}
+                .basket-table-item__price, .basket-mobile-prices {
+                    display: none;
+
+                    @include media(md) {
+                        display: flex;
+                    } 
+                }
             }
         }
         &-count {
@@ -437,6 +436,7 @@
 
             &__btn {
                 border: none;
+                cursor: pointer;
                 background: #F0F0F0;
             }
             &__amount {

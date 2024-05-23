@@ -41,8 +41,8 @@ export default {
                 news: './src/news.html',
                 'news/detail': './src/news-detail.html',
                 states: './src/states.html', 'states/detail': './src/states-detail.html',
-                basket: './src/basket.html',
-                'basket/tooltip': './src/js/basket/tooltip.js',
+                basket: './src/basket.html', 'basket/tooltip': './src/js/basket/tooltip.js',
+                order: './src/order.html',
             },
             output: {
                 assetFileNames: "assets/[name][extname]",

@@ -290,6 +290,10 @@
                 //width: 17%;
                 grid-area: text;
 
+                @include media(md) {
+                    width: 17%;
+                }
+
                 @include media(xl) {
                     gap: 8px;
                     width: 23%;
@@ -362,7 +366,7 @@
                 }
 
                 @include media(xl) {
-                    width: 15%;
+                    width: calc(15% + 29px);
                 }
             }
             &__delete {

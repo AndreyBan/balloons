@@ -10,11 +10,12 @@
     
     
     
+    
 
 
-    <title>Корзина</title>
-  <link rel="stylesheet" href="./assets/basket.css">
+    <title>Оформление заказа</title>
   <link rel="stylesheet" href="./assets/style.css">
+  <link rel="stylesheet" href="./assets/registration.css">
 </head>
 <body class="wrapper">
 
@@ -453,11 +454,11 @@
                                         </li>
                                         <li class="catalog-menu-list__item">
                                             <a class="catalog-menu-list__link" href="#">Политика
-                                                                                        конфиденциальности</a>
+                                                конфиденциальности</a>
                                         </li>
                                         <li class="catalog-menu-list__item">
                                             <a class="catalog-menu-list__link" href="#">Пользовательское
-                                                                                        соглашение</a>
+                                                соглашение</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -488,15 +489,15 @@
                                                         <ul class="catalog-mobile-list">
                                                             <li class="catalog-menu-list__item">
                                                                 <a href="#" class="catalog-menu-list__link">Элемент
-                                                                                                            1</a>
+                                                                    1</a>
                                                             </li>
                                                             <li class="catalog-menu-list__item">
                                                                 <a href="#" class="catalog-menu-list__link">Элемент
-                                                                                                            2</a>
+                                                                    2</a>
                                                             </li>
                                                             <li class="catalog-menu-list__item">
                                                                 <a href="#" class="catalog-menu-list__link">Элемент
-                                                                                                            3</a>
+                                                                    3</a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -534,118 +535,195 @@
                     <a href="/" class="breadcrumb__link">Главная</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="#" class="breadcrumb__link">Корзина</a>
+                    <a href="basket.html" class="breadcrumb__link">Корзина</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#" class="breadcrumb__link">Оформление заказа</a>
                 </li>
             </ol>
         </div>
     </nav>
-    <div class="basket">
+    <div class="order">
         <div class="container">
-            <p class="basket__title">Моя корзина</p>
-            <p class="basket__clean js-cart-clean">Очистить корзину</p>
-            <div class="basket__warning">
-                <p class="basket__warning-text">
-                    Цена, указанная на сайте, действительна для покупок свыше 1 000₽. При покупке до 1 000 ₽ розничная
-                    наценка <span class="js-markup">30%</span>.&nbsp;
-                    <a href="#" class="basket__warning--more">Подробнее</a>
-                </p>
-            </div>
-            <div class="basket-table">
-                <div class="basket-table__head">
-                    <p class="basket-table__title basket-table__title--numb">№</p>
-                    <p class="basket-table__title basket-table__title--img">Фото</p>
-                    <p class="basket-table__title basket-table__title--article">Артикул</p>
-                    <p class="basket-table__title basket-table__title--name">Название</p>
-                    <p class="basket-table__title basket-table__title--price">Цена за ед.</p>
-                    <p class="basket-table__title basket-table__title--amount">Количество</p>
-                    <p class="basket-table__title basket-table__title--sum">Сумма</p>
+            <section class="registration-section js-type-form" data-form-type="type-1">
+                <div class="container">
+                    <!--  TODO: если понадобится изменить name у инпутов, то нужно исправить и в js (файл validate.js указать нужные в переменной fields) -->
+                    <form action="" class="form-registration js-form" novalidate>
+                        <div class="row-check">
+                            <!--                    TODO: если понадобится изменить value у инпутов, то нужно исправить и в js (файл registration.js функция displayTypeForm) -->
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="form-registration"
+                                       id="form-registration-1" value="type-1" checked>
+                                <label class="form-check-label" for="form-registration-1">
+                                    Физическое лицо
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="form-registration"
+                                       id="form-registration-2" value="type-2">
+                                <label class="form-check-label" for="form-registration-2">
+                                    Юридическое лицо
+                                </label>
+                            </div>
+                        </div>
+                        <div class="registration-inputs">
+                            <div class="form-input fl-only">
+                                <input id="contact-person" type="text" class="form-control" name="contact-person" required aria-required="true">
+                                <label for="contact-person">Контактное лицо*</label>
+                            </div>
+                            <div class="form-input">
+                                <input id="email" name="email" type="email" class="form-control" required
+                                       aria-required="true">
+                                <label for="email">E-mail*</label>
+                            </div>
+                            <div class="form-input">
+                                <input id="phone" name="phone" type="text" class="form-control" required
+                                       aria-required="true">
+                                <label for="phone">Телефон*</label>
+                            </div>
+                            <div class="form-input yl-only">
+                                <input id="inn" name="INN" type="text" class="form-control" minlength="10" maxlength="12"
+                                       inputmode="numeric" aria-required="true">
+                                <label for="inn">ИНН*</label>
+                            </div>
+                            <div class="form-input">
+                                <input id="password" name="password" type="password" class="form-control" minlength="6" required
+                                       aria-required="true">
+                                <label for="password">Пароль*</label>
+                                <i class="js-password-display password-display-icon"></i>
+                            </div>
+                        </div>
+
+                        <div class="accordion yl-only" id="accordion-form">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#form-info" aria-expanded="false" aria-controls="collapseOne">
+                                        Информация о компании
+                                    </button>
+                                </h2>
+                                <div id="form-info" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                     data-bs-parent="#accordion-form">
+                                    <p class="form-subtitle">Правовая форма</p>
+                                    <div class="row-check">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="legal-form" id="form-type-1"
+                                                   value="type-1"
+                                                   checked>
+                                            <label class="form-check-label" for="form-type-1">
+                                                ИП
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="legal-form" id="form-type-2"
+                                                   value="type-2">
+                                            <label class="form-check-label" for="form-type-2">
+                                                Коммерческая организация
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="legal-form" id="form-type-3"
+                                                   value="type-3">
+                                            <label class="form-check-label" for="form-type-3">
+                                                Бюджетная организация
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="registration-inputs">
+                                        <div class="form-input">
+                                            <input id="kpp" name="KPP" type="text" class="form-control" minlength="9"
+                                                   inputmode="numeric">
+                                            <label for="kpp">КПП</label>
+                                        </div>
+                                        <div class="form-input">
+                                            <input id="OGRN" name="OGRN" type="text" class="form-control" minlength="13">
+                                            <label for="OGRN">ОГРН</label>
+                                        </div>
+                                        <div class="form-input">
+                                            <input id="nameOrganization" name="nameOrganization" class="form-control" type="text">
+                                            <label for="nameOrganization">Юридическое название
+                                                организации</label>
+                                        </div>
+
+                                        <p class="form-subtitle">Юридический адрес</p>
+                                        <div class="form-input">
+                                            <input id="index" name="index" type="text" class="form-control">
+                                            <label for="index">Индекс</label>
+                                        </div>
+                                        <div class="form-input">
+                                            <input id="city" name="city" type="text" class="form-control">
+                                            <label for="city">Город</label>
+                                        </div>
+                                        <div class="form-input">
+                                            <input id="street" name="street" type="text" class="form-control">
+                                            <label for="street">Улица</label>
+                                        </div>
+                                        <div class="form-input">
+                                            <input id="numberHouse" name="numberHouse" type="text" class="form-control">
+                                            <label for="numberHouse">Дом</label>
+                                        </div>
+                                        <div class="form-input">
+                                            <input id="structure" name="structure" type="text" class="form-control">
+                                            <label for="structure">Строение</label>
+                                        </div>
+                                        <div class="form-input">
+                                            <input id="housing" name="housing" type="text" class="form-control">
+                                            <label for="housing">Корпус</label>
+                                        </div>
+                                        <div class="form-input">
+                                            <input id="numberOffice" name="numberOffice" type="text" class="form-control">
+                                            <label for="numberOffice">Квартира/Офис</label>
+                                        </div>
+                                        <div class="form-input">
+                                            <input id="note" name="note" type="text" class="form-control">
+                                            <label for="note">Примечание</label>
+                                        </div>
+                                        <p class="form-subtitle">Банковские реквизиты</p>
+                                        <div class="form-input">
+                                            <input id="BIK" name="BIK" type="text" class="form-control">
+                                            <label for="BIK">БИК</label>
+                                        </div>
+                                        <div class="form-input">
+                                            <input id="RS" name="RS" type="text" class="form-control">
+                                            <label for="RS">Расчетный счет</label>
+                                        </div>
+
+                                        <p class="form-collapse-bottom" data-bs-toggle="collapse" aria-expanded="false"
+                                           aria-controls="collapseOne" data-bs-target="#form-info">
+                                            Свернуть
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="registration-bottom-privacy">
+                            <div class="form-check">
+                                <input id="subscribe" name="subscribe" class="form-check-input" type="checkbox">
+                                <label for="subscribe">Я хочу получать email рассылки о выгодных предложениях</label>
+                            </div>
+                            <div class="form-check">
+                                <input id="privacy" name="privacy" class="form-check-input" type="checkbox" required>
+                                <label for="privacy">Даю согласие <a href="privacy.html">на обработку данных и получение
+                                    информации</a></label>
+                            </div>
+                        </div>
+
+                        <button type="submit"
+                                class="c-btn c-btn--primary c-btn--mobile-full-width">Зарегистрироваться
+                        </button>
+                    </form>
+                    <p class="registration-another-login-text fl-only">или зарегистрируйтесь с помощью</p>
+                    <div class="registration-another-login fl-only">
+                        <a href="#" class="c-btn c-btn--yandex">
+                            Яндекс ID
+                        </a>
+                        <a href="#" class="c-btn c-btn--vk">
+                            VK ID
+                        </a>
+                    </div>
                 </div>
-<!--                <div class="basket-table-item js-goods-card"-->
-<!--                     data-name='Шар возд. Gemar Пастель 18" Красный / Red/05'-->
-<!--                     data-price="435"-->
-<!--                     data-number="1102-0385"-->
-<!--                     data-count="0"-->
-<!--                     data-id="14">-->
-<!--                    <div class="basket-table-item__numb">1</div>-->
-<!--                    <div class="basket-table-item__img">-->
-<!--                        <img src="/img/basket-picture.png" alt="img">-->
-<!--                    </div>-->
-<!--                    <div class="basket-desktop-text">-->
-<!--                        <div class="basket-table-item__article">22053</div>-->
-<!--                        <div class="basket-table-item__name">-->
-<!--                            <span class="basket-table-item__name&#45;&#45;article">Артикул: 22053</span>-->
-<!--                            Шар (18''/46 см) Сердце, Голубой,<br>Макарунс, 1 шт.-->
-<!--                            <span class="basket-table-item__country">Испания</span>-->
-<!--                        </div>-->
-<!--                        <div class="basket-table-item__price">-->
-<!--                            <span class="basket-table-item__price&#45;&#45;old">33,50 ₽</span>-->
-<!--                            <span class="basket-table-item__price&#45;&#45;percent">+30%</span>-->
-<!--                            <span class="basket-table-item__price&#45;&#45;now">43,55 ₽</span>-->
-<!--                        </div>-->
-<!--                        <div class="basket-table-count">-->
-<!--                            <div class="goods-card-buy__label js-product-label">-->
-<!--                                <span class="basket-table-count__btn basket-minus js-card-btn-dec">-</span>-->
-<!--                                <input type="number" class="basket-table-count__amount js-product-count"-->
-<!--                                       value="1">-->
-<!--                                <span class="basket-table-count__btn basket-plus js-card-btn-inc">+</span>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="basket-table-item__sum">435,50 ₽</div>-->
-<!--                    </div>-->
-<!--                    <img class="basket-table-item__delete js-delete-item" src="/img/svg/close-grey.svg" title="Удалить товар" alt="delete">-->
-<!--                </div>-->
-<!--                <div class="basket-table-item missing">-->
-<!--                    <div class="basket-table-item__numb">2</div>-->
-<!--                    <div class="basket-table-item__img">-->
-<!--                        <img src="/img/basket-picture.png" alt="img">-->
-<!--                    </div>-->
-<!--                    <div class="basket-desktop-text">-->
-<!--                        <div class="basket-table-item__article">22053</div>-->
-<!--                        <div class="basket-table-item__name">-->
-<!--                            <span class="basket-table-item__name&#45;&#45;article">Артикул: 22053</span>-->
-<!--                            Шар (18''/46 см) Сердце, Голубой,<br>Макарунс, 1 шт.-->
-<!--                            <span class="basket-table-item__country">Испания</span>-->
-<!--                        </div>-->
-<!--                        <div class="basket-table-item__price">-->
-<!--                            <span class="basket-table-item__price&#45;&#45;missing">нет в наличии</span>-->
-<!--                            <span class="basket-table-item__price&#45;&#45;old">33,50 ₽</span>-->
-<!--                            <span class="basket-table-item__price&#45;&#45;percent">+30%</span>-->
-<!--                            <span class="basket-table-item__price&#45;&#45;now">43,55 ₽</span>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="basket-table-count">-->
-<!--                        <div class="goods-card-buy__label js-product-label">-->
-<!--                            <span class="basket-table-count__btn basket-minus js-card-btn-dec">-</span>-->
-<!--                            <input type="number" class="basket-table-count__amount js-product-count"-->
-<!--                                   value="1">-->
-<!--                            <span class="basket-table-count__btn basket-plus js-card-btn-inc">+</span>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="basket-table-item__sum">435,50 ₽</div>-->
-<!--                    <img class="basket-table-item__delete" src="/img/svg/close-grey.svg" title="Удалить товар" alt="delete">-->
-<!--                </div>-->
-            </div>
-            <div class="basket-result">
-                <p class="basket-result__title">Ваша корзина</p>
-                <div class="basket-result__goods">Товары&nbsp;<span id="basket-amount">12</span></div>
-                <div class="basket-result-price">
-                    <p class="basket-result-price__head">Цена товара</p>
-                    <p class="basket-result-price__numb" id="basket-price">43,55 ₽</p>
-                </div>
-                <div class="basket-result-price">
-                    <p class="basket-result-price__head js-price-title">Розничная наценка
-                        <img id="icon-tooltip" src="./img/svg/info.svg" alt="info">
-                    </p>
-                    <p class="basket-result-price__numb" id="basket-retail">120,6 ₽</p>
-                </div>
-                <div class="basket-result-sum">
-                    <p class="basket-result-sum__head">Итого</p>
-                    <p class="basket-result-sum__numb" id="basket-sum">522,6 ₽</p>
-                </div>
-                <div class="basket__registr">
-                    <a href="#" class="basket__registr-btn c-btn c-btn--primary">Перейти к оформлению</a>
-                </div>
-            </div>
+            </section>
         </div>
     </div>
 
@@ -752,7 +830,7 @@
                 <div class="contacts-item">
                     <div class="contacts-item__phone">
                         <a href="tel:+78312151534">+7 831 215-15-34</a>, <a href="tel:+78314120052">+7 831
-                                                                                                    412-00-52</a>
+                        412-00-52</a>
                     </div>
                     <div class="contacts-item__address">
                         ул. Бекетова, 3а, к.9
@@ -761,7 +839,7 @@
                 <div class="contacts-item">
                     <div class="contacts-item__phone">
                         <a href="tel:+78312151534">+7 831 215-15-34</a>, <a href="tel:+79308159544">+7 930
-                                                                                                    815-95-44</a>
+                        815-95-44</a>
                     </div>
                     <div class="contacts-item__address">
                         ул. Чкалова, 39, 2 этаж
@@ -795,8 +873,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
         integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
         crossorigin="anonymous"></script>
-<script src="./js/add-cart.js"></script>
 <script src="./js/common.js"></script>
-<script src="./js/basket/basket.js"></script>
 </body>
 </html>

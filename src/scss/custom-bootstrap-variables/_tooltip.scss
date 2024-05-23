@@ -81,8 +81,7 @@
 
       @include media(md) {
         transform: rotate(30deg);
-        left: auto;
-        right: auto;
+        left: unset;
       }
       @media screen and (min-width: 353px) and (max-width: 767px) {
           left: 130px;
@@ -90,17 +89,19 @@
        }
     }
     &::before {
-      top: 20px;
+      top: 21px;
 
       @include media(md) {
         top: 1px;
+        right: 1px;
       }
     }
     &::after {
-      top: 19px;
+      top: 20px;
 
       @include media(md) {
         top: 0;
+        right: -1px;
       }
     }
 }

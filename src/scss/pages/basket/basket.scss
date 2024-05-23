@@ -23,6 +23,7 @@
             line-height: 30px;
         }
 
+
         @include media(xl) {
             font-size: 26px;
         }
@@ -171,14 +172,22 @@
             }
         }
         &-item {
-            display: flex;
-            align-items: flex-start;
+            display: grid;
+            grid-template-columns: 25% 124px 1fr 13px;
+            grid-template-areas:
+        "img text text delete"
+        ". price price ."
+        ". count sum .";
+            //column-gap: 7px;
+            //row-gap: 12px;
             border-bottom: 1px solid #D8E2FE;
             border-top: 1px solid #D8E2FE;
             position: relative;
             padding: 12px 0 16px;
 
             @include media(md) {
+                display: flex;
+                align-items: flex-start;
                 padding: 12px 47px 12px 10px;
                 border-top: none;
                 align-items: center;
@@ -188,13 +197,13 @@
                 padding: 0 0 0 29px;
             }
 
-            .basket-desktop-text {
-                display: none;
-
-                @include media(md) {
-                    display: contents;
-                }
-            }
+            //.basket-desktop-text {
+            //    display: none;
+            //
+            //    @include media(md) {
+            //        display: contents;
+            //    }
+            //}
 
             .basket-mobile-text {
                 margin-left: 8px;
@@ -212,7 +221,7 @@
                     margin-top: 12px;
                 }
             }
-
+            
             .basket-mobile-prices {
                 // width: 100%;
                 display: flex;
@@ -250,10 +259,13 @@
                 }
             }
             &__img {
-                width: 25%;
+                //width: 25%;
+                grid-area: img;
+                margin-right: 7px;
 
                 @include media(md) {
                     width: 62px;
+                    margin-right: 0;
                 }
                 @include media(xl) {
                     width: 82px;
@@ -273,11 +285,16 @@
                 }
             }
             &__name {
-                width: 23%;
+                //width: 23%;
                 display: flex;
                 flex-direction: column;
                 gap: 12px;
-                width: 17%;
+                //width: 17%;
+                grid-area: text;
+
+                @include media(md) {
+                    width: 17%;
+                }
 
                 @include media(xl) {
                     gap: 8px;
@@ -294,10 +311,13 @@
                 color: #747474;
             }
             &__price {
-                width: 100%;
+                //width: 100%;
+                margin: 12px 0 16px;
+                grid-area: price;
 
                 @include media(md) {
                     width: 13%;
+                    margin: 0;
                 }
 
                 @include media(xl) {
@@ -339,13 +359,16 @@
             }
             &__sum {
                 font-weight: 500;
+                grid-area: sum;
+                margin: 17px 0 17px 24px;
 
                 @include media(md) {
                     width: 10%;
+                    margin: 0;
                 }
 
                 @include media(xl) {
-                    width: 15%;
+                    width: calc(15% + 29px);
                 }
             }
             &__delete {
@@ -354,6 +377,7 @@
                 cursor: pointer;
                 right: 0;
                 position: absolute;
+                grid-area: delete;
 
                 @include media(xl) {
                     right: 17px;
@@ -375,7 +399,7 @@
                     opacity: 0;
                     pointer-events: none;
                 }
-                .basket-mobile-text .basket-table-item__price--missing {
+                .basket-table-item__price--missing {
                     margin-top: 6px;
                 }
                 .basket-table-item__price, .basket-mobile-prices {
@@ -383,13 +407,18 @@
 
                     @include media(md) {
                         display: flex;
-                    }
+                    } 
                 }
             }
         }
         &-count {
             width: 124px;
+            grid-area: count;
+            //margin-top: 4px;
 
+            @include media(md) {
+                margin-top: 0;
+            }
             @include media(xl) {
                 width: 188px;
             }

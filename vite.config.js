@@ -20,7 +20,7 @@ export default {
                 policy: './src/policy.html',
                 guarantee: './src/guarantee.html',
                 common: './src/js/common.js',
-                'basket-scripts': './src/js/basket/basket-scripts.js',
+                'basket/basket': './src/js/basket/basket.js',
                 'add-cart': './src/js/add-cart.js',
                 'goods-sliders': './src/js/goods-sliders.js',
                 main: './src/js/main.js',

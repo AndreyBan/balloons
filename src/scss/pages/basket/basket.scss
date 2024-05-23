@@ -22,7 +22,7 @@
             font-size: 24px;
             line-height: 30px;
         }
-    
+
         @include media(xl) {
             font-size: 26px;
         }
@@ -59,7 +59,7 @@
             margin: 20px auto 32px;
             padding: 14px 86px;
         }
-    
+
         @include media(xl) {
             margin: 32px auto;
             padding: 17px 0px;
@@ -86,7 +86,7 @@
             display: inline-block;
 
             &:not(.basket-table__title--numb, .basket-table__title--img, .basket-table__title--name) {
-                
+
                 @include media(md) {
                     padding-left: 0;
                 }
@@ -112,7 +112,7 @@
             }
             &--amount {
                 width: 124px;
-                
+
                 @include media(md) {
                     text-align: left;
                 }
@@ -165,20 +165,28 @@
                 justify-content: space-between;
                 padding: 12px 47px 16px 10px;
             }
-        
+
             @include media(xl) {
                 padding: 12px 29px 16px;
             }
         }
         &-item {
-            display: flex;
-            align-items: flex-start;
+            display: grid;
+            grid-template-columns: 25% 124px 1fr 13px;
+            grid-template-areas:
+        "img text text delete"
+        ". price price ."
+        ". count sum .";
+            //column-gap: 7px;
+            //row-gap: 12px;
             border-bottom: 1px solid #D8E2FE;
             border-top: 1px solid #D8E2FE;
             position: relative;
             padding: 12px 0 16px;
 
             @include media(md) {
+                display: flex;
+                align-items: flex-start;
                 padding: 12px 47px 12px 10px;
                 border-top: none;
                 align-items: center;
@@ -188,41 +196,40 @@
                 padding: 0 0 0 29px;
             }
 
-            .basket-desktop-text {
-                display: none;
+            //.basket-desktop-text {
+            //    display: none;
+            //
+            //    @include media(md) {
+            //        display: contents;
+            //    }
+            //}
 
-                @include media(md) {
-                    display: contents;
-                }
-            }
+            //.basket-mobile-text {
+            //    margin-left: 8px;
+            //    display: flex;
+            //    flex-direction: column;
+            //
+            //    @include media(md) {
+            //        display: none;
+            //    }
+            //
+            //    .basket-table-item__price {
+            //        margin: 12px 0 16px;
+            //    }
+            //    .basket-table-item__country {
+            //        margin-top: 12px;
+            //    }
+            //}
 
-            .basket-mobile-text {
-                margin-left: 8px;
-                display: flex;
-                flex-direction: column;
-
-                @include media(md) {
-                    display: none;
-                }
-
-                .basket-table-item__price {
-                    margin: 12px 0 16px;
-                }
-                .basket-table-item__country {
-                    margin-top: 12px;
-                }
-            }
-            
-            .basket-mobile-prices {
-                // width: 100%;
-                display: flex;
-                align-items: center;
-                gap: 24px;
-
-                @include media(md) {
-                    display: none;
-                }
-            }
+            //.basket-mobile-prices {
+            //    display: flex;
+            //    align-items: center;
+            //    gap: 24px;
+            //
+            //    @include media(md) {
+            //        display: none;
+            //    }
+            //}
 
 
             div {
@@ -250,10 +257,13 @@
                 }
             }
             &__img {
-                width: 25%;
+                //width: 25%;
+                grid-area: img;
+                margin-right: 7px;
 
                 @include media(md) {
                     width: 62px;
+                    margin-right: 0;
                 }
                 @include media(xl) {
                     width: 82px;
@@ -273,11 +283,12 @@
                 }
             }
             &__name {
-                width: 23%;
+                //width: 23%;
                 display: flex;
                 flex-direction: column;
                 gap: 12px;
-                width: 17%;
+                //width: 17%;
+                grid-area: text;
 
                 @include media(xl) {
                     gap: 8px;
@@ -294,10 +305,13 @@
                 color: #747474;
             }
             &__price {
-                width: 100%;
+                //width: 100%;
+                margin: 12px 0 16px;
+                grid-area: price;
 
                 @include media(md) {
                     width: 13%;
+                    margin: 0;
                 }
 
                 @include media(xl) {
@@ -320,11 +334,11 @@
                     @include media (md) {
                         display: block;
                         margin: 7px 0;
-                    } 
+                    }
                     @include media (xl) {
                         display: inline-block;
                         margin: 0 8px;
-                    } 
+                    }
                 }
                 &--mis {
                     display: none;
@@ -332,16 +346,19 @@
             }
             &__amount {
                 width: 124px;
-                
+
                 @include media(xl) {
                     width: 188px;
                 }
             }
             &__sum {
                 font-weight: 500;
+                grid-area: sum;
+                margin: 17px 0 17px 24px;
 
                 @include media(md) {
                     width: 10%;
+                    margin: 0;
                 }
 
                 @include media(xl) {
@@ -354,6 +371,7 @@
                 cursor: pointer;
                 right: 0;
                 position: absolute;
+                grid-area: delete;
 
                 @include media(xl) {
                     right: 17px;
@@ -375,24 +393,32 @@
                     opacity: 0;
                     pointer-events: none;
                 }
-                .basket-mobile-text .basket-table-item__price--missing {
+                .basket-table-item__price--missing {
                     margin-top: 6px;
                 }
-                .basket-table-item__price, .basket-mobile-prices {
-                    display: none;
-
-                    @include media(md) {
-                        display: flex;
-                    } 
-                }
+                //.basket-mobile-text .basket-table-item__price--missing {
+                //    margin-top: 6px;
+                //}
+                //.basket-table-item__price, .basket-mobile-prices {
+                //    display: none;
+                //
+                //    @include media(md) {
+                //        display: flex;
+                //    }
+                //}
             }
         }
         &-count {
             width: 124px;
+            grid-area: count;
+            //margin-top: 4px;
 
+            @include media(md) {
+                margin-top: 0;
+            }
             @include media(xl) {
                 width: 188px;
-            } 
+            }
 
             div {
                 background: #F0F0F0;
@@ -402,7 +428,7 @@
 
                 @include media(xl) {
                     padding: 16px 25px;
-                } 
+                }
             }
 
             &__btn {
@@ -448,7 +474,7 @@
             @include media(md) {
                 width: 28%;
             }
-            
+
             @include media(xl) {
                 width: 17%;
             }
@@ -493,7 +519,7 @@
             position: static;
             max-width: 304px;
             width: 100%;
-    
+
             @include media(md) {
                 position: absolute;
                 right: 0;

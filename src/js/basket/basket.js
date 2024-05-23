@@ -100,7 +100,7 @@
                      data-id="${ el.id }">
                     <div class="basket-table-item__numb">${ ++i }</div>
                     <div class="basket-table-item__img">
-                        <img src="/img/basket-picture.png" alt="img">
+                        <img src="./img/basket-picture.png" alt="img">
                     </div>
                     <div class="basket-desktop-text">
                         <div class="basket-table-item__article">${ el.number }</div>

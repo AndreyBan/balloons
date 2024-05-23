@@ -124,7 +124,7 @@
                         </div>
                         <div class="basket-table-item__sum">${ (priceWithoutDiscount * el.count).toFixed(2) } ₽</div>
                     </div>
-                    <img class="basket-table-item__delete js-delete-item" src="/img/svg/close-grey.svg" title="Удалить товар" alt="delete">
+                    <img class="basket-table-item__delete js-delete-item" src="./img/svg/close-grey.svg" title="Удалить товар" alt="delete">
                 </div>`
         })
 

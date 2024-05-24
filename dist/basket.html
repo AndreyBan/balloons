@@ -542,12 +542,11 @@
     <div class="basket">
         <div class="container">
             <p class="basket__title">Моя корзина</p>
-            <p class="basket__clean js-cart-clean">Очистить корзину</p>
+            <p class="basket__clean">Очистить корзину</p>
             <div class="basket__warning">
                 <p class="basket__warning-text">
-                    Цена, указанная на сайте, действительна для покупок свыше 1 000₽. При покупке до 1 000 ₽ розничная
-                    наценка <span class="js-markup">30%</span>.&nbsp;
-                    <a href="#" class="basket__warning--more">Подробнее</a>
+                    Цена, указанная  на сайте, действительна для покупок свыше 1 000₽. При покупке до 1 000 ₽ розничная наценка 30%.&nbsp;
+                    <a href="#" class="basket__warning--more">Подробнее</a> 
                 </p>
             </div>
             <div class="basket-table">
@@ -560,71 +559,113 @@
                     <p class="basket-table__title basket-table__title--amount">Количество</p>
                     <p class="basket-table__title basket-table__title--sum">Сумма</p>
                 </div>
-<!--                <div class="basket-table-item js-goods-card"-->
-<!--                     data-name='Шар возд. Gemar Пастель 18" Красный / Red/05'-->
-<!--                     data-price="435"-->
-<!--                     data-number="1102-0385"-->
-<!--                     data-count="0"-->
-<!--                     data-id="14">-->
-<!--                    <div class="basket-table-item__numb">1</div>-->
-<!--                    <div class="basket-table-item__img">-->
-<!--                        <img src="/img/basket-picture.png" alt="img">-->
-<!--                    </div>-->
-<!--                    <div class="basket-desktop-text">-->
-<!--                        <div class="basket-table-item__article">22053</div>-->
-<!--                        <div class="basket-table-item__name">-->
-<!--                            <span class="basket-table-item__name&#45;&#45;article">Артикул: 22053</span>-->
-<!--                            Шар (18''/46 см) Сердце, Голубой,<br>Макарунс, 1 шт.-->
-<!--                            <span class="basket-table-item__country">Испания</span>-->
-<!--                        </div>-->
-<!--                        <div class="basket-table-item__price">-->
-<!--                            <span class="basket-table-item__price&#45;&#45;old">33,50 ₽</span>-->
-<!--                            <span class="basket-table-item__price&#45;&#45;percent">+30%</span>-->
-<!--                            <span class="basket-table-item__price&#45;&#45;now">43,55 ₽</span>-->
-<!--                        </div>-->
-<!--                        <div class="basket-table-count">-->
-<!--                            <div class="goods-card-buy__label js-product-label">-->
-<!--                                <span class="basket-table-count__btn basket-minus js-card-btn-dec">-</span>-->
-<!--                                <input type="number" class="basket-table-count__amount js-product-count"-->
-<!--                                       value="1">-->
-<!--                                <span class="basket-table-count__btn basket-plus js-card-btn-inc">+</span>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="basket-table-item__sum">435,50 ₽</div>-->
-<!--                    </div>-->
-<!--                    <img class="basket-table-item__delete js-delete-item" src="/img/svg/close-grey.svg" title="Удалить товар" alt="delete">-->
-<!--                </div>-->
-<!--                <div class="basket-table-item missing">-->
-<!--                    <div class="basket-table-item__numb">2</div>-->
-<!--                    <div class="basket-table-item__img">-->
-<!--                        <img src="/img/basket-picture.png" alt="img">-->
-<!--                    </div>-->
-<!--                    <div class="basket-desktop-text">-->
-<!--                        <div class="basket-table-item__article">22053</div>-->
-<!--                        <div class="basket-table-item__name">-->
-<!--                            <span class="basket-table-item__name&#45;&#45;article">Артикул: 22053</span>-->
-<!--                            Шар (18''/46 см) Сердце, Голубой,<br>Макарунс, 1 шт.-->
-<!--                            <span class="basket-table-item__country">Испания</span>-->
-<!--                        </div>-->
-<!--                        <div class="basket-table-item__price">-->
-<!--                            <span class="basket-table-item__price&#45;&#45;missing">нет в наличии</span>-->
-<!--                            <span class="basket-table-item__price&#45;&#45;old">33,50 ₽</span>-->
-<!--                            <span class="basket-table-item__price&#45;&#45;percent">+30%</span>-->
-<!--                            <span class="basket-table-item__price&#45;&#45;now">43,55 ₽</span>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="basket-table-count">-->
-<!--                        <div class="goods-card-buy__label js-product-label">-->
-<!--                            <span class="basket-table-count__btn basket-minus js-card-btn-dec">-</span>-->
-<!--                            <input type="number" class="basket-table-count__amount js-product-count"-->
-<!--                                   value="1">-->
-<!--                            <span class="basket-table-count__btn basket-plus js-card-btn-inc">+</span>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="basket-table-item__sum">435,50 ₽</div>-->
-<!--                    <img class="basket-table-item__delete" src="/img/svg/close-grey.svg" title="Удалить товар" alt="delete">-->
-<!--                </div>-->
-            </div>
+                <div class="basket-table-item">
+                    <div class="basket-table-item__numb">1</div>
+                    <div class="basket-table-item__img">
+                        <img src="./img/basket-picture.png" alt="img">
+                    </div>
+                    <div class="basket-table-item__article">22053</div>
+                    <div class="basket-table-item__name">
+                        <span class="basket-table-item__name--article">Артикул: 22053</span>
+                        Шар (18''/46 см) Сердце, Голубой,<br>Макарунс, 1 шт.
+                        <span class="basket-table-item__country">Испания</span>
+                    </div>
+                    <div class="basket-table-item__price">
+                        <span class="basket-table-item__price--old">33,50 ₽</span>
+                        <span class="basket-table-item__price--percent">+30%</span>
+                        <span class="basket-table-item__price--now">43,55 ₽</span>
+                    </div>
+                    <div class="basket-table-count">
+                        <div>
+                            <button class="basket-table-count__btn basket-minus">-</button>
+                            <input  class="basket-table-count__amount" type="number" id="quantity" value="1" min="1">
+                            <button class="basket-table-count__btn basket-plus">+</button>
+                        </div>
+                    </div>
+                    <div class="basket-table-item__sum">435,50 ₽</div>
+                    <img class="basket-table-item__delete" src="./img/svg/close-grey.svg" alt="delete">
+                </div>
+                <div class="basket-table-item missing">
+                    <div class="basket-table-item__numb">2</div>
+                    <div class="basket-table-item__img">
+                        <img src="./img/basket-picture.png" alt="img">
+                    </div>
+                        <div class="basket-table-item__article">22053</div>
+                        <div class="basket-table-item__name">
+                            <span class="basket-table-item__name--article">Артикул: 22053</span>
+                            Шар (18''/46 см) Сердце, Голубой,<br>Макарунс, 1 шт.
+                            <span class="basket-table-item__country">Испания</span>
+                        </div>
+                        <div class="basket-table-item__price">
+                            <span class="basket-table-item__price--missing">нет в наличии</span>
+                            <span class="basket-table-item__price--old">33,50 ₽</span>
+                            <span class="basket-table-item__price--percent">+30%</span>
+                            <span class="basket-table-item__price--now">43,55 ₽</span>
+                        </div>
+                        <div class="basket-table-count">
+                            <div>
+                                <button class="basket-table-count__btn basket-minus">-</button>
+                                <input  class="basket-table-count__amount" type="number" id="quantity" value="1" min="1">
+                                <button class="basket-table-count__btn basket-plus">+</button>
+                            </div>
+                        </div>
+                        <div class="basket-table-item__sum">435,50 ₽</div>
+                    <img class="basket-table-item__delete" src="./img/svg/close-grey.svg" alt="delete">
+                </div>
+                <div class="basket-table-item">
+                    <div class="basket-table-item__numb">1</div>
+                    <div class="basket-table-item__img">
+                        <img src="./img/basket-picture.png" alt="img">
+                    </div>
+                    <div class="basket-table-item__article">22053</div>
+                    <div class="basket-table-item__name">
+                        <span class="basket-table-item__name--article">Артикул: 22053</span>
+                        Шар (18''/46 см) Сердце, Голубой,<br>Макарунс, 1 шт.
+                        <span class="basket-table-item__country">Испания</span>
+                    </div>
+                    <div class="basket-table-item__price">
+                        <span class="basket-table-item__price--old">33,50 ₽</span>
+                        <span class="basket-table-item__price--percent">+30%</span>
+                        <span class="basket-table-item__price--now">43,55 ₽</span>
+                    </div>
+                    <div class="basket-table-count">
+                        <div>
+                            <button class="basket-table-count__btn basket-minus">-</button>
+                            <input  class="basket-table-count__amount" type="number" id="quantity" value="1" min="1">
+                            <button class="basket-table-count__btn basket-plus">+</button>
+                        </div>
+                    </div>
+                    <div class="basket-table-item__sum">435,50 ₽</div>
+                    <img class="basket-table-item__delete" src="./img/svg/close-grey.svg" alt="delete">
+                </div>
+                <div class="basket-table-item">
+                    <div class="basket-table-item__numb">1</div>
+                    <div class="basket-table-item__img">
+                        <img src="./img/basket-picture.png" alt="img">
+                    </div>
+                    <div class="basket-table-item__article">22053</div>
+                    <div class="basket-table-item__name">
+                        <span class="basket-table-item__name--article">Артикул: 22053</span>
+                        Шар (18''/46 см) Сердце, Голубой,<br>Макарунс, 1 шт.
+                        <span class="basket-table-item__country">Испания</span>
+                    </div>
+                    <div class="basket-table-item__price">
+                        <span class="basket-table-item__price--old">33,50 ₽</span>
+                        <span class="basket-table-item__price--percent">+30%</span>
+                        <span class="basket-table-item__price--now">43,55 ₽</span>
+                    </div>
+                    <div class="basket-table-count">
+                        <div>
+                            <button class="basket-table-count__btn basket-minus">-</button>
+                            <input  class="basket-table-count__amount" type="number" id="quantity" value="1" min="1">
+                            <button class="basket-table-count__btn basket-plus">+</button>
+                        </div>
+                    </div>
+                    <div class="basket-table-item__sum">435,50 ₽</div>
+                    <img class="basket-table-item__delete" src="./img/svg/close-grey.svg" alt="delete">
+                </div>
+
+                </div>
             <div class="basket-result">
                 <p class="basket-result__title">Ваша корзина</p>
                 <div class="basket-result__goods">Товары&nbsp;<span id="basket-amount">12</span></div>
@@ -633,13 +674,13 @@
                     <p class="basket-result-price__numb" id="basket-price">43,55 ₽</p>
                 </div>
                 <div class="basket-result-price">
-                    <p class="basket-result-price__head js-price-title">Розничная наценка
+                    <p class="basket-result-price__head">Розничная наценка
                         <img id="icon-tooltip" src="./img/svg/info.svg" alt="info">
                     </p>
                     <p class="basket-result-price__numb" id="basket-retail">120,6 ₽</p>
                 </div>
                 <div class="basket-result-sum">
-                    <p class="basket-result-sum__head">Итого</p>
+                    <p class="basket-result-sum__head">Итого</p> 
                     <p class="basket-result-sum__numb" id="basket-sum">522,6 ₽</p>
                 </div>
                 <div class="basket__registr">
@@ -649,7 +690,7 @@
         </div>
     </div>
 
-    <!-- Content end -->
+<!-- Content end -->
 
 </main>
 <section class="to-up js-to-up"></section>
@@ -752,7 +793,7 @@
                 <div class="contacts-item">
                     <div class="contacts-item__phone">
                         <a href="tel:+78312151534">+7 831 215-15-34</a>, <a href="tel:+78314120052">+7 831
-                                                                                                    412-00-52</a>
+                        412-00-52</a>
                     </div>
                     <div class="contacts-item__address">
                         ул. Бекетова, 3а, к.9
@@ -761,7 +802,7 @@
                 <div class="contacts-item">
                     <div class="contacts-item__phone">
                         <a href="tel:+78312151534">+7 831 215-15-34</a>, <a href="tel:+79308159544">+7 930
-                                                                                                    815-95-44</a>
+                        815-95-44</a>
                     </div>
                     <div class="contacts-item__address">
                         ул. Чкалова, 39, 2 этаж
@@ -795,8 +836,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
         integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
         crossorigin="anonymous"></script>
-<script src="./js/add-cart.js"></script>
 <script src="./js/common.js"></script>
-<script src="./js/basket/basket.js"></script>
+<script src="./js/basket/tooltip.js"></script>
 </body>
 </html>

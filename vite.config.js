@@ -43,7 +43,7 @@ export default {
                 'news/detail': './src/news-detail.html',
                 states: './src/states.html', 'states/detail': './src/states-detail.html',
                 basket: './src/basket.html', 'basket/tooltip': './src/js/basket/tooltip.js',
-                order: './src/order.html',
+                order: './src/order.html', 'basket/second-step': './src/js/basket/second-step.js',
             },
             output: {
                 assetFileNames: "assets/[name][extname]",

@@ -9,8 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./scss/bootstrap.scss">
     <link rel="stylesheet" href="./scss/style.scss">
-    <link rel="stylesheet" href="./scss/pages/order/order.scss">
     <link rel="stylesheet" href="./scss/pages/registration/registration.scss">
+    <link rel="stylesheet" href="./scss/pages/basket/basket.scss">
+    <link rel="stylesheet" href="./scss/pages/order/order.scss">
 
 
     <title>Оформление заказа</title>
@@ -543,185 +544,482 @@
     </nav>
     <div class="order">
         <div class="container">
-            <section class="registration-section js-type-form" data-form-type="type-1">
-                <div class="container">
-                    <!--  TODO: если понадобится изменить name у инпутов, то нужно исправить и в js (файл validate.js указать нужные в переменной fields) -->
-                    <form action="" class="form-registration js-form" novalidate>
-                        <div class="row-check">
-                            <!--                    TODO: если понадобится изменить value у инпутов, то нужно исправить и в js (файл registration.js функция displayTypeForm) -->
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="form-registration"
-                                       id="form-registration-1" value="type-1" checked>
-                                <label class="form-check-label" for="form-registration-1">
-                                    Физическое лицо
-                                </label>
+            <p class="order__title">Оформление заказа</p>
+            <div class="order-steps">
+                <section class="order-steps-item registration-section js-type-form basket-step--open" data-form-type="type-1">
+                    <div class="container">
+                        <div class="order-steps__title">
+                            <div class="order-steps__pic">
+                                <span class="order-steps__pic--numb">1</span>
+                                <svg class="order-steps__pic--check" width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15.4351 0.375761C15.1089 0.105759 14.6853 -0.0276728 14.2576 0.00479293C13.8298 0.0372586 13.4329 0.232965 13.154 0.548898L6.18753 8.44346L2.43974 5.41188C2.29138 5.28822 2.11912 5.19436 1.93299 5.13577C1.74685 5.07718 1.55056 5.05502 1.35551 5.07059C1.16046 5.08615 0.970551 5.13913 0.79682 5.22644C0.623088 5.31375 0.469001 5.43366 0.343515 5.57918C0.218028 5.7247 0.123645 5.89294 0.0658532 6.07412C0.00806133 6.2553 -0.011987 6.44581 0.00687339 6.63456C0.0257338 6.82331 0.0831267 7.00655 0.175716 7.17362C0.268305 7.34069 0.394244 7.48826 0.546211 7.60776L5.56736 11.6701C5.72218 11.7952 5.90194 11.888 6.09542 11.9428C6.2889 11.9976 6.49195 12.0133 6.69194 11.9887C6.90403 11.9728 7.1108 11.9166 7.30043 11.8232C7.49006 11.7298 7.65882 11.6011 7.79705 11.4444L15.6128 2.58544C15.8911 2.26915 16.0286 1.85878 15.995 1.44439C15.9615 1.02999 15.7596 0.645429 15.4338 0.375087" fill="white"/>
+                                </svg>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="form-registration"
-                                       id="form-registration-2" value="type-2">
-                                <label class="form-check-label" for="form-registration-2">
-                                    Юридическое лицо
-                                </label>
+                            Контакты
+                        </div>
+                        <a class="order-steps__edit">Изменить</a>
+                        <div class="order-steps-content">
+
+                            <div class="order-step-form">
+                                <ul class="order-contacts nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="active order-contacts__tab login" id="login-tab" data-bs-toggle="tab" data-bs-target="#idLogin" type="button" role="tab" aria-controls="login" aria-selected="true">Авторизация</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="order-contacts__tab registration" id="registration-tab" data-bs-toggle="tab" data-bs-target="#idRegistration" type="button" role="tab" aria-controls="registration" aria-selected="false">Регистрация</button>
+                                    </li>
+                                </ul>
+    
+                                <div class="order-contacts-content tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="idLogin" role="tabpanel" aria-labelledby="login-tab">
+                                        <form action="" class="form-registration js-form" novalidate>
+                                            <div class="registration-inputs">
+                                                <div class="form-input">
+                                                    <input id="email" type="email" name="email" class="form-control" required
+                                                           aria-required="true">
+                                                    <label for="email">E-mail*</label>
+                                                </div>
+                                                <div class="form-input">
+                                                    <input id="password" type="password" name="password" class="form-control" required
+                                                           minlength="6"  aria-required="true">
+                                                    <label for="password">Пароль*</label>
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="c-btn c-btn--primary c-btn--mobile-full-width">Вход</button>
+                                        </form>
+    
+                                        <p class="registration-another-login-text fl-only">или войдите с помощью</p>
+                                    </div>
+                                    <div class="tab-pane fade" id="idRegistration" role="tabpanel" aria-labelledby="registration-tab">
+                                        <!--  TODO: если понадобится изменить name у инпутов, то нужно исправить и в js (файл validate.js указать нужные в переменной fields) -->
+                                        <form action="" class="form-registration js-form" novalidate>
+                                            <div class="row-check">
+                                                <!--                    TODO: если понадобится изменить value у инпутов, то нужно исправить и в js (файл registration.js функция displayTypeForm) -->
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="form-registration"
+                                                           id="form-registration-1" value="type-1" checked>
+                                                    <label class="form-check-label" for="form-registration-1">
+                                                        Физическое лицо
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="form-registration"
+                                                           id="form-registration-2" value="type-2">
+                                                    <label class="form-check-label" for="form-registration-2">
+                                                        Юридическое лицо
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="registration-inputs">
+                                                <div class="form-input fl-only">
+                                                    <input id="contact-person" type="text" class="form-control" name="contact-person" required aria-required="true">
+                                                    <label for="contact-person">Контактное лицо*</label>
+                                                </div>
+                                                <div class="form-input">
+                                                    <input name="email" type="email" class="form-control" required
+                                                           aria-required="true">
+                                                    <label for="email">E-mail*</label>
+                                                </div>
+                                                <div class="form-input">
+                                                    <input id="phone" name="phone" type="text" class="form-control" required
+                                                           aria-required="true">
+                                                    <label for="phone">Телефон*</label>
+                                                </div>
+                                                <div class="form-input yl-only">
+                                                    <input id="inn" name="INN" type="text" class="form-control" minlength="10" maxlength="12"
+                                                           inputmode="numeric" aria-required="true">
+                                                    <label for="inn">ИНН*</label>
+                                                </div>
+                                                <div class="form-input">
+                                                    <input name="password" type="password" class="form-control" minlength="6" required
+                                                           aria-required="true">
+                                                    <label for="password">Пароль*</label>
+                                                    <i class="js-password-display password-display-icon"></i>
+                                                </div>
+                                            </div>
+    
+                                            <div class="accordion yl-only" id="accordion-form">
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingOne">
+                                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                                                data-bs-target="#form-info" aria-expanded="false" aria-controls="collapseOne">
+                                                            Информация о компании
+                                                        </button>
+                                                    </h2>
+                                                    <div id="form-info" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                                         data-bs-parent="#accordion-form">
+                                                        <p class="form-subtitle">Правовая форма</p>
+                                                        <div class="row-check">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" name="legal-form" id="form-type-1"
+                                                                       value="type-1"
+                                                                       checked>
+                                                                <label class="form-check-label" for="form-type-1">
+                                                                    ИП
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" name="legal-form" id="form-type-2"
+                                                                       value="type-2">
+                                                                <label class="form-check-label" for="form-type-2">
+                                                                    Коммерческая организация
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" name="legal-form" id="form-type-3"
+                                                                       value="type-3">
+                                                                <label class="form-check-label" for="form-type-3">
+                                                                    Бюджетная организация
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="registration-inputs">
+                                                            <div class="form-input">
+                                                                <input id="kpp" name="KPP" type="text" class="form-control" minlength="9"
+                                                                       inputmode="numeric">
+                                                                <label for="kpp">КПП</label>
+                                                            </div>
+                                                            <div class="form-input">
+                                                                <input id="OGRN" name="OGRN" type="text" class="form-control" minlength="13">
+                                                                <label for="OGRN">ОГРН</label>
+                                                            </div>
+                                                            <div class="form-input">
+                                                                <input id="nameOrganization" name="nameOrganization" class="form-control" type="text">
+                                                                <label for="nameOrganization">Юридическое название
+                                                                    организации</label>
+                                                            </div>
+    
+                                                            <p class="form-subtitle">Юридический адрес</p>
+                                                            <div class="form-input">
+                                                                <input id="index" name="index" type="text" class="form-control">
+                                                                <label for="index">Индекс</label>
+                                                            </div>
+                                                            <div class="form-input">
+                                                                <input id="city" name="city" type="text" class="form-control">
+                                                                <label for="city">Город</label>
+                                                            </div>
+                                                            <div class="form-input">
+                                                                <input id="street" name="street" type="text" class="form-control">
+                                                                <label for="street">Улица</label>
+                                                            </div>
+                                                            <div class="form-input">
+                                                                <input id="numberHouse" name="numberHouse" type="text" class="form-control">
+                                                                <label for="numberHouse">Дом</label>
+                                                            </div>
+                                                            <div class="form-input">
+                                                                <input id="structure" name="structure" type="text" class="form-control">
+                                                                <label for="structure">Строение</label>
+                                                            </div>
+                                                            <div class="form-input">
+                                                                <input id="housing" name="housing" type="text" class="form-control">
+                                                                <label for="housing">Корпус</label>
+                                                            </div>
+                                                            <div class="form-input">
+                                                                <input id="numberOffice" name="numberOffice" type="text" class="form-control">
+                                                                <label for="numberOffice">Квартира/Офис</label>
+                                                            </div>
+                                                            <div class="form-input">
+                                                                <input id="note" name="note" type="text" class="form-control">
+                                                                <label for="note">Примечание</label>
+                                                            </div>
+                                                            <p class="form-subtitle">Банковские реквизиты</p>
+                                                            <div class="form-input">
+                                                                <input id="BIK" name="BIK" type="text" class="form-control">
+                                                                <label for="BIK">БИК</label>
+                                                            </div>
+                                                            <div class="form-input">
+                                                                <input id="RS" name="RS" type="text" class="form-control">
+                                                                <label for="RS">Расчетный счет</label>
+                                                            </div>
+    
+                                                            <p class="form-collapse-bottom" data-bs-toggle="collapse" aria-expanded="false"
+                                                               aria-controls="collapseOne" data-bs-target="#form-info">
+                                                                Свернуть
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+    
+                                            <div class="registration-bottom-privacy">
+                                                <div class="form-check">
+                                                    <input id="subscribe" name="subscribe" class="form-check-input" type="checkbox">
+                                                    <label for="subscribe">Я хочу получать email рассылки о выгодных предложениях</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input id="privacy" name="privacy" class="form-check-input" type="checkbox" required>
+                                                    <label for="privacy">Даю согласие <a href="privacy.html">на обработку данных и получение
+                                                        информации</a></label>
+                                                </div>
+                                            </div>
+    
+                                            <button type="submit"
+                                                    class="c-btn c-btn--primary c-btn--mobile-full-width">Зарегистрироваться
+                                            </button>
+                                        </form>
+                                        <p class="registration-another-login-text fl-only">или зарегистрируйтесь с помощью</p>
+                                    </div>
+                                </div>
+    
+                                <div class="registration-another-login fl-only">
+                                    <a href="#" class="c-btn c-btn--yandex">
+                                        Яндекс ID
+                                    </a>
+                                    <a href="#" class="c-btn c-btn--vk">
+                                        VK ID
+                                    </a>
+                                </div>
+                            </div>
+    
+                            <div class="order-steps-data">
+                                <p class="order-steps-data__name">ФИО: <span id="orderName">Константинов Константин Константинович</span></p>
+                                <p class="order-steps-data__name">Телефон: <span id="orderPhone">+7 (999) 075-33-05</span></p>
+                                <p class="order-steps-data__name">Email: <span id="orderEmail">konstantinov123@yandex.ru</span></p>
                             </div>
                         </div>
-                        <div class="registration-inputs">
-                            <div class="form-input fl-only">
-                                <input id="contact-person" type="text" class="form-control" name="contact-person" required aria-required="true">
-                                <label for="contact-person">Контактное лицо*</label>
-                            </div>
-                            <div class="form-input">
-                                <input id="email" name="email" type="email" class="form-control" required
-                                       aria-required="true">
-                                <label for="email">E-mail*</label>
-                            </div>
-                            <div class="form-input">
-                                <input id="phone" name="phone" type="text" class="form-control" required
-                                       aria-required="true">
-                                <label for="phone">Телефон*</label>
-                            </div>
-                            <div class="form-input yl-only">
-                                <input id="inn" name="INN" type="text" class="form-control" minlength="10" maxlength="12"
-                                       inputmode="numeric" aria-required="true">
-                                <label for="inn">ИНН*</label>
-                            </div>
-                            <div class="form-input">
-                                <input id="password" name="password" type="password" class="form-control" minlength="6" required
-                                       aria-required="true">
-                                <label for="password">Пароль*</label>
-                                <i class="js-password-display password-display-icon"></i>
-                            </div>
+                    </div>
+                </section>
+                <section class="order-steps-item basket-step--open">
+                    <div class="order-steps__title">
+                        <div class="order-steps__pic">
+                            <span class="order-steps__pic--numb">2</span>
+                            <svg class="order-steps__pic--check" width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15.4351 0.375761C15.1089 0.105759 14.6853 -0.0276728 14.2576 0.00479293C13.8298 0.0372586 13.4329 0.232965 13.154 0.548898L6.18753 8.44346L2.43974 5.41188C2.29138 5.28822 2.11912 5.19436 1.93299 5.13577C1.74685 5.07718 1.55056 5.05502 1.35551 5.07059C1.16046 5.08615 0.970551 5.13913 0.79682 5.22644C0.623088 5.31375 0.469001 5.43366 0.343515 5.57918C0.218028 5.7247 0.123645 5.89294 0.0658532 6.07412C0.00806133 6.2553 -0.011987 6.44581 0.00687339 6.63456C0.0257338 6.82331 0.0831267 7.00655 0.175716 7.17362C0.268305 7.34069 0.394244 7.48826 0.546211 7.60776L5.56736 11.6701C5.72218 11.7952 5.90194 11.888 6.09542 11.9428C6.2889 11.9976 6.49195 12.0133 6.69194 11.9887C6.90403 11.9728 7.1108 11.9166 7.30043 11.8232C7.49006 11.7298 7.65882 11.6011 7.79705 11.4444L15.6128 2.58544C15.8911 2.26915 16.0286 1.85878 15.995 1.44439C15.9615 1.02999 15.7596 0.645429 15.4338 0.375087" fill="white"/>
+                            </svg>
                         </div>
-
-                        <div class="accordion yl-only" id="accordion-form">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#form-info" aria-expanded="false" aria-controls="collapseOne">
-                                        Информация о компании
-                                    </button>
-                                </h2>
-                                <div id="form-info" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                                     data-bs-parent="#accordion-form">
-                                    <p class="form-subtitle">Правовая форма</p>
-                                    <div class="row-check">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="legal-form" id="form-type-1"
-                                                   value="type-1"
-                                                   checked>
-                                            <label class="form-check-label" for="form-type-1">
-                                                ИП
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="legal-form" id="form-type-2"
-                                                   value="type-2">
-                                            <label class="form-check-label" for="form-type-2">
-                                                Коммерческая организация
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="legal-form" id="form-type-3"
-                                                   value="type-3">
-                                            <label class="form-check-label" for="form-type-3">
-                                                Бюджетная организация
-                                            </label>
-                                        </div>
+                        Способ получения и оплаты
+                    </div>
+                    <a class="order-steps__edit">Изменить</a>
+                    <div class="order-steps-content">
+                        <div class="order-step-form">
+                            <p class="order-steps__question">Способ получения заказа*</p>
+                            <div class="radio-buttons">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="form-delivery-type"
+                                            id="pickup" value="type-1q">
+                                    <label class="form-check-label" for="pickup">
+                                        Самовывоз
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="form-delivery-type"
+                                            id="delivery" value="type-1q">
+                                    <label class="form-check-label" for="delivery">
+                                        Доставка
+                                    </label>
+                                </div>
+                            </div>
+        
+                            <div class="pickup-points block-hidden">
+                                <p class="order-steps__question">Адреса пунктов выдачи в г. Нижний Новгород:</p>
+                                <div class="radio-buttons">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="form-pickup-point"
+                                            id="address1" value="type-1">
+                                        <label class="form-check-label" for="address1">
+                                            ул. Бекетова, 3а
+                                        </label>
                                     </div>
-                                    <div class="registration-inputs">
-                                        <div class="form-input">
-                                            <input id="kpp" name="KPP" type="text" class="form-control" minlength="9"
-                                                   inputmode="numeric">
-                                            <label for="kpp">КПП</label>
-                                        </div>
-                                        <div class="form-input">
-                                            <input id="OGRN" name="OGRN" type="text" class="form-control" minlength="13">
-                                            <label for="OGRN">ОГРН</label>
-                                        </div>
-                                        <div class="form-input">
-                                            <input id="nameOrganization" name="nameOrganization" class="form-control" type="text">
-                                            <label for="nameOrganization">Юридическое название
-                                                организации</label>
-                                        </div>
-
-                                        <p class="form-subtitle">Юридический адрес</p>
-                                        <div class="form-input">
-                                            <input id="index" name="index" type="text" class="form-control">
-                                            <label for="index">Индекс</label>
-                                        </div>
-                                        <div class="form-input">
-                                            <input id="city" name="city" type="text" class="form-control">
-                                            <label for="city">Город</label>
-                                        </div>
-                                        <div class="form-input">
-                                            <input id="street" name="street" type="text" class="form-control">
-                                            <label for="street">Улица</label>
-                                        </div>
-                                        <div class="form-input">
-                                            <input id="numberHouse" name="numberHouse" type="text" class="form-control">
-                                            <label for="numberHouse">Дом</label>
-                                        </div>
-                                        <div class="form-input">
-                                            <input id="structure" name="structure" type="text" class="form-control">
-                                            <label for="structure">Строение</label>
-                                        </div>
-                                        <div class="form-input">
-                                            <input id="housing" name="housing" type="text" class="form-control">
-                                            <label for="housing">Корпус</label>
-                                        </div>
-                                        <div class="form-input">
-                                            <input id="numberOffice" name="numberOffice" type="text" class="form-control">
-                                            <label for="numberOffice">Квартира/Офис</label>
-                                        </div>
-                                        <div class="form-input">
-                                            <input id="note" name="note" type="text" class="form-control">
-                                            <label for="note">Примечание</label>
-                                        </div>
-                                        <p class="form-subtitle">Банковские реквизиты</p>
-                                        <div class="form-input">
-                                            <input id="BIK" name="BIK" type="text" class="form-control">
-                                            <label for="BIK">БИК</label>
-                                        </div>
-                                        <div class="form-input">
-                                            <input id="RS" name="RS" type="text" class="form-control">
-                                            <label for="RS">Расчетный счет</label>
-                                        </div>
-
-                                        <p class="form-collapse-bottom" data-bs-toggle="collapse" aria-expanded="false"
-                                           aria-controls="collapseOne" data-bs-target="#form-info">
-                                            Свернуть
-                                        </p>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="form-pickup-point"
+                                            id="address2" value="type-1">
+                                        <label class="form-check-label" for="address2">
+                                            ул. Чкалова, 39
+                                        </label>
                                     </div>
+                                </div>
+                            </div>
+        
+                            <div class="delivery-area block-hidden">
+                                <p class="order-steps__question">Доставка по городу и в регионы</p>
+                                <div class="radio-buttons">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="form-delivery-area"
+                                               id="deliveryNN" value="type-1">
+                                        <label class="form-check-label" for="deliveryNN">
+                                            Доставка по г. Нижнему Новгороду
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="form-delivery-area"
+                                               id="deliveryNNRegion" value="type-1">
+                                        <label class="form-check-label" for="deliveryNNRegion">
+                                            Доставка по Нижегородской области
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="form-delivery-area"
+                                               id="deliveryRussia" value="type-1">
+                                        <label class="form-check-label" for="deliveryRussia">
+                                            Доставка по России
+                                        </label>
+                                    </div>
+                                </div>
+        
+                                <p class="order-steps__question">Адрес доставки:</p>
+                                <div class="address-details">
+                                    <div class="form-input">
+                                        <input id="address" name="legalAddress" class="form-control" type="text">
+                                        <label for="address">Город, улица, номер дома*</label>
+                                    </div>
+                                    <a class="address-details__map" href="https://yandex.ru/maps/" target="_blank">Указать на карте</a>
+                                    <div class="form-input">
+                                        <input id="frontDoor" name="frontDoor" type="number" class="form-control">
+                                        <label for="frontDoor">Подъезд</label>
+                                    </div>
+                                    <div class="form-input">
+                                        <input id="floor" name="floor" type="number" class="form-control">
+                                        <label for="floor">Этаж</label>
+                                    </div>
+                                    <div class="form-input">
+                                        <input id="apartment" name="apartment" type="number" class="form-control">
+                                        <label for="apartment">Кв/офис</label>
+                                    </div>
+                                    <div class="form-input">
+                                        <input id="intercom" name="intercom" type="number" class="form-control">
+                                        <label for="intercom">Домофон</label>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="address-warning address-warning--free warning block-hidden">
+                                До бесплатной доставки осталось пополнить Корзину на 2500 ₽.
+                            </div>
+                            <div class="address-warning address-warning--region warning block-hidden">
+                                Доставка в регионы РФ осуществляется после 100% предоплаты заказа. После оформления заказа с вами свяжется менеджер для уточнения условий оплаты и доставки.
+                            </div>  
+        
+                            <p class="order-steps__question">Способы оплаты</p>
+                            <div class="radio-buttons">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="form-way-pay"
+                                           id="onlineSite" value="type-1">
+                                    <label class="form-check-label" for="onlineSite">
+                                        Онлайн на сайте
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="form-way-pay"
+                                           id="onlineAfterConfirm" value="type-1">
+                                    <label class="form-check-label" for="onlineAfterConfirm">
+                                        Онлайн после подтверждения наличия товара
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="form-way-pay"
+                                           id="afterReceipt" value="type-1">
+                                    <label class="form-check-label" for="afterReceipt">
+                                        Наличными или картой при получении
+                                    </label>
+                                </div>
+            
+                                <!-- для юридических лиц -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="form-way-pay"
+                                           id="cashless" value="type-1">
+                                    <label class="form-check-label" for="cashless">
+                                        По безналичному расчету
+                                    </label>
+                                </div>
+                                 <!-- для юридических лиц -->
+                            </div>
+        
+                             <!-- для юридических лиц -->
+                            <p class="order-steps__question">Банковские реквизиты</p>
+                            <div class="bank-details">
+                                <div class="form-input">
+                                    <input id="legalAddress" name="legalAddress" class="form-control" type="text">
+                                    <label for="legalAddress">Юридический адрес</label>
+                                </div>
+                                <div class="form-input">
+                                    <input id="nameBank" name="nameBank" type="text" class="form-control">
+                                    <label for="nameBank">Название банка</label>
+                                </div>
+                                <div class="form-input">
+                                    <input id="basketBIK" name="basketBIK" type="text" class="form-control">
+                                    <label for="basketBIK">БИК</label>
+                                </div>
+                                <div class="form-input">
+                                    <input id="CS" name="CS" type="text" class="form-control">
+                                    <label for="CS">Кор. счет</label>
+                                </div>
+                                <div class="form-input">
+                                    <input id="NS" name="NS" type="number" class="form-control">
+                                    <label for="NS">Номер счета</label>
+                                </div>
+                            </div>
+                            <div class="bank-warning warning block-hidden">Вы можете выслать реквизиты на&nbsp;<a href="info@nn-shar.ru">info@nn-shar.ru</a></div>
+                            <!-- для юридических лиц -->
+        
+                            <div class="bank-details-comment">
+                                <p class="order-steps__question">Комментарий к заказу</p>
+                                <div class="form-input">
+                                    <input id="comment" name="comment" class="form-control" type="text">
+                                    <label for="comment">Комментарий</label>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="registration-bottom-privacy">
-                            <div class="form-check">
-                                <input id="subscribe" name="subscribe" class="form-check-input" type="checkbox">
-                                <label for="subscribe">Я хочу получать email рассылки о выгодных предложениях</label>
-                            </div>
-                            <div class="form-check">
-                                <input id="privacy" name="privacy" class="form-check-input" type="checkbox" required>
-                                <label for="privacy">Даю согласие <a href="privacy.html">на обработку данных и получение
-                                    информации</a></label>
-                            </div>
+                        <div class="order-steps-data">
+                            <p><span id="orderTypeDelivery">Самовывоз</span></p>
+                            <p><span id="orderAddress">ул. Чкалова, 39</span></p>
+                            <p><span id="orderPay">Оплата наличными или картой при получении</span></p>
+                            <p class="order-steps-data__name">Комментарий: <span id="orderComment">Прошу упаковать заказ в красивый пакет</span></p>
                         </div>
-
-                        <button type="submit"
-                                class="c-btn c-btn--primary c-btn--mobile-full-width">Зарегистрироваться
-                        </button>
-                    </form>
-                    <p class="registration-another-login-text fl-only">или зарегистрируйтесь с помощью</p>
-                    <div class="registration-another-login fl-only">
-                        <a href="#" class="c-btn c-btn--yandex">
-                            Яндекс ID
-                        </a>
-                        <a href="#" class="c-btn c-btn--vk">
-                            VK ID
-                        </a>
                     </div>
-                </div>
-            </section>
+
+                </section>
+                <section class="order-steps-item final-step basket-step--disable">
+                    <div class="order-steps-names">
+                        <div class="order-steps__title">
+                            <div class="order-steps__pic">
+                                <span class="order-steps__pic--numb">1</span>
+                                <svg class="order-steps__pic--check" width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15.4351 0.375761C15.1089 0.105759 14.6853 -0.0276728 14.2576 0.00479293C13.8298 0.0372586 13.4329 0.232965 13.154 0.548898L6.18753 8.44346L2.43974 5.41188C2.29138 5.28822 2.11912 5.19436 1.93299 5.13577C1.74685 5.07718 1.55056 5.05502 1.35551 5.07059C1.16046 5.08615 0.970551 5.13913 0.79682 5.22644C0.623088 5.31375 0.469001 5.43366 0.343515 5.57918C0.218028 5.7247 0.123645 5.89294 0.0658532 6.07412C0.00806133 6.2553 -0.011987 6.44581 0.00687339 6.63456C0.0257338 6.82331 0.0831267 7.00655 0.175716 7.17362C0.268305 7.34069 0.394244 7.48826 0.546211 7.60776L5.56736 11.6701C5.72218 11.7952 5.90194 11.888 6.09542 11.9428C6.2889 11.9976 6.49195 12.0133 6.69194 11.9887C6.90403 11.9728 7.1108 11.9166 7.30043 11.8232C7.49006 11.7298 7.65882 11.6011 7.79705 11.4444L15.6128 2.58544C15.8911 2.26915 16.0286 1.85878 15.995 1.44439C15.9615 1.02999 15.7596 0.645429 15.4338 0.375087" fill="white"/>
+                                </svg>
+                            </div>
+                            Контакты
+                        </div>
+                        <div class="order-steps__title">
+                            <div class="order-steps__pic">
+                                <span class="order-steps__pic--numb">2</span>
+                                <svg class="order-steps__pic--check" width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15.4351 0.375761C15.1089 0.105759 14.6853 -0.0276728 14.2576 0.00479293C13.8298 0.0372586 13.4329 0.232965 13.154 0.548898L6.18753 8.44346L2.43974 5.41188C2.29138 5.28822 2.11912 5.19436 1.93299 5.13577C1.74685 5.07718 1.55056 5.05502 1.35551 5.07059C1.16046 5.08615 0.970551 5.13913 0.79682 5.22644C0.623088 5.31375 0.469001 5.43366 0.343515 5.57918C0.218028 5.7247 0.123645 5.89294 0.0658532 6.07412C0.00806133 6.2553 -0.011987 6.44581 0.00687339 6.63456C0.0257338 6.82331 0.0831267 7.00655 0.175716 7.17362C0.268305 7.34069 0.394244 7.48826 0.546211 7.60776L5.56736 11.6701C5.72218 11.7952 5.90194 11.888 6.09542 11.9428C6.2889 11.9976 6.49195 12.0133 6.69194 11.9887C6.90403 11.9728 7.1108 11.9166 7.30043 11.8232C7.49006 11.7298 7.65882 11.6011 7.79705 11.4444L15.6128 2.58544C15.8911 2.26915 16.0286 1.85878 15.995 1.44439C15.9615 1.02999 15.7596 0.645429 15.4338 0.375087" fill="white"/>
+                                </svg>
+                            </div>
+                            Способ получения и оплаты
+                        </div>
+                    </div>
+                    <div class="basket-result">
+                        <div class="basket-calculations">
+                            <p class="basket-result__title">Ваша корзина</p>
+                            <div class="basket-result__goods">Товары&nbsp;<span id="basket-amount">12</span></div>
+                        </div>
+                        <div class="basket-calculations basket-result-price">
+                            <p class="basket-result-price__head">Цена товара</p>
+                            <p class="basket-result-price__numb" id="basket-price">43,55 ₽</p>
+                        </div>
+                        <div class="basket-calculations basket-result-price">
+                            <p class="basket-result-price__head">Розничная наценка
+                                <img id="icon-tooltip" src="/img/svg/info.svg" alt="info">
+                            </p>
+                            <p class="basket-result-price__numb" id="basket-retail">120,6 ₽</p>
+                        </div>
+                        <div class="basket-calculations basket-result-sum">
+                            <p class="basket-result-sum__head">Итого</p>
+                            <p class="basket-result-sum__numb" id="basket-sum">522,6 ₽</p>
+                        </div>
+                        <div class="form-check">
+                            <input name="privacy" class="form-check-input" type="checkbox" required>
+                            <label for="privacy">Даю согласие <a href="privacy.html">на обработку данных и получение
+                                информации</a></label>
+                        </div>
+                        <div class="basket__registr">
+                            <a href="#" class="basket__registr-btn c-btn c-btn--primary">Оформить заказ</a>
+                        </div>
+                    </div>
+                </section>
+            </div>
         </div>
     </div>
 
@@ -872,5 +1170,7 @@
         integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
         crossorigin="anonymous"></script>
 <script src="./js/common.js"></script>
+<script src="./js/basket/second-step.js"></script>
+<script src="./js/basket/tooltip.js"></script>
 </body>
 </html>

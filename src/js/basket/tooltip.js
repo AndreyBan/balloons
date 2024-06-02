@@ -4,6 +4,9 @@
  * 18.05.2024
  **/
 (() => {
+    
+    tooltipFreeInit()
+
     const total = {
         sum: 0,
         sumWithRetail: 0,
@@ -202,6 +205,22 @@
 
         if (window.matchMedia('max-width: 767px').matches) {
             tooltipOptions.offset = [-100, -152]
+        }
+
+        const tooltip = new bootstrap.Tooltip(iconTooltip, tooltipOptions)
+
+        iconTooltip.addEventListener('mouseenter', () => tooltip.show())
+        iconTooltip.addEventListener('mouseleave', () => tooltip.hide())
+    }
+
+    function tooltipFreeInit() {
+        const iconTooltip = document.getElementById('icon-tooltip-free')
+        const tooltipOptions = {
+            title: 'Бесплатная доставка не распространяется на баллоны. Доставка и обмен гелиевых баллонов согласовывается с менеджером.',
+            html: true,
+            customClass: 'free-delivery-tooltip',
+            placement: 'right',
+            offset: [-40, 0]
         }
 
         const tooltip = new bootstrap.Tooltip(iconTooltip, tooltipOptions)

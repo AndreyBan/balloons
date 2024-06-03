@@ -608,11 +608,16 @@
                                                     <label class="form-check-label" for="form-registration-2">
                                                         Юридическое лицо
                                                     </label>
-                                                </div>
+                                                </div> 
                                             </div>
                                             <div class="registration-inputs">
                                                 <div class="form-input fl-only">
-                                                    <input id="contact-person" type="text" class="form-control" name="contact-person" required aria-required="true">
+                                                    <input id="name" type="text" class="form-control" name="name" required aria-required="true">
+                                                    <label for="name">ФИО*</label>
+                                                </div>
+                                                <div class="form-input  yl-only">
+                                                    <input id="contact-person" type="text" class="form-control" name="contact-person"
+                                                           aria-required="true">
                                                     <label for="contact-person">Контактное лицо*</label>
                                                 </div>
                                                 <div class="form-input">
@@ -1177,8 +1182,11 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
         integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
         crossorigin="anonymous"></script>
+<script defer src="https://unpkg.com/imask"></script>
 <script src="./js/common.js"></script>
+<script defer src="./js/validate.js"></script>
 <script src="./js/basket/second-step.js"></script>
+<script src="./js/registration.js"></script>
 <script src="./js/basket/tooltip.js"></script>
 </body>
 </html>

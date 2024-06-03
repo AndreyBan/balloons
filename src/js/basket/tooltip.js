@@ -16,7 +16,7 @@
     const markup = 30
 
     document.addEventListener('DOMContentLoaded', renderItemsCart)
-    document.querySelector('.js-cart-clean').addEventListener('click', () => {
+    document.querySelector('.js-cart-clean')?.addEventListener('click', () => {
         localStorage.cart = JSON.stringify([])
         totalBasket()
         computedBasket()

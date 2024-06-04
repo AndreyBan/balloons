@@ -49,6 +49,7 @@ $errorColor: #E12668;
   }
 
   label {
+    pointer-events: none;
     position: absolute;
     transition-duration: .2s;
     top: 13px;

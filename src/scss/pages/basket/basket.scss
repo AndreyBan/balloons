@@ -438,6 +438,7 @@
             &__btn {
                 border: none;
                 background: #F0F0F0;
+                cursor: pointer;
             }
             &__amount {
                 background: #F0F0F0;
@@ -531,5 +532,11 @@
                 width: auto;
             }
         }
+    }
+    &-empty {
+        margin: 24px 0;
+        font-size: 16px;
+        font-weight: 700;
+        text-align: center;
     }
 }

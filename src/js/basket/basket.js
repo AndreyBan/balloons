@@ -23,7 +23,11 @@
     function renderItemsCart() {
         const localData = localStorage.cart ? JSON.parse(localStorage.cart) : null
 
-        if (!localData || !localData.length) return false
+        if (!localData || !localData.length) {
+            showEmptyResult()
+
+            return
+        }
 
         const ids = localData.map(el => el.id)
 
@@ -102,28 +106,26 @@
                     <div class="basket-table-item__img">
                         <img src="./img/basket-picture.png" alt="img">
                     </div>
-                    <div class="basket-desktop-text">
-                        <div class="basket-table-item__article">${ el.number }</div>
-                        <div class="basket-table-item__name">
-                            <span class="basket-table-item__name--article">Артикул: ${ el.number }</span>
-                            ${ el.name },  ${ el['count_items'] ?? '' }
-                            <span class="basket-table-item__country">${ el['country_manufacture'] ?? '' }</span>
-                        </div>
-                        <div class="basket-table-item__price">
-                            <span class="basket-table-item__price--old basket-table-item__price--stroke">${ el['price_discount'] ? el['price_discount'] + '₽' : '' }</span>
-                            <span class="basket-table-item__price--percent">${ markup ? '+' + markup + '%' : '' }</span>
-                            <span class="basket-table-item__price--now">${ priceWithoutDiscount ?? '' } ₽</span>
-                        </div>
-                        <div class="basket-table-count">
-                            <div class="goods-card-buy__label js-product-label">
-                                <span class="basket-table-count__btn basket-minus js-card-btn-dec">-</span>
-                                <input type="number" class="basket-table-count__amount js-product-count"
-                                       value="${ el.count }">
-                                <span class="basket-table-count__btn basket-plus js-card-btn-inc">+</span>
-                            </div>
-                        </div>
-                        <div class="basket-table-item__sum">${ (priceWithoutDiscount * el.count).toFixed(2) } ₽</div>
+                    <div class="basket-table-item__article">${ el.number }</div>
+                    <div class="basket-table-item__name">
+                        <span class="basket-table-item__name--article">Артикул: ${ el.number }</span>
+                        ${ el.name },  ${ el['count_items'] ?? '' }
+                        <span class="basket-table-item__country">${ el['country_manufacture'] ?? '' }</span>
                     </div>
+                    <div class="basket-table-item__price">
+                        <span class="basket-table-item__price--old basket-table-item__price--stroke">${ el['price_discount'] ? el['price_discount'] + '₽' : '' }</span>
+                        <span class="basket-table-item__price--percent">${ markup ? '+' + markup + '%' : '' }</span>
+                        <span class="basket-table-item__price--now">${ priceWithoutDiscount ?? '' } ₽</span>
+                    </div>
+                    <div class="basket-table-count">
+                        <div class="goods-card-buy__label js-product-label">
+                            <span class="basket-table-count__btn basket-minus js-card-btn-dec">-</span>
+                            <input type="number" class="basket-table-count__amount js-product-count"
+                                   value="${ el.count }">
+                            <span class="basket-table-count__btn basket-plus js-card-btn-inc">+</span>
+                        </div>
+                    </div>
+                        <div class="basket-table-item__sum">${ (priceWithoutDiscount * el.count).toFixed(2) } ₽</div>
                     <img class="basket-table-item__delete js-delete-item" src="./img/svg/close-grey.svg" title="Удалить товар" alt="delete">
                 </div>`
         })
@@ -147,11 +149,30 @@
         setTimeout(() => computedTotal(totalData))
     }
 
+    function showEmptyResult () {
+        document.querySelector('.basket-table')
+            .insertAdjacentHTML('beforeend', `<div class="basket-empty">В корзине ничего нет</div`)
+    }
+
     function computedTotal (totalData) {
         const items = document.querySelectorAll('.js-goods-card')
         const localData = localStorage.cart ? JSON.parse(localStorage.cart) : []
 
         totalData.count.innerText = getTotalCount(localData)
+
+        if (!localData.length) {
+            totalData.total.innerText = '0 ₽'
+            totalData.retail.innerText = '0 ₽'
+            totalData.price.innerText = '0 ₽'
+
+            document.querySelectorAll('.js-goods-card')
+            .forEach(el => el.remove())
+
+            showEmptyResult()
+
+            return
+        }
+
         items.forEach(el => total.sum += +el.getAttribute('data-price') * +el.getAttribute('data-count'))
 
         total.retail = total.sum * markup / 100
@@ -164,7 +185,9 @@
         totalData.price.innerText = total.sum.toFixed(2) + ' ₽'
 
         totalData.priceTitle.innerHTML = total.sumWithRetail < 1000
-            ? `Розничная наценка <img id="icon-tooltip" src="/img/svg/info.svg" alt="info">`
+            ? `Розничная наценка <img class="js-tooltip" src="/img/svg/info.svg" alt="info"
+            data-bs-custom-class="price-tooltip"
+            data-bs-title="Ваша сумма покупки составила менее 1000₽, добавьте товаров до 1000₽ , чтобы получить оптовую цену, указанную на сайте, или продолжите  оформление заказа по розничной цене">`
             : 'Ваша скидка'
 
         const priceWithoutRetail = document.querySelectorAll('.basket-table-item__price--old')
@@ -188,25 +211,5 @@
         data.forEach(el => sum += +el.count)
 
         return sum
-    }
-
-    function tooltipInit() {
-        const iconTooltip = document.getElementById('icon-tooltip')
-        const tooltipOptions = {
-            title: 'Ваша сумма покупки составила менее 1000₽, добавьте товаров до 1000₽ , чтобы получить оптовую цену, указанную на сайте, или продолжите  оформление заказа по розничной цене',
-            html: true,
-            customClass: 'price-tooltip',
-            placement: 'right',
-            offset: [-40, 0]
-        }
-
-        if (window.matchMedia('max-width: 767px').matches) {
-            tooltipOptions.offset = [-100, -152]
-        }
-
-        const tooltip = new bootstrap.Tooltip(iconTooltip, tooltipOptions)
-
-        iconTooltip.addEventListener('mouseenter', () => tooltip.show())
-        iconTooltip.addEventListener('mouseleave', () => tooltip.hide())
     }
 })()

@@ -18,7 +18,9 @@
   border-radius: 30px;
   font-family: 'Montserrat';
 }
-.tooltip.catalog-tooltip .tooltip-arrow, .tooltip.price-tooltip .tooltip-arrow, .tooltip.free-delivery-tooltip .tooltip-arrow {
+.tooltip.catalog-tooltip .tooltip-arrow,
+.tooltip.price-tooltip .tooltip-arrow,
+.tooltip.free-delivery-tooltip .tooltip-arrow {
   width: 16px;
   height: 19px;
   &:before {

@@ -13,4 +13,10 @@
     border-color: var(--color-primary);
     box-shadow: 0 0 0 1px var(--color-primary);
   }
+  -moz-appearance: textfield;
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+  }
 }

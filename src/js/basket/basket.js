@@ -185,7 +185,7 @@
         totalData.price.innerText = total.sum.toFixed(2) + ' ₽'
 
         totalData.priceTitle.innerHTML = total.sumWithRetail < 1000
-            ? `Розничная наценка <img class="js-tooltip" src="/img/svg/info.svg" alt="info"
+            ? `Розничная наценка <img class="js-tooltip" src="./img/svg/info.svg" alt="info"
             data-bs-custom-class="price-tooltip"
             data-bs-title="Ваша сумма покупки составила менее 1000₽, добавьте товаров до 1000₽ , чтобы получить оптовую цену, указанную на сайте, или продолжите  оформление заказа по розничной цене">`
             : 'Ваша скидка'

@@ -246,16 +246,16 @@
   transition-duration: 0.2s;
 }
 .goods-card-favorite:before {
-  background: url("/img/svg/heart.svg") 0 0 no-repeat;
+  background: url("../img/svg/heart.svg") 0 0 no-repeat;
   z-index: 1;
 }
 .goods-card-favorite:after {
-  background: url("/img/svg/heart-blue.svg") 0 0 no-repeat;
+  background: url("../img/svg/heart-blue.svg") 0 0 no-repeat;
   z-index: 2;
   opacity: 0;
 }
 .goods-card-favorite--added:after, .goods-card-favorite:hover:after {
-  background: url("/img/svg/heart-blue.svg") 0 0 no-repeat;
+  background: url("../img/svg/heart-blue.svg") 0 0 no-repeat;
   opacity: 1;
 }
 
@@ -263,7 +263,7 @@
   display: inline-block;
   width: 24px;
   height: 24px;
-  background-image: url("/img/svg/cart.svg");
+  background-image: url("../img/svg/cart.svg");
   background-repeat: no-repeat;
   background-position: 32% 50%;
   background-size: 24px;
@@ -502,7 +502,7 @@
   top: 3px;
   width: 8px;
   height: 14px;
-  background-image: url("/img/svg/chevrone-right.svg");
+  background-image: url("../img/svg/chevrone-right.svg");
   transition-duration: 0.2s;
   background-size: 6px;
   background-position: 0 50%;
@@ -518,7 +518,7 @@
   transition-duration: 0.2s;
 }
 .goods-category-item-big__show-all:hover:after {
-  background-image: url("/img/svg/chevrone-right-hover.svg");
+  background-image: url("../img/svg/chevrone-right-hover.svg");
   background-size: 6px;
   background-position: 0 50%;
 }
@@ -631,7 +631,7 @@
   content: "";
   position: absolute;
   right: 10px;
-  background: url("/img/svg/check-active.svg") 0 0 no-repeat;
+  background: url("../img/svg/check-active.svg") 0 0 no-repeat;
   margin-top: 4px;
   width: 13px;
   height: 9px;
@@ -647,7 +647,7 @@
 }
 .sort-item > a:after {
   content: "";
-  background: url("/img/svg/chevrone.svg") no-repeat 0 0;
+  background: url("../img/svg/chevrone.svg") no-repeat 0 0;
   position: absolute;
   width: 10px;
   height: 6px;
@@ -688,7 +688,7 @@
 .filter-category-item:before {
   content: "";
   position: absolute;
-  background: url("/img/svg/chevrone-right-hover.svg") no-repeat 0 0;
+  background: url("../img/svg/chevrone-right-hover.svg") no-repeat 0 0;
   background-size: 11px;
   width: 11px;
   height: 19px;
@@ -772,7 +772,7 @@
   position: absolute;
   width: 17px;
   height: 17px;
-  background: url("/img/svg/filter.svg") 0 0 no-repeat;
+  background: url("../img/svg/filter.svg") 0 0 no-repeat;
   margin-left: -28px;
 }
 

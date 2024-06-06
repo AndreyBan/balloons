@@ -71,13 +71,13 @@
   background: #fff;
 }
 .payment-ways .cash::before {
-  content: url("/img/svg/cash.svg");
+  content: url("../img/svg/cash.svg");
 }
 .payment-ways .non-cash::before {
-  content: url("/img/svg/non-cash.svg");
+  content: url("../img/svg/non-cash.svg");
 }
 .payment-ways .qr::before {
-  content: url("/img/svg/qr.svg");
+  content: url("../img/svg/qr.svg");
 }
 .payment__info {
   font-size: 14px;

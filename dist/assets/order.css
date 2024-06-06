@@ -323,7 +323,7 @@
   }
 }
 .order-steps .address-details__map:before {
-  content: url("/img/svg/location.svg");
+  content: url("../img/svg/location.svg");
   padding-right: 8px;
 }
 .order-steps .address-warning--free {

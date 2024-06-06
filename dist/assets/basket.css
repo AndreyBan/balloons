@@ -41,7 +41,7 @@
   cursor: pointer;
 }
 .basket__clean::before {
-  content: url("/img/svg/close-grey.svg");
+  content: url("../img/svg/close-grey.svg");
 }
 .basket__warning {
   margin: 16px auto;
@@ -71,7 +71,7 @@
   font-weight: 400;
 }
 .basket__warning::before {
-  content: url("/img/svg/warning.svg");
+  content: url("../img/svg/warning.svg");
   padding-right: 7px;
 }
 .basket__warning-text {

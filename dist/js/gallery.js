@@ -1,1 +1,11 @@
-Fancybox.bind('[data-fancybox="gallery"]',{Toolbar:{display:{left:[],middle:[],right:["close"]}}});
+Fancybox.bind('[data-fancybox="gallery"]', {
+  Toolbar: {
+    display: {
+      left: [],
+      middle: [],
+      right: [
+        "close"
+      ]
+    }
+  }
+});

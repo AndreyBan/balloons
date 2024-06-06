@@ -1,1 +1,91 @@
-(()=>{document.addEventListener("DOMContentLoaded",()=>{h(),d()});function a(e=[1,2,3]){const t={lg:matchMedia("(min-width: 1025px)").matches,md:matchMedia("(max-width: 1024px) and (min-width: 768px)").matches,xs:matchMedia("(max-width: 767px)").matches};if(e.length===3)return t.xs?e[0]:t.md?e[1]:t.lg?e[2]:e[0];throw"Not correct count params in getValueForMedia"}function d(){const e=document.querySelectorAll(".other-category-item"),t=document.querySelector(".js-more-count"),n=document.querySelector(".js-btn-show-more"),s=document.querySelector(".other-category-wrap").clientHeight,i=a([158,158,158]);let o=e.length;if(s>i){for(;document.querySelector(".other-category-wrap").clientHeight>i&&o>0;)e[o-1].classList.add("hide"),o--;t.innerText=e.length-o-1;let c="";n.addEventListener("click",u=>{u.preventDefault(),n.classList.toggle("show");const r=n.classList.contains("show");r&&(c=n.innerHTML),n.innerHTML=r?"Скрыть":c,l(r)})}else n.classList.add("hide")}function l(e=!1){const t=e?"hide":"show",n=e?"show":"hide";document.querySelectorAll(`.other-category-item.${t}`).forEach(i=>{i.classList.remove(t),i.classList.add(n)})}function h(){let e=new Swiper(".detail-thumbs-slider",{spaceBetween:24,slidesPerView:3,freeMode:!0,watchSlidesProgress:!0,breakpoints:{320:{spaceBetween:8},768:{spaceBetween:16},1024:{spaceBetween:24}}});new Swiper(".detail-slider",{spaceBetween:10,navigation:{nextEl:".swiper-button-next",prevEl:".swiper-button-prev"},thumbs:{swiper:e}})}})();
+(() => {
+  document.addEventListener("DOMContentLoaded", () => {
+    initDetailSlider();
+    showMoreCategory();
+  });
+  function getValueForMedia(values = [1, 2, 3]) {
+    const media = {
+      lg: matchMedia("(min-width: 1025px)").matches,
+      md: matchMedia("(max-width: 1024px) and (min-width: 768px)").matches,
+      xs: matchMedia("(max-width: 767px)").matches
+    };
+    if (values.length === 3) {
+      if (media.xs)
+        return values[0];
+      else if (media.md)
+        return values[1];
+      else if (media.lg)
+        return values[2];
+      else
+        return values[0];
+    } else {
+      throw "Not correct count params in getValueForMedia";
+    }
+  }
+  function showMoreCategory() {
+    const categories = document.querySelectorAll(".other-category-item");
+    const countShowMore = document.querySelector(".js-more-count");
+    const btnShowMore = document.querySelector(".js-btn-show-more");
+    const heightCategory = document.querySelector(".other-category-wrap").clientHeight;
+    const valuesHeight = getValueForMedia([158, 158, 158]);
+    let i = categories.length;
+    if (heightCategory > valuesHeight) {
+      while (document.querySelector(".other-category-wrap").clientHeight > valuesHeight && i > 0) {
+        categories[i - 1].classList.add("hide");
+        i--;
+      }
+      countShowMore.innerText = categories.length - i - 1;
+      let contentBtn = "";
+      btnShowMore.addEventListener("click", (e) => {
+        e.preventDefault();
+        btnShowMore.classList.toggle("show");
+        const condStateBtn = btnShowMore.classList.contains("show");
+        if (condStateBtn) {
+          contentBtn = btnShowMore.innerHTML;
+        }
+        btnShowMore.innerHTML = condStateBtn ? "Скрыть" : contentBtn;
+        visibilityMoreCategory(condStateBtn);
+      });
+    } else {
+      btnShowMore.classList.add("hide");
+    }
+  }
+  function visibilityMoreCategory(show = false) {
+    const findDeleteClass = show ? "hide" : "show";
+    const actionAddClass = show ? "show" : "hide";
+    const categoryHidden = document.querySelectorAll(`.other-category-item.${findDeleteClass}`);
+    categoryHidden.forEach((el) => {
+      el.classList.remove(findDeleteClass);
+      el.classList.add(actionAddClass);
+    });
+  }
+  function initDetailSlider() {
+    let thumbs = new Swiper(".detail-thumbs-slider", {
+      spaceBetween: 24,
+      slidesPerView: 3,
+      freeMode: true,
+      watchSlidesProgress: true,
+      breakpoints: {
+        320: {
+          spaceBetween: 8
+        },
+        768: {
+          spaceBetween: 16
+        },
+        1024: {
+          spaceBetween: 24
+        }
+      }
+    });
+    new Swiper(".detail-slider", {
+      spaceBetween: 10,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev"
+      },
+      thumbs: {
+        swiper: thumbs
+      }
+    });
+  }
+})();

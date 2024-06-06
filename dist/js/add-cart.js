@@ -1,1 +1,150 @@
-(()=>{document.addEventListener("DOMContentLoaded",b);function b(){y(),A(),L(),C(),v(),l()}const r=".js-goods-card",u=".js-product-count";function l(e=!1){const t=document.querySelectorAll(".js-count-cart"),c=d("cart");let o=0;c.forEach(n=>o+=n.price*n.count),t.forEach(n=>{const a=n.parentElement.querySelector(".js-cart-text");n.innerText=c.length??"0",n.classList.toggle("show",!!c.length),a.innerText=c.length?`${o} ₽`:"Корзина"})}function L(){document.querySelectorAll(".js-add-cart").forEach(t=>{t.addEventListener("click",()=>{const c=t.closest(r),o=c.getAttribute("data-id"),n=document.querySelectorAll(`${r}[data-id='${o}']`);p(c),n.forEach(a=>{a.querySelector(".js-product-label").classList.add("show"),a.querySelector(".js-add-cart").setAttribute("hidden","hidden")})})})}function p(e){const c=e.getAttributeNames().filter(s=>s.includes("data")),o=c.map(s=>s.replace("data-","")),n=e.querySelector(u).value,a={};e.setAttribute("data-count",n),o.forEach((s,i)=>{a[s]=e.getAttribute(c[i])}),E(a),l()}function v(){localStorage.cart&&JSON.parse(localStorage.cart).forEach(t=>{document.querySelectorAll(`${r}[data-id='${t.id}']`).forEach(o=>{var s;const n=o.querySelector(u),a=n.parentElement;o.setAttribute("data-count",t.count),n.value=t.count,a.classList.add("show"),(s=a.nextElementSibling)==null||s.setAttribute("hidden","hidden")})})}function E(e){const t=d("cart");if(t.length){const c=t.findIndex(o=>o.id===e.id);c>=0&&+e.count>0?t[c]=e:t.push(e)}else t.push(e);f("cart",t)}function d(e){const t=localStorage[e];return t?JSON.parse(t):[]}function f(e,t){localStorage[e]=JSON.stringify(t)}function A(){document.querySelectorAll(u).forEach(t=>{t.addEventListener("change",()=>{t.value%1>0&&(t.value=Math.floor(t.value)),t.value<0&&(t.value="1")})})}function y(){document.addEventListener("click",e=>{const t=e.target.classList;t.contains("js-card-btn-inc")?S(e.target):t.contains("js-card-btn-dec")&&S(e.target,!1)})}function S(e,t=!0){const o=e.closest(r).getAttribute("data-id");document.querySelectorAll(`${r}[data-id='${o}']`).forEach(a=>{var m;const s=a.querySelector(".goods-card-buy__label"),i=s.querySelector("input");let g=Number(i.value);if(!t&&g-1<1){const h=d("cart"),q=h.findIndex(x=>x.id===o);return s.classList.remove("show"),(m=s.nextElementSibling)==null||m.removeAttribute("hidden"),a.setAttribute("data-count","0"),h.splice(q,1),f("cart",h),l(),!1}i.value=t?(++g).toString():(--g).toString(),p(a)})}function C(){document.addEventListener("click",e=>{if(e.target.classList.contains("js-delete-item")){const c=e.target.closest(r),o=c.getAttribute("data-id"),n=d("cart"),a=n.findIndex(s=>s.id===o);n.splice(a,1),f("cart",n),c.remove()}})}})();
+(() => {
+  document.addEventListener("DOMContentLoaded", addToCart);
+  function addToCart() {
+    actionBtnCount();
+    validateCount();
+    btnAddCart();
+    deleteItem();
+    setCount();
+    refreshCart();
+  }
+  const CARD = ".js-goods-card";
+  const INPUT_COUNT = ".js-product-count";
+  function refreshCart(firstLoad = false) {
+    const textCountCart = document.querySelectorAll(".js-count-cart");
+    const cartData = getLocalStorage("cart");
+    let sumPrice = 0;
+    cartData.forEach((el) => sumPrice += el["price"] * el["count"]);
+    textCountCart.forEach((el) => {
+      const textCart = el.parentElement.querySelector(".js-cart-text");
+      el.innerText = cartData.length ?? "0";
+      el.classList.toggle("show", !!cartData.length);
+      textCart.innerText = cartData.length ? `${sumPrice} ₽` : "Корзина";
+    });
+  }
+  function btnAddCart() {
+    const buttons = document.querySelectorAll(".js-add-cart");
+    buttons.forEach((el) => {
+      el.addEventListener("click", () => {
+        const product = el.closest(CARD);
+        const cardId = product.getAttribute("data-id");
+        const cardsById = document.querySelectorAll(`${CARD}[data-id='${cardId}']`);
+        addItem(product);
+        cardsById.forEach((item) => {
+          item.querySelector(".js-product-label").classList.add("show");
+          item.querySelector(".js-add-cart").setAttribute("hidden", "hidden");
+        });
+      });
+    });
+  }
+  function addItem(product) {
+    const properties = product.getAttributeNames();
+    const propertiesData = properties.filter((el) => el.includes("data"));
+    const propertiesNames = propertiesData.map((el) => el.replace("data-", ""));
+    const addCountProducts = product.querySelector(INPUT_COUNT).value;
+    const dataCart = {};
+    product.setAttribute("data-count", addCountProducts);
+    propertiesNames.forEach((el, i) => {
+      dataCart[el] = product.getAttribute(propertiesData[i]);
+    });
+    setLocalCart(dataCart);
+    refreshCart();
+  }
+  function setCount() {
+    if (localStorage.cart) {
+      const data = JSON.parse(localStorage.cart);
+      data.forEach((el) => {
+        const item = document.querySelectorAll(`${CARD}[data-id='${el.id}']`);
+        item.forEach((item2) => {
+          var _a;
+          const countElements = item2.querySelector(INPUT_COUNT);
+          const parentCount = countElements.parentElement;
+          item2.setAttribute("data-count", el.count);
+          countElements.value = el.count;
+          parentCount.classList.add("show");
+          (_a = parentCount.nextElementSibling) == null ? void 0 : _a.setAttribute("hidden", "hidden");
+        });
+      });
+    }
+  }
+  function setLocalCart(data) {
+    const dataLocal = getLocalStorage("cart");
+    if (dataLocal.length) {
+      const index = dataLocal.findIndex((el) => el.id === data.id);
+      if (index >= 0 && +data.count > 0) {
+        dataLocal[index] = data;
+      } else {
+        dataLocal.push(data);
+      }
+    } else {
+      dataLocal.push(data);
+    }
+    setLocalStorage("cart", dataLocal);
+  }
+  function getLocalStorage(field) {
+    const local = localStorage[field];
+    return local ? JSON.parse(local) : [];
+  }
+  function setLocalStorage(field, data) {
+    localStorage[field] = JSON.stringify(data);
+  }
+  function validateCount() {
+    const inputs = document.querySelectorAll(INPUT_COUNT);
+    inputs.forEach((el) => {
+      el.addEventListener("change", () => {
+        if (el.value % 1 > 0)
+          el.value = Math.floor(el.value);
+        if (el.value < 0)
+          el.value = "1";
+      });
+    });
+  }
+  function actionBtnCount() {
+    document.addEventListener("click", (e) => {
+      const classList = e.target.classList;
+      if (classList.contains("js-card-btn-inc")) {
+        changeCount(e.target);
+      } else if (classList.contains("js-card-btn-dec")) {
+        changeCount(e.target, false);
+      }
+    });
+  }
+  function changeCount(el, increment = true) {
+    const product = el.closest(CARD);
+    const elID = product.getAttribute("data-id");
+    const productsById = document.querySelectorAll(`${CARD}[data-id='${elID}']`);
+    productsById.forEach((item) => {
+      var _a;
+      const countLabel = item.querySelector(".goods-card-buy__label");
+      const countElement = countLabel.querySelector("input");
+      let value = Number(countElement.value);
+      if (!increment && value - 1 < 1) {
+        const dataLocal = getLocalStorage("cart");
+        const removeIndex = dataLocal.findIndex((el2) => el2.id === elID);
+        countLabel.classList.remove("show");
+        (_a = countLabel.nextElementSibling) == null ? void 0 : _a.removeAttribute("hidden");
+        item.setAttribute("data-count", "0");
+        dataLocal.splice(removeIndex, 1);
+        setLocalStorage("cart", dataLocal);
+        refreshCart();
+        return false;
+      }
+      countElement.value = increment ? (++value).toString() : (--value).toString();
+      addItem(item);
+    });
+  }
+  function deleteItem() {
+    document.addEventListener("click", (e) => {
+      const classList = e.target.classList;
+      if (classList.contains("js-delete-item")) {
+        const parent = e.target.closest(CARD);
+        const id = parent.getAttribute("data-id");
+        const localData = getLocalStorage("cart");
+        const idx = localData.findIndex((el) => el.id === id);
+        localData.splice(idx, 1);
+        setLocalStorage("cart", localData);
+        parent.remove();
+      }
+    });
+  }
+})();

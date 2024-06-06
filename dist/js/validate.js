@@ -1,1 +1,231 @@
-(()=>{const n={name:"name",email:"email",phone:"phone",password:"password",passwordAccept:"password-accept",INN:"INN",KPP:"KPP",OGRN:"OGRN",subscribe:"subscribe",nameOrganization:"nameOrganization",privacy:"privacy",legalForm:"legal-form",address:"address",contactPerson:"contact-person"},o={ERROR_REQUIRED:"Обязательное поле",ERROR_EMAIL:"Введите корректный email",ERROR_PHONE:"Заполните телефон полностью",ERROR_PASSWORD_ACCEPT:"Пароли не совпадают",ERROR_MIN_LENGTH:e=>`Поле должно содержать не менее ${e} символов`,ERROR_MAX_LENGTH:e=>`Поле должно содержать не более ${e} символов`,ERROR_MIN_LENGTH_DATA:(e,t)=>`${t} должно состоять из ${e} символов`},l={[n.name]:{valueMissing:o.ERROR_REQUIRED},[n.email]:{valueMissing:o.ERROR_REQUIRED,typeMismatch:o.ERROR_EMAIL,customError:o.ERROR_EMAIL},[n.phone]:{valueMissing:o.ERROR_REQUIRED,customError:o.ERROR_PHONE},[n.password]:{valueMissing:o.ERROR_REQUIRED,tooShort:o.ERROR_MIN_LENGTH(6)},[n.INN]:{valueMissing:o.ERROR_REQUIRED,tooShort:o.ERROR_MIN_LENGTH(10),tooLong:o.ERROR_MAX_LENGTH(12)},[n.KPP]:{valueMissing:o.ERROR_REQUIRED,tooShort:o.ERROR_MIN_LENGTH_DATA(9,"КПП")},[n.OGRN]:{valueMissing:o.ERROR_REQUIRED,tooShort:o.ERROR_MIN_LENGTH_DATA(13,"ОГРН")},[n.nameOrganization]:{valueMissing:o.ERROR_REQUIRED},[n.passwordAccept]:{valueMissing:o.ERROR_REQUIRED,customError:o.ERROR_PASSWORD_ACCEPT,tooShort:o.ERROR_MIN_LENGTH(6)},[n.address]:{valueMissing:o.ERROR_REQUIRED},[n.contactPerson]:{valueMissing:o.ERROR_REQUIRED}};document.addEventListener("DOMContentLoaded",()=>{const e=document.querySelectorAll(".js-form");e==null||e.forEach(t=>p(t)),m(),E(),d(),u()});function u(){const e=document.querySelectorAll(".form-input input"),t=document.querySelectorAll(".form-textarea textarea");e.forEach(s=>{s.addEventListener("input",()=>i(s))}),t.forEach(s=>{s.addEventListener("input",()=>i(s))})}function d(){var s;const e=document.querySelector(".js-password-display"),t=(s=e==null?void 0:e.closest(".form-input"))==null?void 0:s.querySelector("input");e==null||e.addEventListener("click",()=>{e.classList.toggle("show-pass");const a=e.classList.contains("show-pass")?"text":"password";t.setAttribute("type",a)})}function E(){const e=document.querySelector(`input[name=${n.phone}]`),t=document.querySelector(`input[name=${n.KPP}]`),s=document.querySelector(`input[name=${n.OGRN}]`);e&&IMask(e,{mask:"+7(000)000-00-00",prepare:(a,r)=>!r.value&&a==="8"?"+7":a}),t&&IMask(t,{mask:"000000000"}),s&&IMask(s,{mask:/^[15]\d{0,12}$/})}function m(){const e=document.querySelectorAll(".form-input input"),t=document.querySelectorAll(".form-textarea textarea");e.forEach(s=>R(s,".form-input")),t.forEach(s=>R(s,".form-textarea"))}function R(e,t){e.addEventListener("change",()=>{e.closest(t).classList.toggle("fill",e.value.length)})}function p(e){e.addEventListener("submit",t=>{t.preventDefault(),v(e),e.checkValidity()?(e.classList.contains("js-recovery")&&O(!0,"Инструкции по восстановлению пароля отправлены на Ваш e-mail"),console.log("send"),e.querySelector("[type=submit]").setAttribute("disabled","disabled")):f(e)},!1)}function f(e){const t=e.querySelector("input:invalid"),s=t==null?void 0:t.getBoundingClientRect().top;scrollBy({top:s-100,behavior:"smooth"})}function v(e){var s;const t=[n.OGRN,n.KPP];for(const a of e.elements)(a.getAttribute("required")!==null||t.includes(a.name)&&a.value)&&((s=a.parentElement)==null||s.classList.add("was-validated")),i(a)}function i(e){const t=e.getAttribute("name");Object.keys(l).includes(t)&&(g(e,t),Object.keys(ValidityState.prototype).forEach(a=>{if(e.validity[a]){const r=e.closest(e.tagName==="TEXTAREA"?".form-textarea":".form-input");r.querySelector(".invalid-feedback")||r.insertAdjacentHTML("beforeend",'<div class="invalid-feedback"></div>');const c=r.querySelector(".invalid-feedback");c.textContent=l[e.name][a]}}))}function g(e,t){if(t===n.phone){const s=!e.validity.valueMissing&&e.value.length<16;e.setCustomValidity(s?"Incorrect phone":"")}else if(t===n.email){const s=!e.validity.valueMissing&&!e.value.includes(".");e.setCustomValidity(s?"Incorrect email":"")}else if(t===n.passwordAccept){const s=document.querySelector(`input[name=${n.password}]`),a=!e.validity.valueMissing&&e.value!==s.value;e.setCustomValidity(a?"Incorrect email":"")}}function O(e,t=""){const r=e?t||"Данные успешно отправлены":"Произошла ошибка передачи данных.<br> Пожалуйста поробуйте еще раз!";new Fancybox([{src:`<p>${r}</p><button class="popup-close"></button>`,type:"html"}],{mainClass:"send-message",closeButton:!1,dragToClose:!1,on:{done:c=>{_(c)}}})}function _(e){document.querySelector(".popup-close").addEventListener("click",()=>{e.close(),document.querySelectorAll("[type=submit]").forEach(a=>a.removeAttribute("disabled"))})}})();
+(() => {
+  const fields = {
+    name: "name",
+    email: "email",
+    phone: "phone",
+    password: "password",
+    passwordAccept: "password-accept",
+    INN: "INN",
+    KPP: "KPP",
+    OGRN: "OGRN",
+    subscribe: "subscribe",
+    nameOrganization: "nameOrganization",
+    privacy: "privacy",
+    legalForm: "legal-form",
+    address: "address",
+    contactPerson: "contact-person"
+  };
+  const errorMessages = {
+    ERROR_REQUIRED: "Обязательное поле",
+    ERROR_EMAIL: "Введите корректный email",
+    ERROR_PHONE: "Заполните телефон полностью",
+    ERROR_PASSWORD_ACCEPT: "Пароли не совпадают",
+    ERROR_MIN_LENGTH: (minLength) => {
+      return `Поле должно содержать не менее ${minLength} символов`;
+    },
+    ERROR_MAX_LENGTH: (maxLength) => {
+      return `Поле должно содержать не более ${maxLength} символов`;
+    },
+    ERROR_MIN_LENGTH_DATA: (minLength, fieldName) => {
+      return `${fieldName} должно состоять из ${minLength} символов`;
+    }
+  };
+  const errors = {
+    [fields.name]: {
+      valueMissing: errorMessages.ERROR_REQUIRED
+    },
+    [fields.email]: {
+      valueMissing: errorMessages.ERROR_REQUIRED,
+      typeMismatch: errorMessages.ERROR_EMAIL,
+      customError: errorMessages.ERROR_EMAIL
+    },
+    [fields.phone]: {
+      valueMissing: errorMessages.ERROR_REQUIRED,
+      customError: errorMessages.ERROR_PHONE
+    },
+    [fields.password]: {
+      valueMissing: errorMessages.ERROR_REQUIRED,
+      tooShort: errorMessages.ERROR_MIN_LENGTH(6)
+    },
+    [fields.INN]: {
+      valueMissing: errorMessages.ERROR_REQUIRED,
+      tooShort: errorMessages.ERROR_MIN_LENGTH(10),
+      tooLong: errorMessages.ERROR_MAX_LENGTH(12)
+    },
+    [fields.KPP]: {
+      valueMissing: errorMessages.ERROR_REQUIRED,
+      tooShort: errorMessages.ERROR_MIN_LENGTH_DATA(9, "КПП")
+    },
+    [fields.OGRN]: {
+      valueMissing: errorMessages.ERROR_REQUIRED,
+      tooShort: errorMessages.ERROR_MIN_LENGTH_DATA(13, "ОГРН")
+    },
+    [fields.nameOrganization]: {
+      valueMissing: errorMessages.ERROR_REQUIRED
+    },
+    [fields.passwordAccept]: {
+      valueMissing: errorMessages.ERROR_REQUIRED,
+      customError: errorMessages.ERROR_PASSWORD_ACCEPT,
+      tooShort: errorMessages.ERROR_MIN_LENGTH(6)
+    },
+    [fields.address]: {
+      valueMissing: errorMessages.ERROR_REQUIRED
+    },
+    [fields.contactPerson]: {
+      valueMissing: errorMessages.ERROR_REQUIRED
+    }
+    // [fields.subscribe]: {
+    //     valueMissing: errorMessages.ERROR_REQUIRED
+    // },
+    // [fields.privacy]: {
+    //     valueMissing: errorMessages.ERROR_REQUIRED
+    // }
+  };
+  document.addEventListener("DOMContentLoaded", () => {
+    const forms = document.querySelectorAll(".js-form");
+    forms == null ? void 0 : forms.forEach((el) => formValidate(el));
+    checkFillInput();
+    initMasks();
+    displayPassword();
+    initValidationInputs();
+  });
+  function initValidationInputs() {
+    const inputs = document.querySelectorAll(".form-input input");
+    const textarea = document.querySelectorAll(".form-textarea textarea");
+    inputs.forEach((el) => {
+      el.addEventListener("input", () => validateInput(el));
+    });
+    textarea.forEach((el) => {
+      el.addEventListener("input", () => validateInput(el));
+    });
+  }
+  function displayPassword() {
+    var _a;
+    const displayPassBtn = document.querySelector(".js-password-display");
+    const passwordField = (_a = displayPassBtn == null ? void 0 : displayPassBtn.closest(".form-input")) == null ? void 0 : _a.querySelector("input");
+    displayPassBtn == null ? void 0 : displayPassBtn.addEventListener("click", () => {
+      displayPassBtn.classList.toggle("show-pass");
+      const type = displayPassBtn.classList.contains("show-pass") ? "text" : "password";
+      passwordField.setAttribute("type", type);
+    });
+  }
+  function initMasks() {
+    const phone = document.querySelector(`input[name=${fields.phone}]`);
+    const kpp = document.querySelector(`input[name=${fields.KPP}]`);
+    const ogrn = document.querySelector(`input[name=${fields.OGRN}]`);
+    if (phone) {
+      IMask(phone, {
+        mask: "+7(000)000-00-00",
+        prepare: (val, masked) => !masked.value && val === "8" ? "+7" : val
+      });
+    }
+    if (kpp) {
+      IMask(kpp, { mask: "000000000" });
+    }
+    if (ogrn) {
+      IMask(ogrn, { mask: /^[15]\d{0,12}$/ });
+    }
+  }
+  function checkFillInput() {
+    const inputs = document.querySelectorAll(".form-input input");
+    const textarea = document.querySelectorAll(".form-textarea textarea");
+    inputs.forEach((el) => handleField(el, ".form-input"));
+    textarea.forEach((el) => handleField(el, ".form-textarea"));
+  }
+  function handleField(el, parentClass) {
+    el.addEventListener("change", () => {
+      el.closest(parentClass).classList.toggle("fill", el.value.length);
+    });
+  }
+  function formValidate(el) {
+    el.addEventListener("submit", (e) => {
+      e.preventDefault();
+      checkValidationInput(el);
+      if (el.checkValidity()) {
+        if (el.classList.contains("js-recovery")) {
+          showMessage(true, "Инструкции по восстановлению пароля отправлены на Ваш e-mail");
+        }
+        console.log("send");
+        el.querySelector("[type=submit]").setAttribute("disabled", "disabled");
+      } else {
+        scrollToFirstError(el);
+      }
+    }, false);
+  }
+  function scrollToFirstError(el) {
+    const firstError = el.querySelector("input:invalid");
+    const posTop = firstError == null ? void 0 : firstError.getBoundingClientRect().top;
+    scrollBy({ top: posTop - 100, behavior: "smooth" });
+  }
+  function checkValidationInput(context) {
+    var _a;
+    const excluded = [fields["OGRN"], fields["KPP"]];
+    for (const i of context.elements) {
+      if (i.getAttribute("required") !== null || excluded.includes(i.name) && !!i.value) {
+        (_a = i.parentElement) == null ? void 0 : _a.classList.add("was-validated");
+      }
+      validateInput(i);
+    }
+  }
+  function validateInput(input) {
+    const nameField = input.getAttribute("name");
+    const isNeedValidate = Object.keys(errors).includes(nameField);
+    if (isNeedValidate) {
+      customErrors(input, nameField);
+      Object.keys(ValidityState.prototype).forEach((key) => {
+        if (input.validity[key]) {
+          const parent = input.closest(input.tagName === "TEXTAREA" ? ".form-textarea" : ".form-input");
+          if (!parent.querySelector(".invalid-feedback")) {
+            parent.insertAdjacentHTML("beforeend", '<div class="invalid-feedback"></div>');
+          }
+          const error = parent.querySelector(".invalid-feedback");
+          error.textContent = errors[input.name][key];
+        }
+      });
+    }
+  }
+  function customErrors(input, nameField) {
+    if (nameField === fields.phone) {
+      const isCorrectPhone = !input.validity.valueMissing && input.value.length < 16;
+      input.setCustomValidity(isCorrectPhone ? "Incorrect phone" : "");
+    } else if (nameField === fields.email) {
+      const isCorrectEmail = !input.validity.valueMissing && !input.value.includes(".");
+      input.setCustomValidity(isCorrectEmail ? "Incorrect email" : "");
+    } else if (nameField === fields.passwordAccept) {
+      const password = document.querySelector(`input[name=${fields.password}]`);
+      const isCorrectPassword = !input.validity.valueMissing && input.value !== password.value;
+      input.setCustomValidity(isCorrectPassword ? "Incorrect email" : "");
+    }
+  }
+  function showMessage(success, customText = "") {
+    const errorMessage = "Произошла ошибка передачи данных.<br> Пожалуйста поробуйте еще раз!";
+    const successMessage = customText || "Данные успешно отправлены";
+    const message = success ? successMessage : errorMessage;
+    new Fancybox(
+      [
+        {
+          src: `<p>${message}</p><button class="popup-close"></button>`,
+          type: "html"
+        }
+      ],
+      {
+        mainClass: "send-message",
+        closeButton: false,
+        dragToClose: false,
+        on: {
+          done: (fancybox) => {
+            closePopup(fancybox);
+          }
+        }
+      }
+    );
+  }
+  function closePopup(popup) {
+    const closeBtn = document.querySelector(".popup-close");
+    closeBtn.addEventListener("click", () => {
+      popup.close();
+      const submitButtons = document.querySelectorAll("[type=submit]");
+      submitButtons.forEach((el) => el.removeAttribute("disabled"));
+    });
+  }
+})();

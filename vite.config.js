@@ -1,17 +1,7 @@
-import { defineConfig } from 'vite';
-import { copy } from 'vite-plugin-copy';
-
-export default defineConfig({
+export default {
     root: 'src',
     base: './',
-    publicDir: '../public',
-    plugins: [
-        copy({
-            targets: [
-                { src: 'src/js/basket/tooltip.js', dest: 'dist' }
-            ]
-        })
-    ],
+    publicDir: 'public',
     build: {
         outDir: '../dist',
         rollupOptions: {
@@ -54,18 +44,18 @@ export default defineConfig({
                 states: './src/states.html',
                 'states/detail': './src/states-detail.html',
                 basket: './src/basket.html',
-                // 'basket/tooltip': './src/js/basket/tooltip.js',
+                'basket/tooltip': './src/js/basket/tooltip.js',
                 order: './src/order.html',
-                'basket/second-step': './src/js/basket/second-step.js',
                 'order-complete': './src/order-complete.html',
             },
             output: {
                 assetFileNames: "assets/[name][extname]",
-                entryFileNames: "js/[name].js"
+                entryFileNames: "js/[name].js",
             }
         },
+        minify: false
     },
     css: {
         devSourcemap: true
     }
-})
+}

@@ -1,1 +1,39 @@
-(()=>{document.addEventListener("DOMContentLoaded",()=>{n()});function n(){const r=document.querySelector(".js-type-form");r.querySelectorAll('input[name="form-registration"][type=radio]').forEach(e=>{e.addEventListener("change",()=>{const t=r.querySelector('input[name="form-registration"][type=radio]:checked').value;r.setAttribute("data-form-type",t);const o={add:["INN","contact-person"],remove:["name"]};t==="type-1"&&(o.add=["name"],o.remove=["INN","contact-person"]),d(o.add,o.remove),e.closest(".js-form").querySelectorAll(".was-validated").forEach(c=>{c.classList.remove("was-validated")})})})}function d(r,a){a.forEach(e=>{const t=document.querySelector(`[name=${e}]`);t.removeAttribute("required"),t.closest(".form-input").classList.remove("fill"),t.value=""}),r.forEach(e=>{document.querySelector(`[name=${e}]`).setAttribute("required","required")})}})();
+(() => {
+  document.addEventListener("DOMContentLoaded", () => {
+    displayTypeForm();
+  });
+  function displayTypeForm() {
+    const typeForm = document.querySelector(".js-type-form");
+    const radioTypeForm = typeForm.querySelectorAll('input[name="form-registration"][type=radio]');
+    radioTypeForm.forEach((el) => {
+      el.addEventListener("change", () => {
+        const valueTypeForm = typeForm.querySelector('input[name="form-registration"][type=radio]:checked').value;
+        typeForm.setAttribute("data-form-type", valueTypeForm);
+        const fieldsRequiredObj = {
+          add: ["INN", "contact-person"],
+          remove: ["name"]
+        };
+        if (valueTypeForm === "type-1") {
+          fieldsRequiredObj.add = ["name"];
+          fieldsRequiredObj.remove = ["INN", "contact-person"];
+        }
+        fieldsRequired(fieldsRequiredObj.add, fieldsRequiredObj.remove);
+        const form = el.closest(".js-form");
+        form.querySelectorAll(".was-validated").forEach((item) => {
+          item.classList.remove("was-validated");
+        });
+      });
+    });
+  }
+  function fieldsRequired(setRequiredFields, removeRequiredFields) {
+    removeRequiredFields.forEach((el) => {
+      const field = document.querySelector(`[name=${el}]`);
+      field.removeAttribute("required");
+      field.closest(".form-input").classList.remove("fill");
+      field.value = "";
+    });
+    setRequiredFields.forEach((el) => {
+      document.querySelector(`[name=${el}]`).setAttribute("required", "required");
+    });
+  }
+})();

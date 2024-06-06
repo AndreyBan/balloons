@@ -1,34 +1,157 @@
-(()=>{const a={sum:0,sumWithRetail:0,retail:0},r=30;document.addEventListener("DOMContentLoaded",p),document.querySelector(".js-cart-clean").addEventListener("click",()=>{localStorage.cart=JSON.stringify([]),u(),l(),d()});function p(){const e=localStorage.cart?JSON.parse(localStorage.cart):null;if(!e||!e.length){m();return}e.map(n=>n.id);const s=e;s.forEach(n=>{Object.assign(n,{country_manufacture:"Испания",price_discount:"435",count_items:"10 шт."})});const t=_(s);document.querySelector(".basket-table").insertAdjacentHTML("beforeend",t),document.querySelector(".js-markup").innerText=r+"%",u(),l(),d()}function d(){document.querySelectorAll(".basket-table-count__btn").forEach(s=>{s.addEventListener("click",()=>{setTimeout(()=>{const t=s.closest(".js-goods-card"),n=t.querySelector(".basket-table-item__sum"),o=+t.getAttribute("data-count");let i=parseFloat(t.getAttribute("data-price"))*o;const c=a.sumWithRetail<1e3?i*r/100:0;i+=c,n.innerText=i.toFixed(2)+" ₽"})})})}function l(e=null){if(!e){const s=document.querySelectorAll(".basket-table-count__btn"),t=document.querySelectorAll(".js-delete-item");l(s),l(t);return}e.forEach(s=>s.addEventListener("click",u))}function _(e){let s="";return e.forEach((t,n)=>{const o=(parseFloat(t.price_discount)+parseFloat(t.price_discount)*(r/100)).toFixed(2);s+=`<div class="basket-table-item js-goods-card"
-                     data-name='${t.name}'
-                     data-price="${t.price}"
-                     data-number="${t.number}"
-                     data-count="${t.count}"
-                     data-id="${t.id}">
-                    <div class="basket-table-item__numb">${++n}</div>
+(() => {
+  const total = {
+    sum: 0,
+    sumWithRetail: 0,
+    retail: 0
+  };
+  const markup = 30;
+  document.addEventListener("DOMContentLoaded", renderItemsCart);
+  document.querySelector(".js-cart-clean").addEventListener("click", () => {
+    localStorage.cart = JSON.stringify([]);
+    totalBasket();
+    computedBasket();
+    computedPosition();
+  });
+  function renderItemsCart() {
+    const localData = localStorage.cart ? JSON.parse(localStorage.cart) : null;
+    if (!localData || !localData.length) {
+      showEmptyResult();
+      return;
+    }
+    localData.map((el) => el.id);
+    const data = localData;
+    data.forEach((el) => {
+      Object.assign(el, {
+        country_manufacture: "Испания",
+        price_discount: "435",
+        count_items: "10 шт."
+      });
+    });
+    const html = getHtmlBasketItem(data);
+    document.querySelector(".basket-table").insertAdjacentHTML("beforeend", html);
+    document.querySelector(".js-markup").innerText = markup + "%";
+    totalBasket();
+    computedBasket();
+    computedPosition();
+  }
+  function computedPosition() {
+    const changeCountElements = document.querySelectorAll(".basket-table-count__btn");
+    changeCountElements.forEach((el) => {
+      el.addEventListener("click", () => {
+        setTimeout(() => {
+          const parent = el.closest(".js-goods-card");
+          const sum = parent.querySelector(".basket-table-item__sum");
+          const count = +parent.getAttribute("data-count");
+          const price = parseFloat(parent.getAttribute("data-price"));
+          let newSum = price * count;
+          const retail = total.sumWithRetail < 1e3 ? newSum * markup / 100 : 0;
+          newSum += retail;
+          sum.innerText = newSum.toFixed(2) + " ₽";
+        });
+      });
+    });
+  }
+  function computedBasket(elements = null) {
+    if (!elements) {
+      const changeCountElements = document.querySelectorAll(".basket-table-count__btn");
+      const deleteElements = document.querySelectorAll(".js-delete-item");
+      computedBasket(changeCountElements);
+      computedBasket(deleteElements);
+      return;
+    }
+    elements.forEach((el) => el.addEventListener("click", totalBasket));
+  }
+  function getHtmlBasketItem(data) {
+    let html = "";
+    data.forEach((el, i) => {
+      const priceWithoutDiscount = (parseFloat(el["price_discount"]) + parseFloat(el["price_discount"]) * (markup / 100)).toFixed(2);
+      html += `<div class="basket-table-item js-goods-card"
+                     data-name='${el.name}'
+                     data-price="${el.price}"
+                     data-number="${el.number}"
+                     data-count="${el.count}"
+                     data-id="${el.id}">
+                    <div class="basket-table-item__numb">${++i}</div>
                     <div class="basket-table-item__img">
                         <img src="./img/basket-picture.png" alt="img">
                     </div>
-                    <div class="basket-table-item__article">${t.number}</div>
+                    <div class="basket-table-item__article">${el.number}</div>
                     <div class="basket-table-item__name">
-                        <span class="basket-table-item__name--article">Артикул: ${t.number}</span>
-                        ${t.name},  ${t.count_items??""}
-                        <span class="basket-table-item__country">${t.country_manufacture??""}</span>
+                        <span class="basket-table-item__name--article">Артикул: ${el.number}</span>
+                        ${el.name},  ${el["count_items"] ?? ""}
+                        <span class="basket-table-item__country">${el["country_manufacture"] ?? ""}</span>
                     </div>
                     <div class="basket-table-item__price">
-                        <span class="basket-table-item__price--old basket-table-item__price--stroke">${t.price_discount?t.price_discount+"₽":""}</span>
-                        <span class="basket-table-item__price--percent">${"+"+r+"%"}</span>
-                        <span class="basket-table-item__price--now">${o??""} ₽</span>
+                        <span class="basket-table-item__price--old basket-table-item__price--stroke">${el["price_discount"] ? el["price_discount"] + "₽" : ""}</span>
+                        <span class="basket-table-item__price--percent">${"+" + markup + "%"}</span>
+                        <span class="basket-table-item__price--now">${priceWithoutDiscount ?? ""} ₽</span>
                     </div>
                     <div class="basket-table-count">
                         <div class="goods-card-buy__label js-product-label">
                             <span class="basket-table-count__btn basket-minus js-card-btn-dec">-</span>
                             <input type="number" class="basket-table-count__amount js-product-count"
-                                   value="${t.count}">
+                                   value="${el.count}">
                             <span class="basket-table-count__btn basket-plus js-card-btn-inc">+</span>
                         </div>
                     </div>
-                        <div class="basket-table-item__sum">${(o*t.count).toFixed(2)} ₽</div>
+                        <div class="basket-table-item__sum">${(priceWithoutDiscount * el.count).toFixed(2)} ₽</div>
                     <img class="basket-table-item__delete js-delete-item" src="./img/svg/close-grey.svg" title="Удалить товар" alt="delete">
-                </div>`}),s}function u(){a.sum=0,a.retail=0,a.sumWithRetail=0;const e={count:document.getElementById("basket-amount"),price:document.getElementById("basket-price"),retail:document.getElementById("basket-retail"),total:document.getElementById("basket-sum"),priceTitle:document.querySelector(".js-price-title")};setTimeout(()=>k(e))}function m(){document.querySelector(".basket-table").insertAdjacentHTML("beforeend",'<div class="basket-empty">В корзине ничего нет</div')}function k(e){const s=document.querySelectorAll(".js-goods-card"),t=localStorage.cart?JSON.parse(localStorage.cart):[];if(e.count.innerText=g(t),!t.length){e.total.innerText="0 ₽",e.retail.innerText="0 ₽",e.price.innerText="0 ₽",document.querySelectorAll(".js-goods-card").forEach(c=>c.remove()),m();return}s.forEach(c=>a.sum+=+c.getAttribute("data-price")*+c.getAttribute("data-count")),a.retail=a.sum*r/100,a.sumWithRetail=a.sum+a.retail,e.total.innerText=a.sumWithRetail<1e3?a.sumWithRetail.toFixed(2)+" ₽":a.sum.toFixed(2)+" ₽",e.retail.innerText=a.retail.toFixed(2)+" ₽",e.price.innerText=a.sum.toFixed(2)+" ₽",e.priceTitle.innerHTML=a.sumWithRetail<1e3?`Розничная наценка <img class="js-tooltip" src="./img/svg/info.svg" alt="info"
+                </div>`;
+    });
+    return html;
+  }
+  function totalBasket() {
+    total.sum = 0;
+    total.retail = 0;
+    total.sumWithRetail = 0;
+    const totalData = {
+      count: document.getElementById("basket-amount"),
+      price: document.getElementById("basket-price"),
+      retail: document.getElementById("basket-retail"),
+      total: document.getElementById("basket-sum"),
+      priceTitle: document.querySelector(".js-price-title")
+    };
+    setTimeout(() => computedTotal(totalData));
+  }
+  function showEmptyResult() {
+    document.querySelector(".basket-table").insertAdjacentHTML("beforeend", `<div class="basket-empty">В корзине ничего нет</div`);
+  }
+  function computedTotal(totalData) {
+    const items = document.querySelectorAll(".js-goods-card");
+    const localData = localStorage.cart ? JSON.parse(localStorage.cart) : [];
+    totalData.count.innerText = getTotalCount(localData);
+    if (!localData.length) {
+      totalData.total.innerText = "0 ₽";
+      totalData.retail.innerText = "0 ₽";
+      totalData.price.innerText = "0 ₽";
+      document.querySelectorAll(".js-goods-card").forEach((el) => el.remove());
+      showEmptyResult();
+      return;
+    }
+    items.forEach((el) => total.sum += +el.getAttribute("data-price") * +el.getAttribute("data-count"));
+    total.retail = total.sum * markup / 100;
+    total.sumWithRetail = total.sum + total.retail;
+    totalData.total.innerText = total.sumWithRetail < 1e3 ? total.sumWithRetail.toFixed(2) + " ₽" : total.sum.toFixed(2) + " ₽";
+    totalData.retail.innerText = total.retail.toFixed(2) + " ₽";
+    totalData.price.innerText = total.sum.toFixed(2) + " ₽";
+    totalData.priceTitle.innerHTML = total.sumWithRetail < 1e3 ? `Розничная наценка <img class="js-tooltip" src="./img/svg/info.svg" alt="info"
             data-bs-custom-class="price-tooltip"
-            data-bs-title="Ваша сумма покупки составила менее 1000₽, добавьте товаров до 1000₽ , чтобы получить оптовую цену, указанную на сайте, или продолжите  оформление заказа по розничной цене">`:"Ваша скидка";const n=document.querySelectorAll(".basket-table-item__price--old"),o=document.querySelectorAll(".basket-table-item__price--percent"),b=document.querySelectorAll(".basket-table-item__price--now");let i="none";a.sumWithRetail<1e3&&(tooltipInit(),i="inline"),n.forEach(c=>c.classList.toggle("basket-table-item__price--stroke",i!=="none")),o.forEach(c=>c.style.display=i),b.forEach(c=>c.style.display=i)}function g(e){let s=0;return e.forEach(t=>s+=+t.count),s}})();
+            data-bs-title="Ваша сумма покупки составила менее 1000₽, добавьте товаров до 1000₽ , чтобы получить оптовую цену, указанную на сайте, или продолжите  оформление заказа по розничной цене">` : "Ваша скидка";
+    const priceWithoutRetail = document.querySelectorAll(".basket-table-item__price--old");
+    const percentLabel = document.querySelectorAll(".basket-table-item__price--percent");
+    const priceWithRetail = document.querySelectorAll(".basket-table-item__price--now");
+    let display = "none";
+    if (total.sumWithRetail < 1e3) {
+      tooltipInit();
+      display = "inline";
+    }
+    priceWithoutRetail.forEach((el) => el.classList.toggle("basket-table-item__price--stroke", display !== "none"));
+    percentLabel.forEach((el) => el.style.display = display);
+    priceWithRetail.forEach((el) => el.style.display = display);
+  }
+  function getTotalCount(data) {
+    let sum = 0;
+    data.forEach((el) => sum += +el.count);
+    return sum;
+  }
+})();

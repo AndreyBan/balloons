@@ -1,1 +1,46 @@
-(()=>{document.addEventListener("DOMContentLoaded",()=>{const e=document.querySelectorAll(".form-check-input"),o={title:'Найдено 23 товара <a href="#" style="padding-left: 8px;">Показать</a>',html:!0,trigger:"",placement:"right",customClass:"catalog-tooltip",offset:[-14,10]};e.forEach(i=>{i.addEventListener("change",async()=>{const n=await l(),t=a(n,"товар","товара","товаров");o.title=`Найдено ${n} ${t} <a href="#" style="padding-left: 8px;">Показать</a>`;const s=new bootstrap.Tooltip(i.nextElementSibling,o);clearTimeout(window.timer),r(),s.show(),window.timer=setTimeout(r,7e3)})})});function l(){return new Promise(e=>{setTimeout(()=>e(23))})}function r(){document.querySelectorAll(".catalog-tooltip").forEach(o=>o.remove())}function a(e,o,i,n){let t=Math.abs(e);return t%=100,t>=5&&t<=20?n:(t%=10,t===1?o:t>=2&&t<=4?i:n)}})();
+(() => {
+  document.addEventListener("DOMContentLoaded", () => {
+    const filterInputs = document.querySelectorAll(".form-check-input");
+    const tooltipOptions = {
+      title: 'Найдено 23 товара <a href="#" style="padding-left: 8px;">Показать</a>',
+      html: true,
+      trigger: "",
+      placement: "right",
+      customClass: "catalog-tooltip",
+      offset: [-14, 10]
+    };
+    filterInputs.forEach((el) => {
+      el.addEventListener("change", async () => {
+        const countItems = await getData();
+        const wordCount = getNoun(countItems, "товар", "товара", "товаров");
+        tooltipOptions.title = `Найдено ${countItems} ${wordCount} <a href="#" style="padding-left: 8px;">Показать</a>`;
+        const tooltip = new bootstrap.Tooltip(el.nextElementSibling, tooltipOptions);
+        clearTimeout(window.timer);
+        hideAllTooltips();
+        tooltip.show();
+        window.timer = setTimeout(hideAllTooltips, 7e3);
+      });
+    });
+  });
+  function getData() {
+    return new Promise((resolve) => {
+      setTimeout(() => resolve(23));
+    });
+  }
+  function hideAllTooltips() {
+    const tooltips = document.querySelectorAll(".catalog-tooltip");
+    tooltips.forEach((el) => el.remove());
+  }
+  function getNoun(number, one, two, five) {
+    let n = Math.abs(number);
+    n %= 100;
+    if (n >= 5 && n <= 20)
+      return five;
+    n %= 10;
+    if (n === 1)
+      return one;
+    if (n >= 2 && n <= 4)
+      return two;
+    return five;
+  }
+})();

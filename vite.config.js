@@ -1,7 +1,17 @@
-export default {
+import { defineConfig } from 'vite';
+import { copy } from 'vite-plugin-copy';
+
+export default defineConfig({
     root: 'src',
     base: './',
     publicDir: '../public',
+    plugins: [
+        copy({
+            targets: [
+                { src: 'src/js/basket/tooltip.js', dest: 'dist' }
+            ]
+        })
+    ],
     build: {
         outDir: '../dist',
         rollupOptions: {
@@ -42,13 +52,12 @@ export default {
                 news: './src/news.html',
                 'news/detail': './src/news-detail.html',
                 states: './src/states.html',
-                 'states/detail': './src/states-detail.html',
+                'states/detail': './src/states-detail.html',
                 basket: './src/basket.html',
-                'basket/tooltip': './src/js/basket/tooltip.js',
-                order: './src/order.html', 
+                // 'basket/tooltip': './src/js/basket/tooltip.js',
+                order: './src/order.html',
                 'basket/second-step': './src/js/basket/second-step.js',
                 'order-complete': './src/order-complete.html',
-                'basket/second-step': './src/js/basket/second-step.js',
             },
             output: {
                 assetFileNames: "assets/[name][extname]",
@@ -59,4 +68,4 @@ export default {
     css: {
         devSourcemap: true
     }
-}
+})

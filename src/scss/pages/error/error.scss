@@ -1,0 +1,128 @@
+@use "../../variables.scss" as *;
+
+.error {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    p {
+        margin-bottom: 0;
+    }
+
+    &-404, &-500 {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        position: relative;
+        margin: 32px auto 36px;
+    }
+
+    &-404 {
+
+        @include media(md) {
+            margin: 48px auto 52px;
+        }
+
+        @include media(xxl) {
+            margin: 34px auto 53px;
+        }
+
+        .error-text {
+            right: -20px;
+
+            @include media(md) {
+                right: -36px;
+            }
+    
+            @include media(xxl) {
+                right: 0;
+            }
+        }
+    }
+
+    &-500 {
+
+        @include media(md) {
+            margin: 47px auto 48px;
+        }
+
+        @include media(xxl) {
+            margin: 58px auto 56px;
+        }
+    }
+
+    &__img {
+
+        img {
+            width: 100%;
+        }
+
+        &--404 {
+            max-width: 234px;
+
+            @include media(md) {
+                margin: 48px auto 52px;
+                max-width: 405px;
+            }
+    
+            @include media(xxl) {
+                margin: 34px auto 53px;
+                max-width: 555px;
+            }
+        }
+
+        &--500 {
+            max-width: 154px;
+
+            @include media(md) {
+                margin: 47px auto 48px;
+                max-width: 271px;
+            }
+    
+            @include media(xxl) {
+                margin: 58px auto 56px;
+                max-width: 275px;
+            }
+        }
+    }
+
+    &-text {
+        text-align: center;
+        position: absolute;
+        bottom: 0;
+
+        &__numb {
+            font-size: 40px;
+            line-height: 30px;
+            font-weight: 700;
+            color: #6983C1;
+            display: inline-block;
+
+            @include media(md) {
+                font-size: 82px;
+            }
+
+            @include media(xxl) {
+                font-size: 96px;
+            }
+        }
+
+        &__mean {
+            font-size: 16px;
+            line-height: 20px;
+            font-weight: 400;
+            margin-top: 5px;
+
+            @include media(md) {
+                font-size: 26px;
+                line-height: 32px;
+            }
+
+            @include media(xxl) {
+                font-size: 30px;
+                line-height: 37px;
+                margin-top: 20px;
+            }
+        }
+    }
+}

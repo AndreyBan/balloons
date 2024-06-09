@@ -47,6 +47,8 @@ export default {
                 'basket/tooltip': './src/js/basket/tooltip.js',
                 order: './src/order.html',
                 'order-complete': './src/order-complete.html',
+                error404: './src/404.html',
+                error500: './src/500.html',
             },
             output: {
                 assetFileNames: "assets/[name][extname]",

@@ -316,6 +316,8 @@
   text-decoration: none;
   display: flex;
   align-items: center;
+  cursor: pointer;
+  color: var(--bs-link-color);
 }
 @media (min-width: 768px) {
   .order-steps .address-details__map {

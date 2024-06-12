@@ -45,6 +45,7 @@ export default {
                 'states/detail': './src/states-detail.html',
                 basket: './src/basket.html',
                 'basket/tooltip': './src/js/basket/tooltip.js',
+                'order/map': './src/js/order/map.js',
                 order: './src/order.html',
                 'order-complete': './src/order-complete.html',
                 error404: './src/404.html',

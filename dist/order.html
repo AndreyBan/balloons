@@ -551,6 +551,12 @@
             <div class="container">
                 <p class="order__title">Оформление заказа</p>
                 <div class="order-steps">
+
+                    <!-- TODO: Классы для управления состоянием блока
+                      basket-step--open - блок активен и раскрыт
+                      basket-step--disable - блок недоступен и свернут
+                      basket-step--complete - блок заполнен и свернут
+                       -->
                     <section class="order-steps-item registration-section js-type-form basket-step--open"
                         data-form-type="type-1">
                         <div class="container">
@@ -834,6 +840,23 @@
                         </div>
                     </section>
                     <section class="order-steps-item basket-step--open">
+
+                        <!-- TODO: Удалить на этапе программирования -->
+                        <div class="js-test-drop" style="position: absolute; right: 20px; cursor: pointer;">Свернуть
+                            блок</div>
+                        <script>
+                            (() => {
+                                const test = document.querySelector('.js-test-drop');
+
+                                test.addEventListener('click', () => {
+                                    test.parentElement.classList.remove('basket-step--open')
+                                    test.parentElement.classList.add('basket-step--disable')
+                                    test.remove()
+                                })
+                            })()
+                        </script>
+                        <!-- END DELTE -->
+
                         <div class="container">
                             <div class="order-steps__title">
                                 <div class="order-steps__pic">
@@ -921,8 +944,9 @@
                                                     type="text">
                                                 <label for="address">Город, улица, номер дома*</label>
                                             </div>
-                                            <a class="address-details__map" href="https://yandex.ru/maps/"
-                                                target="_blank">Указать на карте</a>
+                                            <a class="address-details__map js-open-map" href="https://yandex.ru/maps/"
+                                                target="_blank" data-bs-toggle="modal"
+                                                data-bs-target="#modalMap">Указать на карте</a>
                                             <div class="form-input">
                                                 <input id="frontDoor" name="frontDoor" type="number"
                                                     class="form-control">
@@ -1084,7 +1108,10 @@
                             </div>
                             <div class="basket-calculations basket-result-price">
                                 <p class="basket-result-price__head">Розничная наценка
-                                    <img id="icon-tooltip" src="./img/svg/info.svg" alt="info">
+                                    <img id="icon-tooltip" class="js-tooltip" src="./img/svg/info.svg" alt="info"
+                                        data-bs-custom-class="price-tooltip price-tooltip--arrow-right"
+                                        data-bs-offset="-365,5"
+                                        data-bs-title="Ваша сумма покупки составила менее 1000₽, добавьте товаров до 1000₽ , чтобы получить оптовую цену, указанную на сайте, или продолжите  оформление заказа по розничной цене">
                                 </p>
                                 <p class="basket-result-price__numb" id="basket-retail">120,6 ₽</p>
                             </div>
@@ -1104,8 +1131,15 @@
                     </section>
                 </div>
             </div>
+            <div class="modal fade" id="modalMap" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div id="map"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-
+       
         <!-- Content end -->
 
     </main>
@@ -1253,12 +1287,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
         integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
         crossorigin="anonymous"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=4dbeb6ec-e11a-474a-8b22-d6a4ba8805bc&lang=ru_RU"
+        type="text/javascript"></script>
     <script defer src="https://unpkg.com/imask"></script>
     <script src="./js/common.js"></script>
     <script defer src="./js/validate.js"></script>
     <script src="./js/basket/second-step.js"></script>
     <script src="./js/registration.js"></script>
     <script src="./js/basket/tooltip.js"></script>
+    <script src="./js/order/map.js"></script>
 </body>
 
 </html>

@@ -82,7 +82,7 @@
                         <span class="basket-table-item__country">${el["country_manufacture"] ?? ""}</span>
                     </div>
                     <div class="basket-table-item__price">
-                        <span class="basket-table-item__price--old basket-table-item__price--stroke">${el["price_discount"] ? el["price_discount"] + "₽" : ""}</span>
+                        <span class="basket-table-item__price--old">${el["price_discount"] ? el["price_discount"] + "₽" : ""}</span>
                         <span class="basket-table-item__price--percent">${"+" + markup + "%"}</span>
                         <span class="basket-table-item__price--now">${priceWithoutDiscount ?? ""} ₽</span>
                     </div>
@@ -137,17 +137,11 @@
     totalData.priceTitle.innerHTML = total.sumWithRetail < 1e3 ? `Розничная наценка <img class="js-tooltip" src="./img/svg/info.svg" alt="info"
             data-bs-custom-class="price-tooltip"
             data-bs-title="Ваша сумма покупки составила менее 1000₽, добавьте товаров до 1000₽ , чтобы получить оптовую цену, указанную на сайте, или продолжите  оформление заказа по розничной цене">` : "Ваша скидка";
-    const priceWithoutRetail = document.querySelectorAll(".basket-table-item__price--old");
-    const percentLabel = document.querySelectorAll(".basket-table-item__price--percent");
-    const priceWithRetail = document.querySelectorAll(".basket-table-item__price--now");
-    let display = "none";
-    if (total.sumWithRetail < 1e3) {
+    const tableWithoutRetail = document.querySelector(".basket-table");
+    const conditionRetail = total.sumWithRetail < 1e3;
+    if (conditionRetail)
       tooltipInit();
-      display = "inline";
-    }
-    priceWithoutRetail.forEach((el) => el.classList.toggle("basket-table-item__price--stroke", display !== "none"));
-    percentLabel.forEach((el) => el.style.display = display);
-    priceWithRetail.forEach((el) => el.style.display = display);
+    tableWithoutRetail.classList.toggle("table-retail", !conditionRetail);
   }
   function getTotalCount(data) {
     let sum = 0;

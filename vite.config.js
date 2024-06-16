@@ -48,12 +48,9 @@ export default {
                 'order/map': './src/js/order/map.js',
                 order: './src/order.html',
                 'order-complete': './src/order-complete.html',
-<<<<<<< Updated upstream
-=======
                 favorite: './src/favorite.html',
                 error404: './src/404.html',
                 error500: './src/500.html',
->>>>>>> Stashed changes
             },
             output: {
                 assetFileNames: "assets/[name][extname]",

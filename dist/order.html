@@ -68,7 +68,7 @@
             <div class="container">
                 <div class="header-row">
                     <a class="header-logo" href="/">
-                        <img src="/img/svg/logo.svg" alt="" class="header-logo__img">
+                        <img src="./img/svg/logo.svg" alt="" class="header-logo__img">
                     </a>
                     <button class="c-btn c-btn--primary c-btn--catalog js-open-catalog">
                         <span class="catalog-lines"><span class="catalog-lines__line"></span></span>
@@ -104,7 +104,7 @@
                         <button type="submit" class="c-btn c-btn--primary c-btn--search">
                             <svg class="search-icon" role="img">
                                 <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                    xlink:href="/img/svg/map.svg#svg-search"></use>
+                                    xlink:href="./img/svg/map.svg#svg-search"></use>
                             </svg>
                         </button>
                     </form>
@@ -113,7 +113,7 @@
                             <a href="/" class="header-icons__link">
                                 <svg class="header-icons__icon header-icons__icon--human" role="img">
                                     <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                        xlink:href="/img/svg/map.svg#svg-human"></use>
+                                        xlink:href="./img/svg/map.svg#svg-human"></use>
                                 </svg>
                                 <span>Войти</span>
                             </a>
@@ -122,7 +122,7 @@
                             <a href="/" class="header-icons__link">
                                 <svg class="header-icons__icon header-icons__icon--heart" role="img">
                                     <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                        xlink:href="/img/svg/map.svg#svg-heart"></use>
+                                        xlink:href="./img/svg/map.svg#svg-heart"></use>
                                 </svg>
                                 <span>Избранное</span>
                             </a>
@@ -132,7 +132,7 @@
                             <a href="/" class="header-icons__link">
                                 <svg class="header-icons__icon header-icons__icon--cart" role="img">
                                     <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                        xlink:href="/img/svg/map.svg#svg-cart"></use>
+                                        xlink:href="./img/svg/map.svg#svg-cart"></use>
                                 </svg>
                                 <span class="js-cart-text">Корзина</span>
                             </a>
@@ -140,7 +140,7 @@
                     </ul>
                     <div class="mobile-search js-open-catalog">
                         <svg class="header-icons__icon header-icons__icon--search-mobile" role="img">
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/img/svg/map.svg#svg-search">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./img/svg/map.svg#svg-search">
                             </use>
                         </svg>
                     </div>
@@ -435,7 +435,7 @@
                         <button type="submit" class="c-btn c-btn--primary c-btn--search">
                             <svg class="search-icon" role="img">
                                 <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                    xlink:href="/img/svg/map.svg#svg-search"></use>
+                                    xlink:href="./img/svg/map.svg#svg-search"></use>
                             </svg>
                         </button>
                     </form>
@@ -551,6 +551,12 @@
             <div class="container">
                 <p class="order__title">Оформление заказа</p>
                 <div class="order-steps">
+
+                    <!-- TODO: Классы для управления состоянием блока
+                      basket-step--open - блок активен и раскрыт
+                      basket-step--disable - блок недоступен и свернут
+                      basket-step--complete - блок заполнен и свернут
+                       -->
                     <section class="order-steps-item registration-section js-type-form basket-step--open"
                         data-form-type="type-1">
                         <div class="container">
@@ -834,6 +840,23 @@
                         </div>
                     </section>
                     <section class="order-steps-item basket-step--open">
+
+                        <!-- TODO: Удалить на этапе программирования -->
+                        <div class="js-test-drop" style="position: absolute; right: 20px; cursor: pointer;">Свернуть
+                            блок</div>
+                        <script>
+                            (() => {
+                                const test = document.querySelector('.js-test-drop');
+
+                                test.addEventListener('click', () => {
+                                    test.parentElement.classList.remove('basket-step--open')
+                                    test.parentElement.classList.add('basket-step--disable')
+                                    test.remove()
+                                })
+                            })()
+                        </script>
+                        <!-- END DELTE -->
+
                         <div class="container">
                             <div class="order-steps__title">
                                 <div class="order-steps__pic">
@@ -921,8 +944,9 @@
                                                     type="text">
                                                 <label for="address">Город, улица, номер дома*</label>
                                             </div>
-                                            <a class="address-details__map" href="https://yandex.ru/maps/"
-                                                target="_blank">Указать на карте</a>
+                                            <span class="address-details__map" 
+                                                target="_blank" data-bs-toggle="modal"
+                                                data-bs-target="#modalMap">Указать на карте</span>
                                             <div class="form-input">
                                                 <input id="frontDoor" name="frontDoor" type="number"
                                                     class="form-control">
@@ -945,13 +969,13 @@
                                     </div>
 
                                     <div id="warning-free" class="address-warning address-warning--free warning">
-                                        <img src="/img/svg/warning.svg" alt="warning" class="js-tooltip"
+                                        <img src="./img/svg/warning.svg" alt="warning" class="js-tooltip"
                                             data-bs-title="Бесплатная доставка не распространяется на баллоны. Доставка и обмен гелиевых баллонов согласовывается с менеджером."
                                             data-bs-custom-class="free-delivery-tooltip">
                                         До бесплатной доставки осталось пополнить Корзину на 2500 ₽.
                                     </div>
                                     <div id="warning-region" class="address-warning address-warning--region warning">
-                                        <img src="/img/svg/warning.svg" alt="warning">
+                                        <img src="./img/svg/warning.svg" alt="warning">
                                         Доставка в регионы РФ осуществляется после 100% предоплаты заказа. После
                                         оформления заказа с вами свяжется менеджер для уточнения условий оплаты и
                                         доставки.
@@ -1019,7 +1043,7 @@
                                             </div>
                                         </div>
                                         <div class="bank-warning warning">
-                                            <img src="/img/svg/warning.svg" id="icon-tooltip-free" alt="warning">
+                                            <img src="./img/svg/warning.svg" id="icon-tooltip-free" alt="warning">
                                             Вы можете выслать реквизиты на&nbsp;
                                             <a href="info@nn-shar.ru" target="_blank">info@nn-shar.ru</a>
                                         </div>
@@ -1084,7 +1108,10 @@
                             </div>
                             <div class="basket-calculations basket-result-price">
                                 <p class="basket-result-price__head">Розничная наценка
-                                    <img id="icon-tooltip" src="/img/svg/info.svg" alt="info">
+                                    <img id="icon-tooltip" class="js-tooltip" src="./img/svg/info.svg" alt="info"
+                                        data-bs-custom-class="price-tooltip price-tooltip--arrow-right"
+                                        data-bs-offset="-365,5"
+                                        data-bs-title="Ваша сумма покупки составила менее 1000₽, добавьте товаров до 1000₽ , чтобы получить оптовую цену, указанную на сайте, или продолжите  оформление заказа по розничной цене">
                                 </p>
                                 <p class="basket-result-price__numb" id="basket-retail">120,6 ₽</p>
                             </div>
@@ -1104,8 +1131,15 @@
                     </section>
                 </div>
             </div>
+            <div class="modal fade" id="modalMap" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div id="map"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-
+       
         <!-- Content end -->
 
     </main>
@@ -1120,7 +1154,7 @@
                     <li class="header-icons__item">
                         <a href="/" class="header-icons__link">
                             <svg class="header-icons__icon header-icons__icon--home" role="img">
-                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/img/svg/map.svg#svg-home">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./img/svg/map.svg#svg-home">
                                 </use>
                             </svg>
                             <span>Главная</span>
@@ -1156,7 +1190,7 @@
                         <div class="header-icons__count-cart js-count-cart">2</div>
                         <a href="/" class="header-icons__link">
                             <svg class="header-icons__icon header-icons__icon--cart" role="img">
-                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/img/svg/map.svg#svg-cart">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./img/svg/map.svg#svg-cart">
                                 </use>
                             </svg>
                             <span class="js-cart-text">Корзина</span>
@@ -1165,7 +1199,7 @@
                     <li class="header-icons__item">
                         <a href="/" class="header-icons__link">
                             <svg class="header-icons__icon header-icons__icon--heart" role="img">
-                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/img/svg/map.svg#svg-heart">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./img/svg/map.svg#svg-heart">
                                 </use>
                             </svg>
                             <span>Избранное</span>
@@ -1174,7 +1208,7 @@
                     <li class="header-icons__item">
                         <a href="/" class="header-icons__link">
                             <svg class="header-icons__icon header-icons__icon--human" role="img">
-                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/img/svg/map.svg#svg-human">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./img/svg/map.svg#svg-human">
                                 </use>
                             </svg>
                             <span>Войти</span>
@@ -1253,12 +1287,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
         integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
         crossorigin="anonymous"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=4dbeb6ec-e11a-474a-8b22-d6a4ba8805bc&lang=ru_RU"
+        type="text/javascript"></script>
     <script defer src="https://unpkg.com/imask"></script>
     <script src="./js/common.js"></script>
     <script defer src="./js/validate.js"></script>
-    <script src="./js/basket/second-step.js"></script>
     <script src="./js/registration.js"></script>
     <script src="./js/basket/tooltip.js"></script>
+    <script src="./js/order/map.js"></script>
 </body>
 
 </html>

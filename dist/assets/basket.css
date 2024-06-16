@@ -41,7 +41,7 @@
   cursor: pointer;
 }
 .basket__clean::before {
-  content: url("/img/svg/close-grey.svg");
+  content: url("../img/svg/close-grey.svg");
 }
 .basket__warning {
   margin: 16px auto;
@@ -71,7 +71,7 @@
   font-weight: 400;
 }
 .basket__warning::before {
-  content: url("/img/svg/warning.svg");
+  content: url("../img/svg/warning.svg");
   padding-right: 7px;
 }
 .basket__warning-text {
@@ -295,7 +295,7 @@
     width: 19%;
   }
 }
-.basket-table-item__price--stroke {
+.basket-table-item__price--old {
   text-decoration: line-through;
 }
 .basket-table-item__price--percent {
@@ -370,8 +370,16 @@
   display: block;
 }
 .basket-table-item.missing .basket-table-count, .basket-table-item.missing .basket-table-item__sum {
-  opacity: 0;
-  pointer-events: none;
+  display: none;
+}
+@media (min-width: 576px) {
+  .basket-table-item.missing .basket-table-count, .basket-table-item.missing .basket-table-item__sum {
+    display: block;
+    visibility: hidden;
+  }
+}
+.basket-table-item.missing .basket-table-item__price {
+  margin-bottom: 0;
 }
 .basket-table-item.missing .basket-table-item__price--missing {
   margin-top: 6px;
@@ -500,4 +508,11 @@
   font-size: 16px;
   font-weight: 700;
   text-align: center;
+}
+
+.table-retail .basket-table-item__price--old {
+  text-decoration: none;
+}
+.table-retail .basket-table-item__price--percent, .table-retail .basket-table-item__price--now {
+  display: none;
 }

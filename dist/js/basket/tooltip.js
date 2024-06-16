@@ -3,12 +3,9 @@ function tooltipInit() {
   const tooltips = document.querySelectorAll(".js-tooltip");
   const tooltipOptions = {
     html: true,
-    placement: "right",
-    offset: [-40, 0]
+    placement: "right"
   };
   tooltips.forEach((el) => {
-    const tooltip = new bootstrap.Tooltip(el, tooltipOptions);
-    el.addEventListener("mouseenter", () => tooltip.show());
-    el.addEventListener("mouseleave", () => tooltip.hide());
+    new bootstrap.Tooltip(el, { ...tooltipOptions, offset: el.getAttribute("data-bs-offset") ?? [-40, 0] });
   });
 }

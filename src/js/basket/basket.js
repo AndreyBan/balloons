@@ -113,7 +113,7 @@
                         <span class="basket-table-item__country">${ el['country_manufacture'] ?? '' }</span>
                     </div>
                     <div class="basket-table-item__price">
-                        <span class="basket-table-item__price--old basket-table-item__price--stroke">${ el['price_discount'] ? el['price_discount'] + '₽' : '' }</span>
+                        <span class="basket-table-item__price--old">${ el['price_discount'] ? el['price_discount'] + '₽' : '' }</span>
                         <span class="basket-table-item__price--percent">${ markup ? '+' + markup + '%' : '' }</span>
                         <span class="basket-table-item__price--now">${ priceWithoutDiscount ?? '' } ₽</span>
                     </div>
@@ -190,19 +190,12 @@
             data-bs-title="Ваша сумма покупки составила менее 1000₽, добавьте товаров до 1000₽ , чтобы получить оптовую цену, указанную на сайте, или продолжите  оформление заказа по розничной цене">`
             : 'Ваша скидка'
 
-        const priceWithoutRetail = document.querySelectorAll('.basket-table-item__price--old')
-        const percentLabel = document.querySelectorAll('.basket-table-item__price--percent')
-        const priceWithRetail = document.querySelectorAll('.basket-table-item__price--now')
-        let display = 'none'
+        const tableWithoutRetail = document.querySelector('.basket-table')
+        const conditionRetail = total.sumWithRetail < 1000
 
-        if (total.sumWithRetail < 1000) {
-            tooltipInit()
-            display = 'inline'
-        }
-
-        priceWithoutRetail.forEach(el => el.classList.toggle('basket-table-item__price--stroke', display !== 'none'))
-        percentLabel.forEach(el => el.style.display = display)
-        priceWithRetail.forEach(el => el.style.display = display)
+        if (conditionRetail) tooltipInit()
+            
+        tableWithoutRetail.classList.toggle('table-retail', !conditionRetail)
     }
 
     function getTotalCount(data) {

@@ -9,12 +9,12 @@
   top: 13px;
   width: 20px;
   height: 20px;
-  background: url("/img/svg/not-visible.svg") 50% 50% no-repeat;
+  background: url("../img/svg/not-visible.svg") 50% 50% no-repeat;
   background-size: 20px;
   cursor: pointer;
 }
 .password-display-icon.show-pass {
-  background: url("/img/svg/eye-visible.svg") 50% 50% no-repeat;
+  background: url("../img/svg/eye-visible.svg") 50% 50% no-repeat;
   background-size: 20px;
 }
 
@@ -197,7 +197,7 @@
   margin-right: 8px;
 }
 .registration-section .accordion-button::after {
-  background-image: url("/img/svg/chevrone-hover.svg");
+  background-image: url("../img/svg/chevrone-hover.svg");
   transform: rotate(0);
   background-size: 13px;
   width: 14px;
@@ -270,7 +270,7 @@
   width: 8px;
   height: 14px;
   margin-top: 3px;
-  background: url("/img/svg/chevrone-gray.svg") 0 50% no-repeat;
+  background: url("../img/svg/chevrone-gray.svg") 0 50% no-repeat;
   right: 0;
   transform: rotate(-90deg);
 }
@@ -312,7 +312,7 @@
 
 .c-btn--yandex {
   background-color: #333333;
-  background-image: url("/img/svg/icon-ya.svg");
+  background-image: url("../img/svg/icon-ya.svg");
   background-position: 16px 50%;
 }
 @media (min-width: 576px) {
@@ -323,7 +323,7 @@
 
 .c-btn--vk {
   background-color: #5181B8;
-  background-image: url("/img/svg/icon-vk.svg");
+  background-image: url("../img/svg/icon-vk.svg");
   background-position: 34px 50%;
 }
 @media (min-width: 576px) {

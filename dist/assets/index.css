@@ -537,6 +537,9 @@
   width: 32px;
   height: 32px;
 }
+.goods-card-favorite:focus {
+  outline: none;
+}
 .goods-card-favorite:before, .goods-card-favorite:after {
   content: "";
   position: absolute;
@@ -554,7 +557,7 @@
   z-index: 2;
   opacity: 0;
 }
-.goods-card-favorite--added:after, .goods-card-favorite:hover:after {
+.goods-card-favorite--added:after {
   background: url("../img/svg/heart-blue.svg") 0 0 no-repeat;
   opacity: 1;
 }

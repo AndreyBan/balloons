@@ -47,6 +47,12 @@
       width: auto;
     }
   }
+  .pagination {
+    margin-top: 16px;
+    @include media(md) {
+      margin-top: 0;
+    }
+  }
 }
 .section-goods {
   margin-top: 40px;

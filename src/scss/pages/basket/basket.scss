@@ -32,7 +32,7 @@
         font-size: 14px;
         font-weight: 400;
         line-height: 18px;
-        color: #74747474;
+        color: #747474;
         display: flex;
         justify-content: center;
         gap: 8px;
@@ -171,6 +171,7 @@
             }
         }
         &-item {
+            width: 100%;
             display: grid;
             grid-template-columns: 25% 124px 1fr 13px;
             grid-template-areas:
@@ -195,42 +196,6 @@
             @include media(xl) {
                 padding: 0 0 0 29px;
             }
-
-            //.basket-desktop-text {
-            //    display: none;
-            //
-            //    @include media(md) {
-            //        display: contents;
-            //    }
-            //}
-
-            //.basket-mobile-text {
-            //    margin-left: 8px;
-            //    display: flex;
-            //    flex-direction: column;
-            //
-            //    @include media(md) {
-            //        display: none;
-            //    }
-            //
-            //    .basket-table-item__price {
-            //        margin: 12px 0 16px;
-            //    }
-            //    .basket-table-item__country {
-            //        margin-top: 12px;
-            //    }
-            //}
-
-            //.basket-mobile-prices {
-            //    display: flex;
-            //    align-items: center;
-            //    gap: 24px;
-            //
-            //    @include media(md) {
-            //        display: none;
-            //    }
-            //}
-
 
             div {
                 &:not(.basket-table-item__numb, .basket-table-item__img, .basket-table-item__name) {
@@ -369,9 +334,16 @@
                     width: calc(15% + 29px);
                 }
             }
+            &__favorite {
+                width: 21px;
+                height: 21px;
+            }
             &__delete {
                 width: 10px;
                 height: 10px;
+            }
+            &__delete,
+            &__favorite {
                 cursor: pointer;
                 right: 0;
                 position: absolute;

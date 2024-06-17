@@ -18,6 +18,8 @@
         openCatalog()
         mobileShowCategory()
         toTop()
+        tooltipInit()
+        addFavorite()
     }
 
     /**
@@ -86,7 +88,7 @@
                     // Добавляем новые подсказки из полученного результата запроса
                     result.forEach((item) => {
                         const html = `<li class="header-search-hint__item">
-                                <a href="#${ item.link }" class="header-search-hint__link">${ item.name }</a>
+                                <a href="#${item.link}" class="header-search-hint__link">${item.name}</a>
                             </li>`
                         hintContent.insertAdjacentHTML('afterbegin', html)
                     })
@@ -157,7 +159,7 @@
         categories.forEach((el) => {
             el.addEventListener('mouseenter', () => {
                 const category = el.getAttribute('data-category')
-                const content = document.querySelector(`.catalog-category-content[data-content-category='${ category }']`)
+                const content = document.querySelector(`.catalog-category-content[data-content-category='${category}']`)
 
                 if (content) {
                     content.classList.add('show')
@@ -205,6 +207,55 @@
                 document.body.classList.remove('header-fixed')
             }
         }
+    }
+
+    /**
+     * Добавление в избранное
+     */
+    function addFavorite() {
+        const favoriteProduct = document.querySelectorAll('.goods-card-favorite')
+        const favoritePage = document.querySelectorAll('.favorite-icon')
+
+        // TODO: При необходимости можно реализовать через localStorage и добавить функционал тут
+
+        favoriteProduct?.forEach(el => {
+            el.addEventListener('click', () => el.classList.toggle('goods-card-favorite--added'))
+        })
+        favoritePage?.forEach(el => {
+            el.addEventListener('click', () => el.classList.toggle('favorite-icon--added'))
+        })
+
+    }
+
+    function tooltipInit() {
+        const tooltips = document.querySelectorAll('.js-tooltip')
+        const tooltipOptions = {
+            html: true,
+            placement: 'right'
+        }
+        tooltips.forEach(el => {
+            new bootstrap.Tooltip(el, { ...tooltipOptions, offset: el.getAttribute('data-bs-offset') ?? [-40, 0] })
+        })
+
+        document.querySelectorAll('.js-favorite-tooltip')?.forEach(el => {
+            let toolptip;
+
+            el.addEventListener('click', (e) => {
+                e.stopImmediatePropagation()
+                e.preventDefault()
+                if (!bootstrap.Tooltip.getInstance(el)) {
+                    toolptip = new bootstrap.Tooltip(el, { ...tooltipOptions, trigger: 'click', offset: el.getAttribute('data-bs-offset') ?? [-40, 0] })
+                    
+                }
+                el.focus()
+                toolptip.show()
+            })
+            el.addEventListener('blur', () => {
+                if (toolptip) {
+                    setTimeout(() => toolptip.hide(), 100)
+                }
+            })
+        })
     }
 
     /********************************* Service scripts *****************************************/

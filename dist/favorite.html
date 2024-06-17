@@ -8,13 +8,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./scss/bootstrap.scss">
-    <link rel="stylesheet" href="./scss/style.scss">
-    <link rel="stylesheet" href="./scss/pages/basket/basket.scss">
-    <link rel="stylesheet" href="./scss/pages/favorite/favorite.scss">
+    
+    
+    
+    
 
 
     <title>Избранное</title>
+  <script async type="module" crossorigin src="./js/favorite.js"></script>
+  <link rel="stylesheet" href="./assets/favorite.css">
+  <link rel="stylesheet" href="./assets/style.css">
+  <link rel="stylesheet" href="./assets/basket.css">
 </head>
 
 <body class="wrapper">
@@ -63,7 +67,7 @@
             <div class="container">
                 <div class="header-row">
                     <a class="header-logo" href="/">
-                        <img src="/img/svg/logo.svg" alt="" class="header-logo__img">
+                        <img src="./img/svg/logo.svg" alt="" class="header-logo__img">
                     </a>
                     <button class="c-btn c-btn--primary c-btn--catalog js-open-catalog">
                         <span class="catalog-lines"><span class="catalog-lines__line"></span></span>
@@ -99,7 +103,7 @@
                         <button type="submit" class="c-btn c-btn--primary c-btn--search">
                             <svg class="search-icon" role="img">
                                 <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                    xlink:href="/img/svg/map.svg#svg-search"></use>
+                                    xlink:href="./img/svg/map.svg#svg-search"></use>
                             </svg>
                         </button>
                     </form>
@@ -108,7 +112,7 @@
                             <a href="/" class="header-icons__link">
                                 <svg class="header-icons__icon header-icons__icon--human" role="img">
                                     <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                        xlink:href="/img/svg/map.svg#svg-human"></use>
+                                        xlink:href="./img/svg/map.svg#svg-human"></use>
                                 </svg>
                                 <span>Войти</span>
                             </a>
@@ -117,7 +121,7 @@
                             <a href="/" class="header-icons__link">
                                 <svg class="header-icons__icon header-icons__icon--heart" role="img">
                                     <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                        xlink:href="/img/svg/map.svg#svg-heart"></use>
+                                        xlink:href="./img/svg/map.svg#svg-heart"></use>
                                 </svg>
                                 <span>Избранное</span>
                             </a>
@@ -127,7 +131,7 @@
                             <a href="/" class="header-icons__link">
                                 <svg class="header-icons__icon header-icons__icon--cart" role="img">
                                     <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                        xlink:href="/img/svg/map.svg#svg-cart"></use>
+                                        xlink:href="./img/svg/map.svg#svg-cart"></use>
                                 </svg>
                                 <span class="js-cart-text">Корзина</span>
                             </a>
@@ -135,7 +139,7 @@
                     </ul>
                     <div class="mobile-search js-open-catalog">
                         <svg class="header-icons__icon header-icons__icon--search-mobile" role="img">
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/img/svg/map.svg#svg-search">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./img/svg/map.svg#svg-search">
                             </use>
                         </svg>
                     </div>
@@ -430,7 +434,7 @@
                         <button type="submit" class="c-btn c-btn--primary c-btn--search">
                             <svg class="search-icon" role="img">
                                 <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                    xlink:href="/img/svg/map.svg#svg-search"></use>
+                                    xlink:href="./img/svg/map.svg#svg-search"></use>
                             </svg>
                         </button>
                     </form>
@@ -548,7 +552,7 @@
                     <div class="basket-table-item js-goods-card" data-name="Шар (18''/46 см) Сердце, Голубой"
                         data-price="435" data-number="22053" data-count="1" data-id="1">
                         <div class="basket-table-item__img">
-                            <img src="/img/basket-picture.png" alt="img">
+                            <img src="./img/basket-picture.png" alt="img">
                         </div>
                         <div class="basket-table-item__article">22053</div>
                         <div class="basket-table-item__name">
@@ -567,14 +571,14 @@
                             </div>
                         </div>
                         <div class="item-added-cart">
-                            <img src="/img/svg/cart-gray.svg" alt="cart">
+                            <img src="./img/svg/cart-gray.svg" alt="cart">
                         </div>
                         <div class="basket-table-item__favorite favorite-icon favorite-icon--added"></div>
                     </div>
                     <div class="basket-table-item js-goods-card" data-name="Шар (18''/46 см) Сердце, Голубой"
                         data-price="435" data-number="22053" data-count="1" data-id="2">
                         <div class="basket-table-item__img">
-                            <img src="/img/basket-picture.png" alt="img">
+                            <img src="./img/basket-picture.png" alt="img">
                         </div>
                         <div class="basket-table-item__article">22053</div>
                         <div class="basket-table-item__name">
@@ -594,13 +598,13 @@
                         </div>
                         <div class="item-added-cart">
                             <!-- TODO: Если иконка не нужна добавляем класс d-none на img -->
-                            <img src="/img/svg/cart-gray.svg" alt="cart" class="d-none">
+                            <img src="./img/svg/cart-gray.svg" alt="cart" class="d-none">
                         </div>
                         <div class="basket-table-item__favorite favorite-icon favorite-icon--added"></div>
                     </div>
                     <div class="basket-table-item missing">
                         <div class="basket-table-item__img">
-                            <img src="/img/basket-picture.png" alt="img">
+                            <img src="./img/basket-picture.png" alt="img">
                         </div>
                         <div class="basket-table-item__article">22053</div>
                         <div class="basket-table-item__name">
@@ -617,7 +621,7 @@
                     </div>
                     <div class="basket-table-item missing">
                         <div class="basket-table-item__img">
-                            <img src="/img/basket-picture.png" alt="img">
+                            <img src="./img/basket-picture.png" alt="img">
                         </div>
                         <div class="basket-table-item__article">22053</div>
                         <div class="basket-table-item__name">
@@ -684,7 +688,7 @@
                     <li class="header-icons__item">
                         <a href="/" class="header-icons__link">
                             <svg class="header-icons__icon header-icons__icon--home" role="img">
-                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/img/svg/map.svg#svg-home">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./img/svg/map.svg#svg-home">
                                 </use>
                             </svg>
                             <span>Главная</span>
@@ -720,7 +724,7 @@
                         <div class="header-icons__count-cart js-count-cart">2</div>
                         <a href="/" class="header-icons__link">
                             <svg class="header-icons__icon header-icons__icon--cart" role="img">
-                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/img/svg/map.svg#svg-cart">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./img/svg/map.svg#svg-cart">
                                 </use>
                             </svg>
                             <span class="js-cart-text">Корзина</span>
@@ -729,7 +733,7 @@
                     <li class="header-icons__item">
                         <a href="/" class="header-icons__link">
                             <svg class="header-icons__icon header-icons__icon--heart" role="img">
-                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/img/svg/map.svg#svg-heart">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./img/svg/map.svg#svg-heart">
                                 </use>
                             </svg>
                             <span>Избранное</span>
@@ -738,7 +742,7 @@
                     <li class="header-icons__item">
                         <a href="/" class="header-icons__link">
                             <svg class="header-icons__icon header-icons__icon--human" role="img">
-                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/img/svg/map.svg#svg-human">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./img/svg/map.svg#svg-human">
                                 </use>
                             </svg>
                             <span>Войти</span>

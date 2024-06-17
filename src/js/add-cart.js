@@ -13,8 +13,6 @@
         deleteItem()
         setCount()
 
-        // TODO: Чтобы задизейблить блок добавить класс basket-step--disable, чтобы блок раскрылся добавить класс basket-step--open
-        // TODO: Добавить класс basket-step--complete, чтобы блок выглядел как заполненный
         // TODO: При программировании передать true
         refreshCart()
     }

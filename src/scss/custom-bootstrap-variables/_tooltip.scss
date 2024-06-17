@@ -58,7 +58,15 @@
 //  border-bottom: $sizeTriangle solid $colorTriangle;
 //  border-left: $sizeTriangle solid $colorTriangle;
 //}
-
+.header-fixed .tooltip.favorite-tooltip .tooltip-arrow {
+  opacity: 0;
+}
+.tooltip.goods-favorite-tooltip .tooltip-arrow {
+  opacity: 0;
+  @include media(md) {
+    opacity: 1;
+  }
+}
 .tooltip.price-tooltip {
   --bs-tooltip-max-width: 304px;
   --bs-tooltip-opacity: 1;
@@ -87,8 +95,8 @@
         left: unset;
       }
       @media screen and (min-width: 353px) and (max-width: 767px) {
-          left: 130px;
-          right: unset;
+          left: auto;
+          right: auto;
        }
     }
     &::before {

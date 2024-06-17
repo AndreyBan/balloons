@@ -223,6 +223,10 @@
   width: 32px;
   height: 32px;
 
+  &:focus {
+    outline: none;
+  }
+
   &:before, &:after {
     content: '';
     position: absolute;
@@ -243,7 +247,7 @@
     opacity: 0;
   }
 
-  &--added, &:hover {
+  &--added {
     &:after {
       background: url($imgPath + "/svg/heart-blue.svg") 0 0 no-repeat;
       opacity: 1;

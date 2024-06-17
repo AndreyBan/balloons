@@ -8048,7 +8048,8 @@ textarea.form-control-lg {
   --bs-pagination-hover-color: #fff;
   column-gap: 18px;
   justify-content: center;
-  margin-top: 16px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 @media (min-width: 768px) {
   .pagination {
@@ -8256,6 +8257,17 @@ textarea.form-control-lg {
 .tooltip.catalog-tooltip .tooltip-arrow:after {
   top: 7px;
 }
+.header-fixed .tooltip.favorite-tooltip .tooltip-arrow {
+  opacity: 0;
+}
+.tooltip.goods-favorite-tooltip .tooltip-arrow {
+  opacity: 0;
+}
+@media (min-width: 768px) {
+  .tooltip.goods-favorite-tooltip .tooltip-arrow {
+    opacity: 1;
+  }
+}
 .tooltip.price-tooltip {
   --bs-tooltip-max-width: 304px;
   --bs-tooltip-opacity: 1;
@@ -8289,8 +8301,8 @@ textarea.form-control-lg {
 }
 @media screen and (min-width: 353px) and (max-width: 767px) {
   .tooltip.price-tooltip .tooltip-arrow::before, .tooltip.price-tooltip .tooltip-arrow::after {
-    left: 130px;
-    right: unset;
+    left: auto;
+    right: auto;
   }
 }
 .tooltip.price-tooltip .tooltip-arrow::before {

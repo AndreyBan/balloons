@@ -16,7 +16,8 @@
   --bs-pagination-hover-color: #fff;
   column-gap: 18px;
   justify-content: center;
-  margin-top: 16px;
+  margin-top: 0;
+  margin-bottom: 0;
 
   @include media(md) {
     margin-top: 0;

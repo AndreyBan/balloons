@@ -9,6 +9,8 @@
     openCatalog();
     mobileShowCategory();
     toTop();
+    tooltipInit();
+    addFavorite();
   }
   function toTop() {
     const btnToTop = document.querySelector(".js-to-up");
@@ -132,6 +134,44 @@
         document.body.classList.remove("header-fixed");
       }
     }
+  }
+  function addFavorite() {
+    const favoriteProduct = document.querySelectorAll(".goods-card-favorite");
+    const favoritePage = document.querySelectorAll(".favorite-icon");
+    favoriteProduct == null ? void 0 : favoriteProduct.forEach((el) => {
+      el.addEventListener("click", () => el.classList.toggle("goods-card-favorite--added"));
+    });
+    favoritePage == null ? void 0 : favoritePage.forEach((el) => {
+      el.addEventListener("click", () => el.classList.toggle("favorite-icon--added"));
+    });
+  }
+  function tooltipInit() {
+    var _a;
+    const tooltips = document.querySelectorAll(".js-tooltip");
+    const tooltipOptions = {
+      html: true,
+      placement: "right"
+    };
+    tooltips.forEach((el) => {
+      new bootstrap.Tooltip(el, { ...tooltipOptions, offset: el.getAttribute("data-bs-offset") ?? [-40, 0] });
+    });
+    (_a = document.querySelectorAll(".js-favorite-tooltip")) == null ? void 0 : _a.forEach((el) => {
+      let toolptip;
+      el.addEventListener("click", (e) => {
+        e.stopImmediatePropagation();
+        e.preventDefault();
+        if (!bootstrap.Tooltip.getInstance(el)) {
+          toolptip = new bootstrap.Tooltip(el, { ...tooltipOptions, trigger: "click", offset: el.getAttribute("data-bs-offset") ?? [-40, 0] });
+        }
+        el.focus();
+        toolptip.show();
+      });
+      el.addEventListener("blur", () => {
+        if (toolptip) {
+          setTimeout(() => toolptip.hide(), 100);
+        }
+      });
+    });
   }
   function getNextPrevElements(el, next, arr = []) {
     let checkEl = next ? el == null ? void 0 : el.nextElementSibling : el == null ? void 0 : el.previousElementSibling;

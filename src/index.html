@@ -111,8 +111,11 @@
                             <span>Войти</span>
                         </a>
                     </li>
+                    <!-- TODO: Пока юзер не авторизован на все иконки с избранным добавлять класс js-favorite-tooltip c data аттрибутами и tabindex -->
                     <li class="header-icons__item">
-                        <a href="/" class="header-icons__link">
+                        <a href="/" class="header-icons__link  js-favorite-tooltip"  tabindex="0" data-bs-custom-class="price-tooltip favorite-tooltip"
+                        data-bs-title="<a href='./registration.html'>Авторизуйтесь</a>, чтобы добавить
+                        <br>товар в избранное">
                             <svg class="header-icons__icon header-icons__icon--heart" role="img">
                                 <use xmlns:xlink="http://www.w3.org/1999/xlink"
                                      xlink:href="/img/svg/map.svg#svg-heart"></use>
@@ -714,7 +717,10 @@
                                         </div>
                                     </div>
                                     <!-- TODO: Добавляем класс goods-card-favorite--added, если есть в избранном -->
-                                    <div class="goods-card-favorite"></div>
+                                     <!-- TODO: Пока юзер не авторизован на все иконки с избранным добавлять класс js-favorite-tooltip c data аттрибутами и tabindex -->
+                                    <div tabindex="0" class="goods-card-favorite js-favorite-tooltip" data-bs-custom-class="price-tooltip goods-favorite-tooltip"
+                                    data-bs-title="<a href='./registration/'>Авторизуйтесь</a>, чтобы добавить
+                                    <br>товар в избранное "></div>
                                 </div>
                                 <img src="/img/goods.png" class="goods-card__img" alt="text-image">
                                 <div class="goods-card__price">
@@ -1650,7 +1656,9 @@
                     </a>
                 </li>
                 <li class="header-icons__item">
-                    <a href="/" class="header-icons__link">
+                    <a href="/" class="header-icons__link  js-favorite-tooltip"  tabindex="0" data-bs-custom-class="price-tooltip"
+                    data-bs-title="<a href='./registration.html'>Авторизуйтесь</a>, чтобы добавить
+                    <br>товар в избранное">
                         <svg class="header-icons__icon header-icons__icon--heart" role="img">
                             <use xmlns:xlink="http://www.w3.org/1999/xlink"
                                  xlink:href="/img/svg/map.svg#svg-heart"></use>

@@ -244,7 +244,12 @@
                 e.stopImmediatePropagation()
                 e.preventDefault()
                 if (!bootstrap.Tooltip.getInstance(el)) {
-                    toolptip = new bootstrap.Tooltip(el, { ...tooltipOptions, trigger: 'click', offset: el.getAttribute('data-bs-offset') ?? [-40, 0] })
+                    toolptip = new bootstrap.Tooltip(el, {
+                         ...tooltipOptions,
+                          trigger: 'click',
+                          title: "<a href='./registration/'>Авторизуйтесь</a>, чтобы добавить<br>товар в избранное ",
+                           offset: el.getAttribute('data-bs-offset') ?? [-40, 0]
+                         })
                     
                 }
                 el.focus()

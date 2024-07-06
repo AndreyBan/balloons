@@ -7986,6 +7986,16 @@ textarea.form-control-lg {
   color: var(--color-primary);
   box-shadow: 0 0 0 2px var(--color-primary);
 }
+.c-btn--info {
+  color: #333;
+  background-color: #D8E2FE;
+  padding: 0 20px;
+  transition-duration: 0.2s;
+}
+.c-btn--info:hover {
+  transition-duration: 0.2s;
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
 .c-btn--catalog {
   order: -1;
   border: 1px solid transparent;

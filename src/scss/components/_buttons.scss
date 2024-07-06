@@ -40,6 +40,18 @@
     }
   }
 
+  &--info {
+    color: #333;
+    background-color:#D8E2FE;
+    padding: 0 20px;
+    transition-duration: .2s;
+
+    &:hover {
+      transition-duration: .2s;
+      box-shadow: 0 0 0 1px var(--color-primary);
+    }
+  }
+
   &--catalog {
     order: -1;
     border: 1px solid transparent;

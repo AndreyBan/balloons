@@ -8,12 +8,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./scss/bootstrap.scss">
-    <link rel="stylesheet" href="./scss/style.scss">
-    <link rel="stylesheet" href="./scss/pages/basket/basket.scss">
+    
+    
+    
 
 
-    <title>Корзина</title>
+    <title>Заказы</title>
+  <script async type="module" crossorigin src="./js/current-order.js"></script>
+  <link rel="stylesheet" href="./assets/current-order.css">
+  <link rel="stylesheet" href="./assets/style.css">
 </head>
 
 <body class="wrapper">
@@ -62,7 +65,7 @@
             <div class="container">
                 <div class="header-row">
                     <a class="header-logo" href="/">
-                        <img src="/img/svg/logo.svg" alt="" class="header-logo__img">
+                        <img src="./img/svg/logo.svg" alt="" class="header-logo__img">
                     </a>
                     <button class="c-btn c-btn--primary c-btn--catalog js-open-catalog">
                         <span class="catalog-lines"><span class="catalog-lines__line"></span></span>
@@ -98,7 +101,7 @@
                         <button type="submit" class="c-btn c-btn--primary c-btn--search">
                             <svg class="search-icon" role="img">
                                 <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                    xlink:href="/img/svg/map.svg#svg-search"></use>
+                                    xlink:href="./img/svg/map.svg#svg-search"></use>
                             </svg>
                         </button>
                     </form>
@@ -107,7 +110,7 @@
                             <a href="/" class="header-icons__link">
                                 <svg class="header-icons__icon header-icons__icon--human" role="img">
                                     <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                        xlink:href="/img/svg/map.svg#svg-human"></use>
+                                        xlink:href="./img/svg/map.svg#svg-human"></use>
                                 </svg>
                                 <span>Войти</span>
                             </a>
@@ -116,7 +119,7 @@
                             <a href="/" class="header-icons__link">
                                 <svg class="header-icons__icon header-icons__icon--heart" role="img">
                                     <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                        xlink:href="/img/svg/map.svg#svg-heart"></use>
+                                        xlink:href="./img/svg/map.svg#svg-heart"></use>
                                 </svg>
                                 <span>Избранное</span>
                             </a>
@@ -126,7 +129,7 @@
                             <a href="/" class="header-icons__link">
                                 <svg class="header-icons__icon header-icons__icon--cart" role="img">
                                     <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                        xlink:href="/img/svg/map.svg#svg-cart"></use>
+                                        xlink:href="./img/svg/map.svg#svg-cart"></use>
                                 </svg>
                                 <span class="js-cart-text">Корзина</span>
                             </a>
@@ -134,7 +137,7 @@
                     </ul>
                     <div class="mobile-search js-open-catalog">
                         <svg class="header-icons__icon header-icons__icon--search-mobile" role="img">
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/img/svg/map.svg#svg-search">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./img/svg/map.svg#svg-search">
                             </use>
                         </svg>
                     </div>
@@ -429,7 +432,7 @@
                         <button type="submit" class="c-btn c-btn--primary c-btn--search">
                             <svg class="search-icon" role="img">
                                 <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                    xlink:href="/img/svg/map.svg#svg-search"></use>
+                                    xlink:href="./img/svg/map.svg#svg-search"></use>
                             </svg>
                         </button>
                     </form>
@@ -533,22 +536,87 @@
                         <a href="/" class="breadcrumb__link">Главная</a>
                     </li>
                     <li class="breadcrumb-item">
-                        Корзина
+                        <a href="#" class="breadcrumb__link">Личный кабинет</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        Мой кабинет
                     </li>
                 </ol>
             </div>
         </nav>
         <div class="basket">
             <div class="container">
-                <p class="basket__title">Моя корзина</p>
-                <p class="basket__clean js-cart-clean">Очистить корзину</p>
-                <div class="basket__warning">
-                    <p class="basket__warning-text">
-                        Цена, указанная на сайте, действительна для покупок свыше 1 000₽. При покупке до 1 000 ₽
-                        розничная наценка <span class="js-markup"></span>.&nbsp;
-                        <a href="#" class="basket__warning--more">Подробнее</a>
+                <div class="title-wrap">
+                    <p class="basket__title">
+                        Заказ №121212
                     </p>
+                    <!-- TODO: Все статусы. Текст в css -->
+                    <span class="badge-status badge-status-work"></span>
+                    <span class="badge-status badge-status-payment" hidden></span>
+                    <span class="badge-status badge-status-process" hidden></span>
+                    <span class="badge-status badge-status-ready" hidden></span>
+                    <span class="badge-status badge-status-send" hidden></span>
+                    <span class="badge-status badge-status-receive" hidden></span>
+                    <span class="badge-status badge-status-cancel" hidden></span>
                 </div>
+
+                <section class="section-order-top">
+                    <div class="order-info">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="order-info-item">
+                                    <div class="order-info-item__title">Данные получателя</div>
+                                    <div class="order-info-item__text">Константинов Константин Константинович</div>
+                                </div>
+                                <div class="order-info-item">
+                                    <div class="order-info-item__title">Доставка по городу и в регионы</div>
+                                    <div class="order-info-item__text">Доставка по г. Нижнему Новгороду,
+                                        ул. Генерала Зимина д. 35, кв. 5, подъезд 3, этаж 4 </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="order-info-item">
+                                    <div class="order-info-item__title">Способ получения заказа</div>
+                                    <div class="order-info-item__text">Доставка</div>
+                                </div>
+                                <div class="order-info-item">
+                                    <div class="order-info-item__title">Способ оплаты</div>
+                                    <div class="order-info-item__text">Картой при получении</div>
+                                </div>
+                                <div class="order-info-item">
+                                    <div class="order-info-item__title">Комментарий к заказу</div>
+                                    <div class="order-info-item__text">Просьба доставить после 14.00</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-result">
+                        <ul class="order-result-rows">
+                            <li>
+                                <p class="order-result__first-title">Ваш заказ</p>
+                                <p>Товары 36</p>
+                            </li>
+                            <li>
+                                <p>Цена без скидки</p>
+                                <p>23 000 ₽</p>
+                            </li>                        
+                            <li>
+                                <p>Доставка</p>
+                                <p>0 ₽</p>
+                            </li>
+                            <li>
+                                <p class="order-result__total">Итого</p>
+                                <p class="order-result__total">23 000 ₽</p>
+                            </li>
+                        </ul>
+                        <button class="c-btn c-btn--primary c-btn--full-width mb-16">Повторить заказ</button>
+                        <button class="c-btn c-btn--info c-btn--full-width">Отменить заказ</button>
+                    </div>
+
+                    <div class="basket__warning">
+                        Если возникнут вопросы менеджер свяжется с вами.
+                    </div>
+                </section>
                 <div class="basket-table">
                     <div class="basket-table__head">
                         <p class="basket-table__title basket-table__title--numb">№</p>
@@ -559,8 +627,27 @@
                         <p class="basket-table__title basket-table__title--amount">Количество</p>
                         <p class="basket-table__title basket-table__title--sum">Сумма</p>
                     </div>
-
-                    <!-- TODO: Верстка элемента "нет в наличии"  -->
+                    <div class="basket-table-item">
+                        <div class="basket-table-item__numb">1</div>
+                        <div class="basket-table-item__img">
+                            <img src="./img/basket-picture.png" alt="img">
+                        </div>
+                        <div class="basket-table-item__article">22053</div>
+                        <div class="basket-table-item__name">
+                            <span class="basket-table-item__name--article">Артикул: 22053</span>
+                            Шар (18''/46 см) Сердце, Голубой,<br>Макарунс, 1 шт.
+                            <span class="basket-table-item__country">Испания</span>
+                        </div>
+                        <div class="basket-table-item__price">
+                            <span class="basket-table-item__price--old">33,50 ₽</span>
+                            <span class="basket-table-item__price--percent">+30%</span>
+                            <span class="basket-table-item__price--now">43,55 ₽</span>
+                        </div>
+                        <div class="basket-table-count">
+                            1
+                        </div>
+                        <div class="basket-table-item__sum">435,50 ₽</div>
+                    </div>
                     <div class="basket-table-item missing">
                         <div class="basket-table-item__numb">2</div>
                         <div class="basket-table-item__img">
@@ -574,6 +661,9 @@
                         </div>
                         <div class="basket-table-item__price">
                             <span class="basket-table-item__price--missing">нет в наличии</span>
+                            <span class="basket-table-item__price--old">33,50 ₽</span>
+                            <span class="basket-table-item__price--percent">+30%</span>
+                            <span class="basket-table-item__price--now">43,55 ₽</span>
                         </div>
                         <div class="basket-table-count">
                             <div>
@@ -583,31 +673,48 @@
                             </div>
                         </div>
                         <div class="basket-table-item__sum">435,50 ₽</div>
-                        <img class="basket-table-item__delete" src="./img/svg/close-grey.svg" alt="delete">
                     </div>
-
-                </div>
-                <div class="basket-result">
-                    <p class="basket-result__title">Ваша корзина</p>
-                    <div class="basket-result__goods">Товары&nbsp;<span id="basket-amount">0</span></div>
-                    <div class="basket-result-price">
-                        <p class="basket-result-price__head">Цена товара</p>
-                        <p class="basket-result-price__numb" id="basket-price">0 ₽</p>
+                    <div class="basket-table-item">
+                        <div class="basket-table-item__numb">1</div>
+                        <div class="basket-table-item__img">
+                            <img src="./img/basket-picture.png" alt="img">
+                        </div>
+                        <div class="basket-table-item__article">22053</div>
+                        <div class="basket-table-item__name">
+                            <span class="basket-table-item__name--article">Артикул: 22053</span>
+                            Шар (18''/46 см) Сердце, Голубой,<br>Макарунс, 1 шт.
+                            <span class="basket-table-item__country">Испания</span>
+                        </div>
+                        <div class="basket-table-item__price">
+                            <span class="basket-table-item__price--old">33,50 ₽</span>
+                            <span class="basket-table-item__price--percent">+30%</span>
+                            <span class="basket-table-item__price--now">43,55 ₽</span>
+                        </div>
+                        <div class="basket-table-count">
+                            10
+                        </div>
+                        <div class="basket-table-item__sum">435,50 ₽</div>
                     </div>
-                    <div class="basket-result-price">
-                        <p class="basket-result-price__head js-price-title">Розничная наценка
-                            <img class="js-tooltip" src="/img/svg/info.svg" alt="info"
-                                data-bs-custom-class="price-tooltip"
-                                data-bs-title="Ваша сумма покупки составила менее 1000₽, добавьте товаров до 1000₽ , чтобы получить оптовую цену, указанную на сайте, или продолжите  оформление заказа по розничной цене">
-                        </p>
-                        <p class="basket-result-price__numb" id="basket-retail">0 ₽</p>
-                    </div>
-                    <div class="basket-result-sum">
-                        <p class="basket-result-sum__head">Итого</p>
-                        <p class="basket-result-sum__numb" id="basket-sum">0 ₽</p>
-                    </div>
-                    <div class="basket__registr">
-                        <a href="#" class="basket__registr-btn c-btn c-btn--primary">Перейти к оформлению</a>
+                    <div class="basket-table-item">
+                        <div class="basket-table-item__numb">1</div>
+                        <div class="basket-table-item__img">
+                            <img src="./img/basket-picture.png" alt="img">
+                        </div>
+                        <div class="basket-table-item__article">22053</div>
+                        <div class="basket-table-item__name">
+                            <span class="basket-table-item__name--article">Артикул: 22053</span>
+                            Шар (18''/46 см) Сердце, Голубой,<br>Макарунс, 1 шт.
+                            <span class="basket-table-item__country">Испания</span>
+                        </div>
+                        <div class="basket-table-item__price">
+                            <span class="basket-table-item__price--old">33,50 ₽</span>
+                            <span class="basket-table-item__price--percent">+30%</span>
+                            <span class="basket-table-item__price--now">43,55 ₽</span>
+                        </div>
+                        <div class="basket-table-count">
+                            11
+                        </div>
+                        <div class="basket-table-item__sum">435,50 ₽</div>
                     </div>
                 </div>
             </div>
@@ -627,7 +734,7 @@
                     <li class="header-icons__item">
                         <a href="/" class="header-icons__link">
                             <svg class="header-icons__icon header-icons__icon--home" role="img">
-                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/img/svg/map.svg#svg-home">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./img/svg/map.svg#svg-home">
                                 </use>
                             </svg>
                             <span>Главная</span>
@@ -663,7 +770,7 @@
                         <div class="header-icons__count-cart js-count-cart">2</div>
                         <a href="/" class="header-icons__link">
                             <svg class="header-icons__icon header-icons__icon--cart" role="img">
-                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/img/svg/map.svg#svg-cart">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./img/svg/map.svg#svg-cart">
                                 </use>
                             </svg>
                             <span class="js-cart-text">Корзина</span>
@@ -672,7 +779,7 @@
                     <li class="header-icons__item">
                         <a href="/" class="header-icons__link">
                             <svg class="header-icons__icon header-icons__icon--heart" role="img">
-                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/img/svg/map.svg#svg-heart">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./img/svg/map.svg#svg-heart">
                                 </use>
                             </svg>
                             <span>Избранное</span>
@@ -681,7 +788,7 @@
                     <li class="header-icons__item">
                         <a href="/" class="header-icons__link">
                             <svg class="header-icons__icon header-icons__icon--human" role="img">
-                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/img/svg/map.svg#svg-human">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./img/svg/map.svg#svg-human">
                                 </use>
                             </svg>
                             <span>Войти</span>
@@ -761,8 +868,6 @@
         integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
         crossorigin="anonymous"></script>
     <script src="./js/common.js"></script>
-    <script src="./js/add-cart.js"></script>
-    <script src="./js/basket/basket.js"></script>
 </body>
 
 </html>

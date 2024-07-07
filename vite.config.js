@@ -37,7 +37,7 @@ export default {
                 'order-complete': './src/order-complete.html',
                 favorite: './src/favorite.html',
                 'current-order': './src/current-order.html',
-                'my-order': './src/my-orders.html',
+                'my-orders': './src/my-orders.html',
                 error404: './src/404.html',
                 error500: './src/500.html',
                 common: './src/js/common.js',

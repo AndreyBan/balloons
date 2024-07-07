@@ -1,0 +1,94 @@
+.item-added-cart {
+  width: 10%;
+  position: absolute;
+  right: 15px;
+  top: 52px;
+}
+.item-added-cart img {
+  margin-left: 28px;
+}
+@media (min-width: 768px) {
+  .item-added-cart img {
+    margin-left: 0;
+  }
+}
+@media (min-width: 768px) {
+  .item-added-cart {
+    position: static;
+  }
+}
+@media (min-width: 992px) {
+  .item-added-cart {
+    width: calc(15% + 29px);
+  }
+}
+
+.basket-table-item:first-child {
+  border-top: 1px solid #D8E2FE;
+}
+
+.basket-table {
+  margin-top: 16px;
+}
+@media (min-width: 768px) {
+  .basket-table {
+    margin-top: 20px;
+  }
+}
+@media (min-width: 992px) {
+  .basket-table {
+    margin-top: 56px;
+  }
+}
+
+.basket__clean {
+  margin-top: 41px;
+}
+
+.favorite-bottom {
+  margin-top: 32px;
+}
+@media (min-width: 992px) {
+  .favorite-bottom {
+    margin-top: 40px;
+  }
+}
+
+.basket-table-item.missing div.favorite-icon {
+  opacity: 1;
+}
+
+.loaded .favorite-icon:before, .loaded .favorite-icon:after {
+  display: block;
+}
+
+.favorite-icon {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+.favorite-icon:before, .favorite-icon:after {
+  content: "";
+  display: none;
+  position: absolute;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  transition-duration: 0.2s;
+}
+.favorite-icon:before {
+  background: url("../img/svg/heart-dark.svg") 0 0 no-repeat;
+  background-size: 24px;
+  z-index: 1;
+}
+.favorite-icon:after {
+  background: url("../img/svg/heart-blue.svg") 0 0 no-repeat;
+  background-size: 24px;
+  z-index: 2;
+  opacity: 0;
+}
+.favorite-icon--added:after {
+  background: url("../img/svg/heart-blue.svg") 0 0 no-repeat;
+  background-size: 24px;
+  opacity: 1;
+}

@@ -1,0 +1,135 @@
+html {
+  overflow-y: scroll;
+}
+
+.order-list {
+  margin-bottom: 32px;
+}
+@media (min-width: 768px) {
+  .order-list {
+    margin-bottom: 48px;
+  }
+}
+@media (min-width: 992px) {
+  .order-list {
+    margin-bottom: 56px;
+  }
+}
+.order-list .accordion-item {
+  border-right: 1px solid #F5F5F5;
+  border-left: 1px solid #F5F5F5;
+}
+.order-list .accordion-body {
+  padding: 28px 18px;
+  max-height: 1000px;
+}
+@media (min-width: 768px) {
+  .order-list .accordion-body {
+    padding: 28px 32px;
+  }
+}
+.order-list .accordion-header {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.order-list .accordion-item:last-of-type .accordion-button.collapsed,
+.order-list .accordion-item:last-of-type .accordion-body {
+  border-bottom: 1px solid #F5F5F5;
+}
+.order-list .accordion-button:not(.collapsed)::after {
+  background-image: url(../img/svg/chevrone-right-bold-blue.svg);
+}
+.order-list .accordion-button {
+  padding: 12px 32px;
+  border-radius: 0;
+}
+.order-list .accordion-button.collapsed {
+  border-top: 1px solid #F5F5F5;
+}
+.order-list .accordion-button.collapsed::after {
+  color: var(--color-secondary);
+}
+.order-list .accordion-button:not(.collapsed) {
+  background-color: var(--color-secondary);
+}
+.order-list .accordion-button::after {
+  background-size: 10px;
+  width: 14px;
+  height: 16px;
+  right: 24px;
+  position: absolute;
+}
+
+.order-info-row {
+  display: grid;
+}
+@media (min-width: 768px) {
+  .order-info-row {
+    grid-template: auto/180px 1fr;
+  }
+}
+.order-info-row :not(:last-child) {
+  margin-bottom: 12px;
+}
+.order-info-row .order-info-item:nth-child(even) {
+  font-weight: 700;
+}
+
+.button-group {
+  margin-top: 24px;
+  display: grid;
+  row-gap: 12px;
+}
+@media (min-width: 768px) {
+  .button-group {
+    max-width: 75%;
+    grid-template: auto/1fr 1fr;
+    row-gap: 24px;
+    column-gap: 24px;
+  }
+}
+
+.modal-body {
+  padding: 32px 24px;
+}
+
+.modal-content {
+  border-radius: 30px;
+  max-width: 100%;
+}
+@media (min-width: 768px) {
+  .modal-content {
+    max-width: 314px;
+  }
+}
+
+.modal-title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  margin-bottom: 12px;
+}
+@media (min-width: 768px) {
+  .modal-title {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
+
+.btn-close {
+  position: absolute;
+  right: 20px;
+  top: 12px;
+  font-size: 12px;
+}
+
+.modal-btn-row {
+  display: grid;
+  justify-content: center;
+  grid-template: 1fr/auto auto;
+  column-gap: 32px;
+}
+.modal-btn-row .c-btn {
+  padding: 0 25px;
+}

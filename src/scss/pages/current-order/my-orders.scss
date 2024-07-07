@@ -1,0 +1,148 @@
+@use "../../variables" as *;
+
+$margin: 32px;
+
+html {
+    overflow-y: scroll;
+}
+
+.order-list {
+    margin-bottom: 32px;
+
+    @include media(md) {
+        margin-bottom: 48px;
+    }
+
+    @include media(lg) {
+        margin-bottom: 56px;
+    }
+
+    .accordion-item {
+        border-right: 1px solid #F5F5F5;
+        border-left: 1px solid #F5F5F5;
+    }
+
+    .accordion-body {
+        padding: 28px 18px;
+        max-height: 1000px;
+
+        @include media(md) {
+            padding: 28px $margin;
+        }
+    }
+
+    .accordion-header {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .accordion-item:last-of-type {
+
+        .accordion-button.collapsed,
+        .accordion-body {
+            border-bottom: 1px solid #F5F5F5;
+        }
+    }
+    .accordion-button:not(.collapsed)::after {
+        background-image: url(/img/svg/chevrone-right-bold-blue.svg);
+    }
+    .accordion-button {
+        padding: 12px $margin;
+        border-radius: 0;
+
+        &.collapsed {
+            border-top: 1px solid #F5F5F5;
+
+            &::after {
+                color: var(--color-secondary);
+            }
+        }
+
+        &:not(.collapsed) {
+            background-color: var(--color-secondary);
+        }
+
+        &::after {
+            background-size: 10px;
+            width: 14px;
+            height: 16px;
+            right: 24px;
+            position: absolute;
+        }
+    }
+}
+
+.order-info {
+    &-row {
+        display: grid;
+
+        @include media(md) {
+            grid-template: auto / 180px 1fr;
+        }
+
+        :not(:last-child) {
+            margin-bottom: 12px;
+        }
+
+        .order-info-item:nth-child(even) {
+            font-weight: 700;
+        }
+    }
+}
+
+.button-group {
+    margin-top: 24px;
+    display: grid;
+    row-gap: 12px;
+
+    @include media (md) {
+        max-width: 75%;
+        grid-template: auto / 1fr 1fr;
+        row-gap: 24px;
+        column-gap: 24px;
+    }
+}
+
+.modal-body {
+    padding: 32px 24px;
+}
+
+.modal-content {
+    border-radius: 30px;
+    max-width: 100%;
+
+    @include media (md) {
+        max-width: 314px;
+    }
+}
+
+.modal-title {
+    text-align: center;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 12px;
+
+    @include media (md) {
+        font-size: 20px;
+        line-height: 24px;
+    }
+}
+
+.btn-close {
+    position: absolute;
+    right: 20px;
+    top: 12px;
+    font-size: 12px;
+}
+
+.modal-btn-row {
+    display: grid;
+    justify-content: center;
+    grid-template: 1fr / auto auto;
+    column-gap: 32px;
+
+    .c-btn {
+        padding: 0 25px;
+    }
+}

@@ -321,7 +321,7 @@
     width: 100%;
 
     &.show {
-      display: flex;
+      display: flex !important;
     }
   }
 

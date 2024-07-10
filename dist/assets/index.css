@@ -632,7 +632,7 @@
   width: 100%;
 }
 .goods-card-buy__label.show {
-  display: flex;
+  display: flex !important;
 }
 .goods-card-buy__count {
   position: relative;

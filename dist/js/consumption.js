@@ -1,1 +1,1 @@
-/* empty css                        */const consumption = "";
+/* empty css                            *//* empty css                        */const consumption = "";

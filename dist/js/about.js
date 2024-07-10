@@ -1,1 +1,1 @@
-/* empty css                        */const about = "";
+/* empty css                            *//* empty css                        */const about = "";

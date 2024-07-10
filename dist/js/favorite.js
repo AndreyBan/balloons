@@ -1,1 +1,1 @@
-/* empty css                        *//* empty css                         */const favorite = "";
+/* empty css                            *//* empty css                        *//* empty css                         */const favorite = "";

@@ -1,1 +1,1 @@
-/* empty css                        */const detail = "";
+/* empty css                            *//* empty css                        */const detail = "";

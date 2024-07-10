@@ -10,10 +10,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     
     
-    
 
     <title>Balloons</title>
-  <script async type="module" crossorigin src="./js/index.js"></script>
+
+     <!-- TODO: Важно!!!
+       на всех страницах где есть в данном теге head подключение скриптов вида 
+       <script async type="module" crossorigin src="./js/index.js"></script> 
+       с аттрибутом type="module" можно и нужно удалять, а так же пустые скрипты в assets
+       это все дело подключает сборщик как отключить добавление всего этого дела не нашел.
+       -->
+  <link rel="stylesheet" href="./assets/bootstrap.css">
   <link rel="stylesheet" href="./assets/index.css">
   <link rel="stylesheet" href="./assets/style.css">
 </head>

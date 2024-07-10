@@ -1,1 +1,1 @@
-/* empty css                        */const manufacturers = "";
+/* empty css                            *//* empty css                        */const manufacturers = "";

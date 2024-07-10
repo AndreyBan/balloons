@@ -109,7 +109,7 @@
             }
 
             &--amount {
-                width: 124px;
+                width: 100px;
 
                 @include media(md) {
                     text-align: left;
@@ -154,7 +154,12 @@
             }
 
             &--sum {
-                width: 9%;
+                width: 12%;
+
+
+                @include media(xl) {
+                    width: calc(9% + 29px);
+                }
             }
         }
 
@@ -200,7 +205,7 @@
             }
 
             div {
-                &:not(.basket-table-item__numb, .basket-table-item__img, .basket-table-item__name) {
+                &:not(.basket-table-item__numb, .basket-table-item__img, .basket-table-item__name, .basket-table-item__sum) {
 
                     @include media(md) {
                         padding-left: 0;
@@ -336,7 +341,7 @@
                 margin: 0;
 
                 @include media(md) {
-                    width: 9%;
+                    width: 12%;
                 }
 
                 @include media(xl) {
@@ -388,12 +393,18 @@
 
             @include media(md) {
                 text-align: center;
-                width: 124px;                
+                width: 100px;                
                 margin-top: 0;
             }
 
             @include media(xl) {
                 width: 240px;
+            }
+
+            span {
+                @include media(md) {
+                    display: none;
+                }
             }
         }
     }

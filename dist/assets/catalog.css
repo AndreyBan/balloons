@@ -273,10 +273,15 @@
   margin-right: 8px;
 }
 
+.loaded .goods-card-buy {
+  visibility: visible;
+}
+
 .goods-card-buy {
   display: flex;
   justify-content: space-between;
   position: relative;
+  visibility: hidden;
 }
 @media (min-width: 768px) {
   .goods-card-buy {
@@ -327,7 +332,7 @@
   width: 100%;
 }
 .goods-card-buy__label.show {
-  display: block;
+  display: flex;
 }
 .goods-card-buy__count {
   position: relative;

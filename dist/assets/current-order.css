@@ -106,7 +106,7 @@
   }
 }
 .basket-table__title--amount {
-  width: 124px;
+  width: 100px;
 }
 @media (min-width: 768px) {
   .basket-table__title--amount {
@@ -152,7 +152,12 @@
   }
 }
 .basket-table__title--sum {
-  width: 9%;
+  width: 12%;
+}
+@media (min-width: 1170px) {
+  .basket-table__title--sum {
+    width: calc(9% + 29px);
+  }
 }
 .basket-table__head {
   background-color: #D8E2FE;
@@ -196,12 +201,12 @@
   }
 }
 @media (min-width: 768px) {
-  .basket-table-item div:not(.basket-table-item__numb, .basket-table-item__img, .basket-table-item__name) {
+  .basket-table-item div:not(.basket-table-item__numb, .basket-table-item__img, .basket-table-item__name, .basket-table-item__sum) {
     padding-left: 0;
   }
 }
 @media (min-width: 1170px) {
-  .basket-table-item div:not(.basket-table-item__numb, .basket-table-item__img, .basket-table-item__name) {
+  .basket-table-item div:not(.basket-table-item__numb, .basket-table-item__img, .basket-table-item__name, .basket-table-item__sum) {
     padding-left: 25px;
   }
 }
@@ -330,7 +335,7 @@
 }
 @media (min-width: 768px) {
   .basket-table-item__sum {
-    width: 9%;
+    width: 12%;
   }
 }
 @media (min-width: 1170px) {
@@ -371,13 +376,18 @@
 @media (min-width: 768px) {
   .basket-table-count {
     text-align: center;
-    width: 124px;
+    width: 100px;
     margin-top: 0;
   }
 }
 @media (min-width: 1170px) {
   .basket-table-count {
     width: 240px;
+  }
+}
+@media (min-width: 768px) {
+  .basket-table-count span {
+    display: none;
   }
 }
 

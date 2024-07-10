@@ -1,1 +1,0 @@
-/* empty css                        */const detail = "";

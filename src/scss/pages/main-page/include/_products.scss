@@ -265,11 +265,16 @@
   background-size: 24px;
   margin-right: 8px;
 }
+.loaded .goods-card-buy {
+  visibility: visible;
+}
 
 .goods-card-buy {
   display: flex;
   justify-content: space-between;
   position: relative;
+  visibility: hidden;
+
   @include media(md) {
     align-items: center;
   }
@@ -316,7 +321,7 @@
     width: 100%;
 
     &.show {
-      display: block;
+      display: flex;
     }
   }
 

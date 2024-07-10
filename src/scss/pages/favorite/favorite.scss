@@ -1,3 +1,4 @@
+@use "../main-page/include/products";
 @use "../../variables" as *;
 
 .item-added-cart {
@@ -40,6 +41,16 @@
     @include media(lg) {
         margin-top: 56px;
     }
+
+    &-count {
+        visibility: hidden;
+    }
+}
+.loaded .basket-table-count {
+    visibility: visible;
+}
+.basket-table-count div {
+    display: none;
 }
 
 .basket__clean {

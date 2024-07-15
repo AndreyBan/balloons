@@ -152,7 +152,7 @@
   }
 }
 .basket-table__title--sum {
-  width: 12%;
+  width: 16%;
 }
 @media (min-width: 1170px) {
   .basket-table__title--sum {
@@ -335,7 +335,7 @@
 }
 @media (min-width: 768px) {
   .basket-table-item__sum {
-    width: 12%;
+    width: 16%;
   }
 }
 @media (min-width: 1170px) {

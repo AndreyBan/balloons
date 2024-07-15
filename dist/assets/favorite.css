@@ -654,7 +654,7 @@
 }
 
 @media (min-width: 992px) {
-  .basket-table-item__sum {
+  .favorite-page .basket-table-item__sum {
     width: calc(15% + 200px);
   }
   .favorite-page .basket-table-count {

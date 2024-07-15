@@ -60,9 +60,26 @@
 }
 .favorite-page .basket-table-count div {
     display: none;
-    
 }
-
+.favorite-page {
+    .goods-card-buy__btn {
+        height: 53px;
+        min-width: 182px;
+    }
+    .basket-table-count__btn {
+        width: 14px;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .basket-minus {
+        left: 10px;
+    }
+    .basket-plus {
+        right: 10px;
+    }
+}
 @include media(lg) {
     .favorite-page .basket-table-item__sum {
         width: calc(15% + 200px);

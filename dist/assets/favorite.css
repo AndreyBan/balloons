@@ -653,6 +653,24 @@
   display: none;
 }
 
+.favorite-page .goods-card-buy__btn {
+  height: 53px;
+  min-width: 182px;
+}
+.favorite-page .basket-table-count__btn {
+  width: 14px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.favorite-page .basket-minus {
+  left: 10px;
+}
+.favorite-page .basket-plus {
+  right: 10px;
+}
+
 @media (min-width: 992px) {
   .favorite-page .basket-table-item__sum {
     width: calc(15% + 200px);

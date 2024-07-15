@@ -640,10 +640,27 @@
   visibility: visible;
 }
 
+.favorite-page .missing .basket-table-count {
+  width: auto;
+}
+
+.favorite-page .basket-table-count .goods-card-buy__btn,
+.favorite-page .basket-table-count div {
+  max-width: 163px;
+}
+
 .favorite-page .basket-table-count div {
   display: none;
 }
 
+@media (min-width: 992px) {
+  .basket-table-item__sum {
+    width: calc(15% + 200px);
+  }
+  .favorite-page .basket-table-count {
+    width: 35%;
+  }
+}
 .basket__clean {
   margin-top: 41px;
 }

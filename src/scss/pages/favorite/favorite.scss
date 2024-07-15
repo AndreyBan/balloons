@@ -43,14 +43,33 @@
     }
 
     &-count {
-        visibility: hidden;
+        visibility: hidden;    
     }
 }
 .loaded .basket-table-count {
     visibility: visible;
 }
+
+.favorite-page .missing .basket-table-count {
+    width: auto;
+}
+
+.favorite-page .basket-table-count .goods-card-buy__btn,
+.favorite-page .basket-table-count div {
+    max-width: 163px;
+}
 .favorite-page .basket-table-count div {
     display: none;
+    
+}
+
+@include media(lg) {
+    .basket-table-item__sum {
+        width: calc(15% + 200px);
+    }
+    .favorite-page .basket-table-count {
+        width: 35%;
+    }
 }
 
 .basket__clean {

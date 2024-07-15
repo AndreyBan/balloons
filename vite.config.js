@@ -40,6 +40,7 @@ export default {
                 myOrders: './src/my-orders.html',
                 error404: './src/404.html',
                 error500: './src/500.html',
+                example: './src/example.html',
                 common: './src/js/common.js',
                 'order/map': './src/js/order/map.js',
                 'basket/basket': './src/js/basket/basket.js',

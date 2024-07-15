@@ -1,1 +1,1 @@
-/* empty css                        */const mainPage = "";
+/* empty css                            *//* empty css                        */const mainPage = "";
